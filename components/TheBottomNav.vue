@@ -1,33 +1,42 @@
 <template lang="">
   <main>
-    <nuxt-link to="/home">
-      <div class="button">
-        <font-awesome-icon icon="house" />
-        <p>Home</p>
-      </div></nuxt-link
+    <nuxt-link
+      to="/home"
+      :class="(isActive = false ? 'button' : 'dead')"
+      @click="checkRoute()"
     >
-    <nuxt-link to="/store">
-      <div class="button">
-        <font-awesome-icon icon="store" />
-        <p>Store</p>
-      </div>
+      <font-awesome-icon icon="house" />
+      <p v-show="isInActive">Home</p>
     </nuxt-link>
-    <nuxt-link to="/orders">
-      <div class="button">
-        <font-awesome-icon icon="list" />
-        <p>Orders</p>
-      </div>
+    <nuxt-link to="/store" :class="isActive ? 'button' : 'dead'">
+      <font-awesome-icon icon="store" />
+      <p v-show="isActive">Store</p>
     </nuxt-link>
-    <nuxt-link to="/profile">
-      <div class="button">
-        <font-awesome-icon icon="user" />
-        <p>Profile</p>
-      </div>
+    <nuxt-link to="/orders" :class="isActive ? 'button' : 'dead'">
+      <font-awesome-icon icon="list" />
+      <p v-show="isActive">Orders</p>
+    </nuxt-link>
+    <nuxt-link to="/profile" :class="isActive ? 'button' : 'dead'">
+      <font-awesome-icon icon="user" />
+      <p v-show="isActive">Profile</p>
     </nuxt-link>
   </main>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      isActive: true,
+      isInActive: false,
+      pageRoute: "",
+    };
+  },
+  computed: {
+    checkRoute() {
+      return console.log("hello");
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 main {
@@ -45,6 +54,8 @@ main {
   a {
     text-decoration: none;
     width: 100%;
+    max-width: 120px;
+    gap: 10%;
   }
   .button {
     display: flex;
@@ -52,13 +63,37 @@ main {
     justify-content: space-around;
     align-items: center;
     background-color: #ffd60a;
+    font-size: 16px;
     color: #000;
     border-radius: 32px;
-    padding: 10px;
+    padding: 10px 15px;
     transition: all ease-in-out 200ms;
   }
   .button:hover {
     transform: scale(1.05);
+  }
+  .dead {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    color: #c4c4c4;
+    border-radius: 32px;
+    font-size: 16px;
+    padding: 10px;
+    transition: all ease-in-out 200ms;
+  }
+  .dead:hover {
+    transform: scale(1.05);
+    color: #666666;
+  }
+
+  // Mobile Responsiveness
+
+  @media screen and (max-width: 500px) {
+    .button {
+      font-size: 12px;
+    }
   }
 }
 </style>
