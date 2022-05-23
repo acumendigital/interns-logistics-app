@@ -2,6 +2,7 @@
   <main>
     <div>
       <h1>Hello World</h1>
+      <p>Kemi is worried</p>
     </div>
   </main>
 </template>
