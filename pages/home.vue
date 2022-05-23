@@ -21,8 +21,10 @@
             <img src="~assets/images/send-item.png" alt="send-item" />
           </div>
           <div class="card-text">
-            <p>Send an Item</p>
-            <img src="~assets/images/arrow-right.png" alt="arrow-right" />
+            <nuxt-link to="/send-item">
+              <p>Send an Item</p>
+              <img src="~assets/images/arrow-right.png" alt="arrow-right"
+            /></nuxt-link>
           </div>
         </div>
 
@@ -31,8 +33,10 @@
             <img src="~assets/images/receive-item.png" alt="receive-item" />
           </div>
           <div class="card-text">
-            <p>Receive an Item</p>
-            <img src="~assets/images/arrow-right.png" alt="arrow-right" />
+            <nuxt-link to="/receive-item">
+              <p>Receive an Item</p>
+              <img src="~assets/images/arrow-right.png" alt="arrow-right" />
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -116,19 +120,23 @@ main {
           }
         }
         .card-text {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          font-size: 18px;
-          font-family: "Rubik Regular";
-          text-align: left;
-          background-color: #fff;
-          height: 70px;
-          padding: 2rem;
-          border: 1px solid #dedede;
-          border-radius: 0px 0px 8px 8px;
-          img {
-            width: 40%;
+          a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            font-size: 18px;
+            font-family: "Rubik Regular";
+            text-align: left;
+            background-color: #fff;
+            color: #000;
+            height: 70px;
+            padding: 2rem;
+            border: 1px solid #dedede;
+            border-radius: 0px 0px 8px 8px;
+            img {
+              width: 40%;
+            }
           }
         }
       }
