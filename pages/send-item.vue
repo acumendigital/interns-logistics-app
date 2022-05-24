@@ -43,26 +43,40 @@
       <div class="desc">
         <p>Package Description</p>
         <div class="images">
-          <div class="form-element">
-            <input type="file" id="file-1" accept="image/*" />
-            <label for="file-1" id="file-1-preview">
-              <img src="~assets/images/preview.png" alt="" />
-            </label>
-          </div>
-
-          <div class="form-element">
+          <div
+            class="form-element"
+            :style="{ 'background-image': `url(${previewImage})` }"
+          >
             <input
-              ref="fileInput"
               type="file"
+              ref="fileInput"
+              id="file-1"
               accept="image/*"
               @input="pickFile"
             />
             <label for="file-1" id="file-1-preview">
               <img
-                src="~assets/images/plus.png"
+                src="~assets/images/preview.png"
                 alt=""
-                :style="{ 'background-image': `url(${previewImage})` }"
+                @click="selectImage"
               />
+            </label>
+          </div>
+
+          <div
+            v-for="(images, index) in previewImage + 1"
+            class="form-element"
+            :style="{ 'background-image': `url(${previewImage})` }"
+          >
+            <input
+              type="file"
+              id="file-2"
+              ref="fileInput"
+              accept="image/*"
+              @input="pickFile"
+            />
+            <label for="file-1" id="file-1-preview">
+              <img src="~assets/images/plus.png" alt="" @click="selectImage" />
             </label>
           </div>
         </div>
@@ -85,7 +99,7 @@
 export default {
   data() {
     return {
-      previewImage: null,
+      previewImage: [],
     };
   },
   methods: {
@@ -98,7 +112,7 @@ export default {
       if (file && file[0]) {
         let reader = new FileReader();
         reader.onload = (e) => {
-          this.previewImage = e.target.result;
+          this.previewImage.push(e.target.result);
         };
         reader.readAsDataURL(file[0]);
         this.$emit("input", file[0]);
