@@ -3,3 +3,27 @@
     justify-content: center;
     align-items: center;
 }
+
+@mixin active-btn {
+    background: #FFD60A;
+    border-radius: 8px;
+    padding: 8px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+@mixin input-field {
+    border: 1px solid #B0B0B0;
+    border-radius: 8px;
+    padding: 21px 27px;
+    display: flex;
+    align-items: center;
+    gap: 19px;
+    input{
+        background: transparent;
+        border: none;
+        outline: none;
+        width: 50vw;
+    }
+}
