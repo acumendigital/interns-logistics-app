@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="break"></div>
-      <div class="middle">
+      <div class="location">
         <p>Send or Receive Item</p>
         <div class="cards">
           <div class="card">
@@ -29,8 +29,22 @@
         </div>
       </div>
       <div class="break"></div>
-      <div class="active">
+      <div class="shipments">
+        <div class="tracking">
+          <div>
+            <input
+              type="search"
+              name="track"
+              placeholder="Enter Tracking Number"
+              id=""
+            />
+            <button>
+              <font-awesome-icon icon="magnifying-glass" />
+            </button>
+          </div>
+        </div>
         <div>
+          <p>Active Shipments</p>
           <TheActiveShipment />
           <TheActiveShipment />
           <TheActiveShipment />
@@ -90,7 +104,7 @@ main {
         color: #000;
       }
     }
-    .middle {
+    .location {
       display: flex;
       flex-direction: column;
       padding: 1rem 2rem;
@@ -123,11 +137,40 @@ main {
         }
       }
     }
-    .active {
+
+    .shipments {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      .tracking {
+        margin-left: -3.5rem;
+        margin-bottom: 1rem;
+        input {
+          width: 305px;
+          height: 56px;
+          border-radius: 8px 0px 0px 8px;
+          outline: none;
+          padding: 1rem 2rem;
+          border: 1px solid #dedede;
+        }
+        button {
+          position: absolute;
+          height: 56px;
+          width: 56px;
+          background-color: #ffd60a;
+          border-radius: 0px 8px 8px 0px;
+          border: 0px;
+          svg {
+            font-size: 20px;
+          }
+        }
+      }
+      p {
+        color: #575757;
+        padding: 1rem 0rem;
+        font-size: 12px;
+      }
     }
   }
   .footer {
