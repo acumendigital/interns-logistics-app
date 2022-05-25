@@ -9,8 +9,8 @@
       <p v-show="isInActive">Home</p>
     </nuxt-link>
     <nuxt-link to="/store" :class="isActive ? 'button' : 'dead'">
-      <font-awesome-icon icon="store" />
-      <p v-show="isActive">Store</p>
+      <font-awesome-icon icon="wallet" />
+      <p v-show="isActive">Wallet</p>
     </nuxt-link>
     <nuxt-link to="/orders" :class="isActive ? 'button' : 'dead'">
       <font-awesome-icon icon="list" />
