@@ -1,43 +1,40 @@
 <template lang="">
   <main>
     <section class="nav">
-      <TheTopNav />
+      <TheBellButton />
     </section>
     <section class="body">
       <div class="top">
         <div class="top-text">
-          <p>Wallet Balance</p>
           <h1>N 12, 000</h1>
+          <p>Wallet Balance</p>
         </div>
         <div class="top-btns">
           <div class="add btn">+ Add Money</div>
-          <div class="withdraw btn">Withdraw</div>
+          <div class="add btn">- Withdraw</div>
         </div>
       </div>
       <div class="break"></div>
       <div class="middle">
-        <div class="card">
-          <div class="card-img">
-            <img src="~assets/images/send-item.png" alt="send-item" />
+        <p>Send or Receive Item</p>
+        <div class="cards">
+          <div class="card">
+            <img src="~assets/images/local.png" alt="" />
+            <p>Local</p>
           </div>
-          <div class="card-text">
-            <nuxt-link to="/send-item">
-              <p>Send an Item</p>
-              <img src="~assets/images/arrow-right.png" alt="arrow-right"
-            /></nuxt-link>
+          <div class="card">
+            <img src="~assets/images/international.png" alt="" />
+            <p>International</p>
           </div>
         </div>
-
-        <div class="card">
-          <div class="card-img">
-            <img src="~assets/images/receive-item.png" alt="receive-item" />
-          </div>
-          <div class="card-text">
-            <nuxt-link to="/receive-item">
-              <p>Receive an Item</p>
-              <img src="~assets/images/arrow-right.png" alt="arrow-right" />
-            </nuxt-link>
-          </div>
+      </div>
+      <div class="break"></div>
+      <div class="active">
+        <div>
+          <TheActiveShipment />
+          <TheActiveShipment />
+          <TheActiveShipment />
+          <TheActiveShipment />
         </div>
       </div>
     </section>
@@ -58,88 +55,79 @@ main {
     .top {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      justify-content: left;
+      align-items: left;
+      margin: 0rem 2rem;
       .top-text {
-        text-align: center;
+        text-align: start;
         margin: 0.5rem;
         h1 {
-          font-family: "Rubik Medium";
+          font-family: "Rubik Regular";
           font-size: 40px;
+        }
+        p {
+          font-size: 14px;
         }
       }
       .top-btns {
         display: flex;
         flex-direction: row;
-        gap: 20px;
-        margin-top: 35px;
+        gap: 24px;
+        margin-top: 24px;
       }
       .btn {
-        min-width: 166px;
-        height: 40px;
+        min-width: 100px;
+        height: 24px;
         border-radius: 8px;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 18px;
+        font-size: 12px;
+        cursor: pointer;
       }
       .add {
         background-color: #ffd60a;
         color: #000;
       }
-      .withdraw {
-        border: 1px solid #cc5500;
-        color: #cc5500;
-      }
-    }
-    .break {
-      background-color: #ccc;
-      height: 1px;
-      margin: 2rem 0rem;
     }
     .middle {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      margin-bottom: 5rem;
-
-      .card {
-        max-width: 700px;
-        margin: 1rem 0rem;
-        .card-img {
+      padding: 1rem 2rem;
+      .cards {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 32px;
+        margin-top: 1rem;
+        .card {
           display: flex;
+          flex-direction: column;
           justify-content: center;
           align-items: center;
-          background-color: #ffe45c;
-          border-radius: 8px 8px 0px 0px;
-          padding: 27px;
+          width: 169;
+          height: 230;
+          margin: 1rem 0rem;
+          padding: 1rem 2.3rem;
+          border-radius: 8px;
+          background-color: #ffd60a;
           img {
-            max-width: 80%;
+            max-width: 90%;
+            // height: 130px;
+            margin-bottom: 10px;
           }
-        }
-        .card-text {
-          a {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            text-decoration: none;
-            font-size: 18px;
-            font-family: "Rubik Regular";
-            text-align: left;
-            background-color: #fff;
-            color: #000;
-            height: 70px;
-            padding: 2rem;
-            border: 1px solid #dedede;
-            border-radius: 0px 0px 8px 8px;
-            img {
-              width: 40%;
-            }
+          p {
+            font-size: 14px;
+            margin: 1%;
           }
         }
       }
+    }
+    .active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   }
   .footer {
@@ -147,6 +135,12 @@ main {
     bottom: 0;
     width: 100%;
     padding: 32px 24px;
+  }
+
+  .break {
+    background-color: #ccc;
+    height: 1px;
+    margin: 2rem 0rem;
   }
 }
 </style>
