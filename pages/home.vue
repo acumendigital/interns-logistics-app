@@ -18,14 +18,14 @@
       <div class="location">
         <p>Send or Receive Item</p>
         <div class="cards">
-          <div class="card">
+          <nuxt-link to="/local" class="card">
             <img src="~assets/images/local.png" alt="" />
             <p>Local</p>
-          </div>
-          <div class="card">
+          </nuxt-link>
+          <nuxt-link to="/international" class="card">
             <img src="~assets/images/international.png" alt="" />
             <p>International</p>
-          </div>
+          </nuxt-link>
         </div>
       </div>
       <div class="break"></div>
@@ -119,12 +119,15 @@ main {
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          text-decoration: none;
+          color: #000;
           width: 169;
           height: 230;
           margin: 1rem 0rem;
           padding: 1rem 2.3rem;
           border-radius: 8px;
-          background-color: #ffd60a;
+          background-color: #fff;
+          border: 1px solid #efefef;
           img {
             max-width: 90%;
             // height: 130px;
@@ -184,6 +187,9 @@ main {
     background-color: #ccc;
     height: 1px;
     margin: 2rem 0rem;
+  }
+  a {
+    text-decoration: none;
   }
 }
 </style>
