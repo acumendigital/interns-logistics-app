@@ -35,9 +35,6 @@
           <span>Pay with card</span>
         </div>
       </div>
-      <div class="btn">
-        <button>Pay NGN2000</button>
-      </div>
     </div>
   </main>
 </template>
@@ -141,28 +138,6 @@ main {
           color: #000;
           margin-left: 10px;
         }
-      }
-    }
-    .btn {
-      width: 100%;
-      display: flex;
-      padding: 0 32px 32px 32px;
-      margin-top: 540px;
-      margin-bottom: 32px;
-      justify-content: center;
-      button {
-        background: #ffd60a;
-        border-radius: 8px;
-        width: 80%;
-        width: 364px;
-        height: 56px;
-        margin: 0 auto;
-        border-style: none;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 24px;
-        color: #000;
       }
     }
   }
