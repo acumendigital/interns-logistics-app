@@ -9,7 +9,7 @@ export default {};
 <style lang="scss" scoped>
 main {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   padding: 32.75px;
   a {

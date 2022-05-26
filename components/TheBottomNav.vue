@@ -1,5 +1,5 @@
 <template lang="">
-  <main>
+  <div class="bottom-nav">
     <nuxt-link
       to="/home"
       :class="(isActive = false ? 'button' : 'dead')"
@@ -8,7 +8,7 @@
       <font-awesome-icon icon="house" />
       <p v-show="isInActive">Home</p>
     </nuxt-link>
-    <nuxt-link to="/store" :class="isActive ? 'button' : 'dead'">
+    <nuxt-link to="/wallet" :class="isActive ? 'button' : 'dead'">
       <font-awesome-icon icon="wallet" />
       <p v-show="isActive">Wallet</p>
     </nuxt-link>
@@ -20,7 +20,7 @@
       <font-awesome-icon icon="user" />
       <p v-show="isActive">Profile</p>
     </nuxt-link>
-  </main>
+  </div>
 </template>
 <script>
 export default {
@@ -39,7 +39,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-main {
+.bottom-nav {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
