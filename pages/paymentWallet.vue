@@ -53,6 +53,9 @@ main {
   width: 100%;
   background: #1e1e1e;
   padding: 60px 0 30px;
+  font-family: "Rubik Regular";
+  color: #000;
+  font-style: normal;
 
   .container {
     width: 90%;
@@ -68,12 +71,9 @@ main {
       }
     }
     .title {
-      font-family: "Rubik Regular";
-      font-style: normal;
       font-weight: 400;
       font-size: 18px;
       line-height: 28px;
-      color: #000;
       margin: 0 0 26px 32px;
     }
     .wallet {
@@ -89,12 +89,9 @@ main {
           margin-left: 32px;
         }
         span {
-          font-family: "Rubik Regular";
-          font-style: normal;
           font-weight: 400;
           font-size: 16px;
           line-height: 24px;
-          color: #000;
           margin-left: 10px;
           display: block;
           position: relative;
@@ -143,9 +140,7 @@ main {
       }
 
       .amount {
-        font-family: "Rubik Regular";
         margin-right: 32px;
-        font-style: normal;
         font-weight: 400;
         font-size: 16px;
         line-height: 24px;
@@ -184,12 +179,9 @@ main {
       //   color: white;
       // }
       span {
-        font-family: "Rubik Regular";
-        font-style: normal;
         font-weight: 400;
         font-size: 16px;
         line-height: 24px;
-        color: #000;
         margin-left: 10px;
       }
     }
@@ -209,12 +201,8 @@ main {
       height: 56px;
       margin: 0 auto;
       border-style: none;
-      font-family: "Rubik Regular";
-      font-style: normal;
       font-weight: 400;
       font-size: 18px;
-      line-height: 24px;
-      color: #000;
       cursor: pointer;
     }
   }

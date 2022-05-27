@@ -1,54 +1,26 @@
 <template>
   <main>
-    <div class="container">
-      <div class="back">
-        <img src="../assets/images/leftArrow.svg">
-      </div>
-      <div class="title">
-        <h3>Payment</h3>
-      </div>
-      <div class="wallet">
-        <div class="details">
-          <input
-            v-model="payment"
-            type="radio"
-            name="payment"
-            checked="checked"
-            value="Pay with wallet"
-          >
-          <span class="">Pay with wallet</span>
-        </div>
-        <div>
-          <p class="amount">
-            N12,000
-          </p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="details">
-          <input
-            v-model="payment"
-            type="radio"
-            name="payment"
-            value="Pay with card"
-          >
-          <span>Pay with card</span>
-        </div>
-      </div>
-      <div class="btn">
-        <button>Pay NGN2000</button>
-      </div>
+    <div>
+      <font-awesome-icon icon="wallet" />
+
+      <h1>Hello World</h1>
+      <a href="/home">go to home</a>
     </div>
   </main>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  layout: 'no-auth-layout'
 }
 </script>
 <style lang="scss" scoped>
-h1 {
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-family: "Rubik Regular";
 }
 main {

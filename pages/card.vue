@@ -42,6 +42,9 @@ main {
   width: 100%;
   background: #1e1e1e;
   padding: 60px 0 30px;
+  font-family: "Rubik Regular";
+  color: #000;
+  font-style: normal;
 
   .container {
     width: 90%;
@@ -57,24 +60,18 @@ main {
       }
     }
     .title {
-      font-family: "Rubik Regular";
-      font-style: normal;
       font-weight: 400;
       font-size: 18px;
       line-height: 28px;
-      color: #000;
       margin: 0 0 26px 0;
     }
     .cardNumber {
       margin-bottom: 32px;
       position: relative;
       label {
-        font-style: normal;
-        font-family: "Rubik Regular";
         font-weight: 400;
         font-size: 14px;
         line-height: 24px;
-        color: #000;
       }
       input {
         border: 1px solid #b0b0b0;
@@ -95,12 +92,9 @@ main {
       align-items: center;
       justify-content: space-between;
       label {
-        font-family: "Rubik Regular";
-        font-style: normal;
         font-weight: 400;
         font-size: 14px;
         line-height: 24px;
-        color: #000;
       }
       .date {
         position: relative;
@@ -140,13 +134,10 @@ main {
         width: 364px;
         height: 56px;
         margin: 0 auto;
-        font-family: "Rubik Regular";
         border-style: none;
-        font-style: normal;
         font-weight: 400;
         font-size: 18px;
         line-height: 24px;
-        color: #000;
         cursor: pointer;
       }
     }

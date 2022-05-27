@@ -30,6 +30,9 @@ main {
   width: 100%;
   background: #1e1e1e;
   padding: 60px 0 30px;
+  font-family: "Rubik Regular";
+  color: #000;
+  font-style: normal;
 
   .container {
     width: 90%;
@@ -48,12 +51,9 @@ main {
         cursor: pointer;
       }
       p {
-        font-family: "Rubik Regular";
-        font-style: normal;
         font-weight: 400;
         font-size: 16px;
         line-height: 24px;
-        color: #000;
         text-align: center;
         margin-left: 101px;
       }
@@ -65,20 +65,15 @@ main {
       justify-content: center;
       align-items: center;
       span {
-        font-family: "Rubik Regular";
         font-weight: 400;
         font-size: 31px;
         line-height: 48px;
-        color: #000;
         margin-right: 8px;
       }
       h2 {
-        font-family: "Rubik Regular";
-        font-style: normal;
         font-weight: 500;
         font-size: 48px;
         line-height: 64px;
-        color: #000;
       }
     }
     .line {
@@ -101,13 +96,10 @@ main {
         width: 364px;
         height: 56px;
         margin: 0 auto;
-        font-family: "Rubik Regular";
         border-style: none;
-        font-style: normal;
         font-weight: 400;
         font-size: 18px;
         line-height: 24px;
-        color: #000;
         cursor: pointer;
       }
     }

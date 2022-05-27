@@ -30,7 +30,11 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
+<<<<<<< HEAD
     '@nuxtjs/eslint-module',
+=======
+    //! "@nuxtjs/eslint-module",
+>>>>>>> f449e4e4da5f377ddc1c8a27c09d88d1a3780704
     // style resources
     '@nuxtjs/style-resources'
   ],
@@ -40,7 +44,31 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
+<<<<<<< HEAD
     '@nuxtjs/pwa'
+=======
+    "@nuxtjs/pwa",
+    // Font Awesome
+    [
+      "nuxt-fontawesome",
+      {
+        imports: [
+          {
+            set: "@fortawesome/free-solid-svg-icons",
+            icons: ["fas"],
+          },
+          {
+            set: "@fortawesome/free-regular-svg-icons",
+            icons: ["far"],
+          },
+          {
+            set: "@fortawesome/free-brands-svg-icons",
+            icons: ["fab"],
+          },
+        ],
+      },
+    ],
+>>>>>>> f449e4e4da5f377ddc1c8a27c09d88d1a3780704
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

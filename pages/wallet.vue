@@ -43,6 +43,9 @@ main {
   width: 100%;
   background: #1e1e1e;
   padding: 60px 0 30px;
+  font-family: "Rubik Regular";
+  color: #000;
+  font-style: normal;
 
   .container {
     width: 90%;
@@ -60,21 +63,15 @@ main {
     .title {
       border-bottom: 1px solid #dbdbdb;
       h3 {
-        font-family: "Rubik Regular";
-        font-style: normal;
         font-weight: 500;
         font-size: 40px;
         line-height: 38px;
-        color: #000;
         margin: 0 0 8px 32px;
       }
       p {
-        font-family: "Rubik Regular";
-        font-style: normal;
         font-weight: 4500;
         font-size: 14px;
         line-height: 21px;
-        color: #000;
         margin: 0 0 0px 32px;
       }
       .btns {
@@ -91,20 +88,15 @@ main {
           height: 24px;
           margin-right: 24px;
           border-style: none;
-          font-family: "Rubik Regular";
-          font-style: normal;
           font-weight: 400;
           font-size: 12px;
           line-height: 16px;
-          color: #000;
           cursor: pointer;
         }
       }
     }
     .overview {
       p {
-        font-family: "Rubik Regular";
-        font-style: normal;
         font-weight: 400;
         font-size: 12px;
         margin: 24px 0 8px 32px;
@@ -120,8 +112,6 @@ main {
           background: #FAFAFA;
           padding-right: 32px;
         p {
-          font-family: "Rubik Regular";
-          font-style: normal;
           font-weight: 400;
           font-size: 12px;
           margin: 6px 0 6px 32px;
