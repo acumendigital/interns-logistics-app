@@ -1,15 +1,11 @@
 <template lang="">
   <div class="bottom-nav">
-    <nuxt-link
-      to="/home"
-      :class="(isActive = false ? 'button' : 'dead')"
-      @click="checkRoute()"
-    >
+    <nuxt-link to="/" :class="active ? 'button' : 'dead'" @click="checkRoute()">
       <font-awesome-icon icon="house" />
-      <p v-show="isInActive">Home</p>
+      <p v-show="active">Home</p>
     </nuxt-link>
     <nuxt-link to="/wallet" :class="isActive ? 'button' : 'dead'">
-      <font-awesome-icon icon="wallet" />
+      <img src="~assets/images/wallet-2.svg" alt="" />
       <p v-show="isActive">Wallet</p>
     </nuxt-link>
     <nuxt-link to="/orders" :class="isActive ? 'button' : 'dead'">
@@ -26,7 +22,7 @@
 export default {
   data() {
     return {
-      isActive: true,
+      active: true,
       isInActive: false,
       pageRoute: "",
     };
