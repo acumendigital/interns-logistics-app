@@ -28,7 +28,15 @@
             See all
           </p>
         </div>
+        <div>
+          <TransactionHistory />
+          <TransactionHistory />
+          <TransactionHistory />
+        </div>
       </div>
+      <section class="footer">
+        <TheBottomNav />
+      </section>
     </div>
   </main>
 </template>
@@ -42,7 +50,7 @@ export default {
 main {
   width: 100%;
   background: #1e1e1e;
-  padding: 60px 0 30px;
+  // padding: 60px 0 30px;
   font-family: "Rubik Regular";
   color: #000;
   font-style: normal;
@@ -106,11 +114,12 @@ main {
     }
     .transactions {
       .header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          background: #FAFAFA;
-          padding-right: 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fafafa;
+        padding-right: 32px;
+        margin-bottom: 41px;
         p {
           font-weight: 400;
           font-size: 12px;
@@ -118,11 +127,23 @@ main {
           line-height: 16px;
           color: #565656;
         }
-        .more{
-            cursor: pointer;
+        .more {
+          cursor: pointer;
         }
       }
     }
+    .footer {
+      position: fixed;
+      width: 20%;
+      margin: 38px 27px 32px 28px;
+      // padding:38px 27px 32px 28px;
+    }
+    // .footer {
+    //   position: fixed;
+    //   bottom: 0;
+    //   width: 90%;
+    //   padding: 32px 24px;
+    // }
   }
 }
 </style>

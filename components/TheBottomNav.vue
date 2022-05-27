@@ -6,37 +6,45 @@
       @click="checkRoute()"
     >
       <font-awesome-icon icon="house" />
-      <p v-show="isInActive">Home</p>
+      <p v-show="isInActive">
+        Home
+      </p>
     </nuxt-link>
     <nuxt-link to="/wallet" :class="isActive ? 'button' : 'dead'">
       <font-awesome-icon icon="wallet" />
-      <p v-show="isActive">Wallet</p>
+      <p v-show="isActive">
+        Wallet
+      </p>
     </nuxt-link>
     <nuxt-link to="/orders" :class="isActive ? 'button' : 'dead'">
       <font-awesome-icon icon="list" />
-      <p v-show="isActive">Orders</p>
+      <p v-show="isActive">
+        Orders
+      </p>
     </nuxt-link>
     <nuxt-link to="/profile" :class="isActive ? 'button' : 'dead'">
       <font-awesome-icon icon="user" />
-      <p v-show="isActive">Profile</p>
+      <p v-show="isActive">
+        Profile
+      </p>
     </nuxt-link>
   </div>
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       isActive: true,
       isInActive: false,
-      pageRoute: "",
-    };
+      pageRoute: ''
+    }
   },
   computed: {
-    checkRoute() {
-      return console.log("hello");
-    },
-  },
-};
+    checkRoute () {
+      return console.log('hello')
+    }
+  }
+}
 </script>
 <style lang="scss" scoped>
 .bottom-nav {

@@ -4,7 +4,7 @@
       <font-awesome-icon icon="wallet" />
 
       <h1>Hello World</h1>
-      <a href="/home">go to home</a>
+      <a href="/homePage">go to home</a>
     </div>
   </main>
 </template>
