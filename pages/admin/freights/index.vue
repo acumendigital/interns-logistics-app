@@ -1,5 +1,9 @@
 <template lang="">
-  <div></div>
+  <div>
+    <section>
+      <TheFreightDetail />
+    </section>
+  </div>
 </template>
 <script>
 export default {};
