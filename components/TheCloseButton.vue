@@ -1,10 +1,12 @@
 <template lang="">
   <main class="top-nav">
-    <nuxt-link to="/store"> <font-awesome-icon icon="x" /></nuxt-link>
+    <nuxt-link to="/store">
+      <font-awesome-icon icon="x" />
+    </nuxt-link>
   </main>
 </template>
 <script>
-export default {};
+export default {}
 </script>
 <style lang="scss" scoped>
 main {

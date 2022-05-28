@@ -5,40 +5,62 @@
         <font-awesome-icon icon="x" />
       </div>
       <div class="freight-nav-bar">
-        <p :class="active ? 'active' : 'active'">Information</p>
-        <p :class="active ? 'active' : ''">Transport Info</p>
-        <p :class="active ? 'active' : ''">Company Billing</p>
-        <p :class="active ? 'active' : ''">Billing</p>
+        <p :class="active ? 'active' : 'active'">
+          Information
+        </p>
+        <p :class="active ? 'active' : ''">
+          Transport Info
+        </p>
+        <p :class="active ? 'active' : ''">
+          Company Billing
+        </p>
+        <p :class="active ? 'active' : ''">
+          Billing
+        </p>
       </div>
     </div>
     <div class="info">
       <div class="left">
         <div>
           <p>Tracking Number</p>
-          <p class="bold">NA-0135557</p>
+          <p class="bold">
+            NA-0135557
+          </p>
         </div>
         <div>
           <p>Order Date</p>
           <p>17/05/2022</p>
-          <p class="status">Status: <span>Fulfilled</span></p>
+          <p class="status">
+            Status: <span>Fulfilled</span>
+          </p>
         </div>
       </div>
       <div class="right">
         <div>
           <p>Recipient</p>
-          <p class="bold">Shammah Imisiwe</p>
+          <p class="bold">
+            Shammah Imisiwe
+          </p>
         </div>
         <div>
           <p>Recipient Address</p>
-          <p class="bold">23 Adebayo Akakija St.</p>
-          <p class="bold">Lekki Phase II</p>
-          <p class="bold">Lagos, Nigeria</p>
+          <p class="bold">
+            23 Adebayo Akakija St.
+          </p>
+          <p class="bold">
+            Lekki Phase II
+          </p>
+          <p class="bold">
+            Lagos, Nigeria
+          </p>
         </div>
       </div>
     </div>
     <div class="trans">
       <div class="top">
-        <p class="bold">Transport Info</p>
+        <p class="bold">
+          Transport Info
+        </p>
         <div class="cards">
           <div class="card">
             <p>Truck</p>
@@ -60,35 +82,37 @@
         <div class="load">
           <p>Load Capacity</p>
           <div class="image">
-            <img src="~assets/images/okada.png" alt="" />
+            <img src="~assets/images/okada.png" alt="">
             <div class="box">
               <p>70%</p>
             </div>
           </div>
         </div>
         <div class="boxes">
-          <img src="~assets/images/box.png" alt="" />
-          <img src="~assets/images/box.png" alt="" />
-          <img src="~assets/images/box.png" alt="" />
-          <img src="~assets/images/box.png" alt="" />
+          <img src="~assets/images/box.png" alt="">
+          <img src="~assets/images/box.png" alt="">
+          <img src="~assets/images/box.png" alt="">
+          <img src="~assets/images/box.png" alt="">
         </div>
         <div class="dots">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
+          <div class="dot" />
+          <div class="dot" />
+          <div class="dot" />
         </div>
       </div>
       <div class="bottom">
         <div class="map">
           <p>Route Map</p>
           <div class="map-img">
-            <img src="~assets/images/map.png" alt="" />
+            <img src="~assets/images/map.png" alt="">
           </div>
         </div>
         <div class="stops-container">
           <div class="stops">
             <div>
-              <p class="bold">Stops</p>
+              <p class="bold">
+                Stops
+              </p>
             </div>
             <div>
               <div class="stop">
@@ -118,14 +142,20 @@
       </div>
     </div>
     <div class="comp">
-      <p class="bold">Company</p>
+      <p class="bold">
+        Company
+      </p>
       <div>
-        <div class="uber">UBER</div>
+        <div class="uber">
+          UBER
+        </div>
       </div>
     </div>
     <div class="bill">
       <div>
-        <div class="bold">Billing</div>
+        <div class="bold">
+          Billing
+        </div>
       </div>
       <div class="billing-card">
         <div class="balance">
@@ -133,7 +163,9 @@
           <span> N7, 000</span>
         </div>
         <div class="activities">
-          <p class="bold">Activities</p>
+          <p class="bold">
+            Activities
+          </p>
           <div class="act">
             <div>
               <p>Package delivery</p>
@@ -141,8 +173,8 @@
             </div>
             <p>N1,000</p>
           </div>
-          <hr />
-          <div class="break"></div>
+          <hr>
+          <div class="break" />
           <div class="act">
             <div>
               <p>Package delivery</p>
@@ -157,12 +189,12 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
-      active: null,
-    };
-  },
-};
+      active: null
+    }
+  }
+}
 </script>
 <style lang="scss" scoped>
 .freight-container {
