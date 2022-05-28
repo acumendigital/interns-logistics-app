@@ -7,35 +7,30 @@
       <div class="title">
         <h3>Payment</h3>
       </div>
-      <div class="wallet">
-        <div class="details">
-          <input
-            v-model="payment"
-            type="radio"
-            name="payment"
-            checked="checked"
-            value="Pay with wallet"
-          >
-          <span class="">Pay with wallet</span>
-         <div class="check"><div class="inside"></div></div>
+      <form>
+        <div class="wallet">
+          <div class="details">
+            <label>
+              <input type="radio" name="payment" checked value="wallet">
+              <span class="">Pay with wallet</span>
+            </label>
+          </div>
+          <div>
+            <p class="amount">
+              N12,000
+            </p>
+          </div>
         </div>
-        <div>
-          <p class="amount">
-            N12,000
-          </p>
+
+        <div class="card">
+          <div class="details">
+            <label>
+              <input type="radio" name="payment">
+              <span>Pay with card</span>
+            </label>
+          </div>
         </div>
-      </div>
-      <div class="card">
-        <div class="details">
-          <input
-            v-model="payment"
-            type="radio"
-            name="payment"
-            value="Pay with card"
-          >
-          <span>Pay with card</span>
-        </div>
-      </div>
+      </form>
       <div class="btn">
         <button>Pay NGN2000</button>
       </div>
@@ -93,117 +88,91 @@ main {
           font-size: 16px;
           line-height: 24px;
           margin-left: 10px;
-          display: block;
-          position: relative;
-          font-weight: 300;
-          font-size: 1.35em;
-          padding: 25px 25px 25px 80px;
-          margin: 10px auto;
-          height: 30px;
-          z-index: 9;
-          cursor: pointer;
         }
-        input[type="radio"] {
-          position: absolute;
-          visibility: hidden;
-        }
-        .check {
-          display: block;
-          // background: red;
-          position: absolute;
-          border: 1px solid #d9b608;
-          border-radius: 100%;
-          height: 24px;
-          width: 24px;
-          top: 30px;
-          left: 20px;
-          z-index: 5;
-        }
-        .check::before {
-          display: block;
-          position: absolute;
-          content: "";
-          border-radius: 100%;
-          height: 15px;
-          width: 15px;
-          top: 5px;
-          left: 5px;
-          margin: auto;
-        }
-        input[type="radio"]:checked ~ .check {
-          border: 1px solid #d9d9d9;
-        }
-
-        input[type="radio"]:checked ~ .check::before {
-          background: #d9b608;
+        label {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            display: inline-block;
+            background-clip: content-box;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            margin-left: 32px;
+            border: 1px solid #d9b608;
+          }
+          input[type="radio"]:checked {
+            background: #d9b608;
+            border: 1px solid #d9d9d9;
+          }
         }
       }
-
       .amount {
-        margin-right: 32px;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
-        color: #ffd60a;
-      }
+          margin-right: 32px;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 24px;
+          color: #ffd60a;
+        }
     }
-  }
-  .card {
-    border-bottom: 1px solid #dedede;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    .card {
+      border-bottom: 1px solid #dedede;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-    .details {
-      margin: 24px 0 24px 0;
-      input {
-        margin-left: 32px;
-      }
-      // input[type="radio"] {
-      //   appearance: none;
-      //   background-color: #d9b608;
-      //   margin: 0;
-      //   font: inherit;
-      //   font-family: "Rubik Regular";
-      //   color: red;
-      //   width: 1.15em;
-      //   height: 1.15em;
-      //   width: 24px;
-      //   height: 24px;
-      //   border: 1px solid #d9d9d9;
-      //   border-radius: 50%;
-      // }
-      // .label-name-10 > input:checked {
-      //   border: 2px solid #41b883;
-      //   background-color: white;
-      //   color: white;
-      // }
-      span {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
-        margin-left: 10px;
+      .details {
+        margin: 24px 0 24px 0;
+        span {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 24px;
+          margin-left: 10px;
+        }
+        label {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            display: inline-block;
+            background-clip: content-box;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            margin-left: 32px;
+            border: 1px solid #d9b608;
+          }
+          input[type="radio"]:checked {
+            background: #d9b608;
+            border: 1px solid #d9d9d9;
+          }
+        }
       }
     }
-  }
-  .btn {
-    width: 100%;
-    display: flex;
-    padding: 0 32px 32px 32px;
-    margin-top: 540px;
-    margin-bottom: 32px;
-    justify-content: center;
-    button {
-      background: #ffd60a;
-      border-radius: 8px;
-      width: 80%;
-      width: 364px;
-      height: 56px;
-      margin: 0 auto;
-      border-style: none;
-      font-weight: 400;
-      font-size: 18px;
-      cursor: pointer;
+    .btn {
+      width: 100%;
+      display: flex;
+      padding: 0 32px 32px 32px;
+      margin-top: 540px;
+      margin-bottom: 32px;
+      justify-content: center;
+      button {
+        background: #ffd60a;
+        border-radius: 8px;
+        width: 80%;
+        width: 364px;
+        height: 56px;
+        margin: 0 auto;
+        border-style: none;
+        font-weight: 400;
+        font-size: 18px;
+        cursor: pointer;
+      }
     }
   }
 }

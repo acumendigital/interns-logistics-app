@@ -9,10 +9,45 @@
       </div>
       <div class="screen">
         <span>N</span>
-        <h2>2,000</h2>
+        <h2>{{ current || '0' }}</h2>
       </div>
       <div class="line" />
-      <div class="digits">jdjjdjk</div>
+      <div class="digits">
+        <div class="grid-item" @click="append('1')">
+          1
+        </div>
+        <div class="grid-item" @click="append('2')">
+          2
+        </div>
+        <div class="grid-item" @click="append('3')">
+          3
+        </div>
+        <div class="grid-item" @click="append('4')">
+          4
+        </div>
+        <div class="grid-item" @click="append('5')">
+          5
+        </div>
+        <div class="grid-item" @click="append('6')">
+          6
+        </div>
+        <div class="grid-item" @click="append('7')">
+          7
+        </div>
+        <div class="grid-item" @click="append('8')">
+          8
+        </div>
+        <div class="grid-item" @click="append('9')">
+          9
+        </div>
+        <div />
+        <div class="grid-item" @click="append('0')">
+          0
+        </div>
+        <div class="grid-item" @click="remove()">
+          <img src="../assets/images/delete.svg">
+        </div>
+      </div>
       <div class="btn">
         <button>Next</button>
       </div>
@@ -22,7 +57,20 @@
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  data () {
+    return {
+      current: ''
+    }
+  },
+  methods: {
+    append (number) {
+      this.current = `${this.current}${number}`
+    },
+    remove () {
+      this.current = this.current.slice(0, -1)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -81,7 +129,20 @@ main {
     }
     .digits {
       margin-top: 40px;
-      background: red;
+      width: 80%;
+      display: grid;
+      margin: 30px auto 0 auto;
+      align-items: center;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: minmax(65px, auto);
+      .grid-item{
+        text-align: center;
+         font-weight: 500;
+         font-weight: 500;
+         cursor: pointer;
+font-size: 40px;
+line-height: 38px;
+      }
     }
     .btn {
       width: 100%;

@@ -17,7 +17,14 @@
       <div class="cardDetails">
         <div class="date">
           <label>Expiry date</label>
-          <input type="text" class="expire">
+          <!-- <input type="text" class="expire"> -->
+          <input
+              type="date"
+              value="2022-06-01"
+              min="2022-06-20"
+              max="2025-12-31"
+              class="expire"
+            />
           <img src="../assets/images/Calendar.svg" class="calendar">
         </div>
         <div>

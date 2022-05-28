@@ -1,30 +1,34 @@
 <template lang="">
   <div class="bottom-nav">
-    <nuxt-link
-      to="/home"
-      :class="(isActive = false ? 'button' : 'dead')"
-      @click="checkRoute()"
-    >
-      <font-awesome-icon icon="house" />
-      <p v-show="isInActive">
-        Home
-      </p>
-    </nuxt-link>
-    <nuxt-link to="/wallet" :class="isActive ? 'button' : 'dead'">
-      <font-awesome-icon icon="wallet" />
-      <p v-show="isActive">
-        Wallet
-      </p>
-    </nuxt-link>
-    <nuxt-link to="/orders" :class="isActive ? 'button' : 'dead'">
-      <font-awesome-icon icon="list" />
-      <p v-show="isActive">
-        Orders
-      </p>
-    </nuxt-link>
-    <nuxt-link to="/profile" :class="isActive ? 'button' : 'dead'">
+    <div @click="home = !home">
+      <nuxt-link to="/" :class="home ? 'button' : 'dead'">
+        <img v-show="home" src="~assets/images/home-dark.png" alt="">
+        <img v-show="!home" src="~assets/images/home-light.png" alt="">
+        <p v-show="home">
+          Home
+        </p>
+      </nuxt-link>
+    </div>
+    <div @click="wallet = !wallet">
+      <nuxt-link to="/wallet" :class="wallet ? 'button' : 'dead'">
+        <img v-show="wallet" src="~assets/images/wallet-dark.svg" alt="">
+        <img v-show="!wallet" src="~assets/images/wallet-light.png" alt="">
+        <p v-show="wallet">
+          Wallet
+        </p>
+      </nuxt-link>
+    </div>
+    <div>
+      <nuxt-link to="/orders" :class="orders ? 'button' : 'dead'">
+        <font-awesome-icon icon="list" />
+        <p v-show="orders">
+          Orders
+        </p>
+      </nuxt-link>
+    </div>
+    <nuxt-link to="/profile" :class="profile ? 'button' : 'dead'">
       <font-awesome-icon icon="user" />
-      <p v-show="isActive">
+      <p v-show="profile">
         Profile
       </p>
     </nuxt-link>
@@ -34,14 +38,34 @@
 export default {
   data () {
     return {
-      isActive: true,
-      isInActive: false,
-      pageRoute: ''
+      home: null,
+      wallet: null,
+      orders: null,
+      profile: null,
+      route: this.$route
     }
   },
-  computed: {
-    checkRoute () {
-      return console.log('hello')
+  created () {
+    console.log(this.route.name)
+    switch (this.route.name) {
+      case 'index':
+        this.home = true
+        break
+
+      case 'wallet':
+        this.wallet = true
+        break
+
+      case 'orders':
+        this.orders = true
+        break
+
+      case 'profile':
+        this.profile = true
+        break
+
+      default:
+        this.home = true
     }
   }
 }
