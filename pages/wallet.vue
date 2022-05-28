@@ -19,7 +19,7 @@
       </div>
       <div class="overview">
         <p>Overview</p>
-        <div class="charts" />
+        <div class="charts">CHART HERE!!!</div>
       </div>
       <div class="transactions">
         <div class="header">
@@ -134,16 +134,11 @@ main {
     }
     .footer {
       position: fixed;
-      width: 20%;
+      width: 40%;
       margin: 38px 27px 32px 28px;
-      // padding:38px 27px 32px 28px;
+      padding: 32px 24px;
+      //  bottom: 0;
     }
-    // .footer {
-    //   position: fixed;
-    //   bottom: 0;
-    //   width: 90%;
-    //   padding: 32px 24px;
-    // }
   }
 }
 </style>
