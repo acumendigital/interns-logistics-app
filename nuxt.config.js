@@ -18,7 +18,7 @@ export default {
   css: ["~assets/styles/main.css"],
 
   styleResources: {
-    scss: ['~/assets/styles/mixins.scss'],
+    scss: ["~/assets/styles/mixins.scss"],
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -30,7 +30,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    //! "@nuxtjs/eslint-module",
+    // '@nuxtjs/eslint-module',
     // style resources
     "@nuxtjs/style-resources",
   ],
@@ -40,6 +40,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
     // https://go.nuxtjs.dev/pwa
+
     "@nuxtjs/pwa",
     // Font Awesome
     [

@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
 }
+/* Rubik Font */
 @font-face {
   font-family: "Rubik Black";
   src: url("../fonts/Rubik-Black.ttf");
@@ -39,10 +40,47 @@
     url("../fonts/Rubik-Medium.ttf") format("truetype");
 }
 
+/* Inter Font  */
+@font-face {
+  font-family: "Inter Black";
+  src: url("../fonts/Inter-Black.otf");
+  src: url("../fonts/Inter-Black.otf") format("embedded-opentype"),
+    url("../fonts/Inter-Black.otf") format("truetype");
+}
+@font-face {
+  font-family: "Inter Bold";
+  src: url("../fonts/Inter-Bold.otf");
+  src: url("../fonts/Inter-Bold.otf") format("embedded-opentype"),
+    url("../fonts/Inter-Bold.otf") format("truetype");
+}
+@font-face {
+  font-family: "Inter Regular";
+  src: url("../fonts/Inter-Regular.otf");
+  src: url("../fonts/Inter-Regular.otf") format("embedded-opentype"),
+    url("../fonts/Inter-Regular.otf") format("truetype");
+}
+@font-face {
+  font-family: "Inter Italic";
+  src: url("../fonts/Inter-Italic.otf");
+  src: url("../fonts/Inter-Italic.otf") format("embedded-opentype"),
+    url("../fonts/Inter-Italic.otf") format("truetype");
+}
+@font-face {
+  font-family: "Inter Light";
+  src: url("../fonts/Inter-Light.otf");
+  src: url("../fonts/Inter-Light.otf") format("embedded-opentype"),
+    url("../fonts/Inter-Light.otf") format("truetype");
+}
+@font-face {
+  font-family: "Inter Medium";
+  src: url("../fonts/Inter-Medium.otf");
+  src: url("../fonts/Inter-Medium.otf") format("embedded-opentype"),
+    url("../fonts/Inter-Medium.otf") format("truetype");
+}
 /* Page Transitions */
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.3s;
 }
 .page-enter,
 .page-leave-active {

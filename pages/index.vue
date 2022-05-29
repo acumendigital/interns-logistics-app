@@ -14,7 +14,7 @@
           <div class="add btn">- Withdraw</div>
         </div>
       </div>
-      <div class="break"></div>
+      <div class="break" />
       <div class="location">
         <p>Send or Receive Item</p>
         <div class="cards">
@@ -28,15 +28,15 @@
           </nuxt-link>
         </div>
       </div>
-      <div class="break"></div>
+      <div class="break" />
       <div class="shipments">
         <div class="tracking">
           <div>
             <input
+              id=""
               type="search"
               name="track"
               placeholder="Enter Tracking Number"
-              id=""
             />
             <button>
               <font-awesome-icon icon="magnifying-glass" />
