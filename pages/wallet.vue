@@ -134,9 +134,9 @@ main {
     }
     .footer {
       position: fixed;
-      width: 40%;
+      width: 39%;
       margin: 38px 27px 32px 28px;
-      padding: 32px 24px;
+      // padding: 32px 24px;
       //  bottom: 0;
     }
   }
