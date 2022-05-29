@@ -2,7 +2,7 @@
   <main>
     <div class="container">
       <div class="back">
-        <img src="../assets/images/notifications.svg">
+        <img src="../assets/images/notifications.svg" />
       </div>
       <div class="title">
         <div>
@@ -24,9 +24,7 @@
       <div class="transactions">
         <div class="header">
           <p>Transaction History</p>
-          <p class="more">
-            See all
-          </p>
+          <p class="more">See all</p>
         </div>
         <div>
           <TransactionHistory />
@@ -34,23 +32,22 @@
           <TransactionHistory />
         </div>
       </div>
-      <section class="footer">
-        <TheBottomNav />
-      </section>
     </div>
+    <section class="footer">
+      <TheBottomNav />
+    </section>
   </main>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage'
-}
+  name: "IndexPage",
+};
 </script>
 <style lang="scss" scoped>
 main {
   width: 100%;
   background: #1e1e1e;
-  // padding: 60px 0 30px;
   font-family: "Rubik Regular";
   color: #000;
   font-style: normal;
@@ -59,7 +56,7 @@ main {
     width: 90%;
     background: #fff;
     margin: 0 auto;
-    max-width: 428px;
+    // max-width: 428px;
     height: 926px;
     padding-top: 37px;
     .back {
@@ -132,13 +129,12 @@ main {
         }
       }
     }
-    .footer {
-      position: fixed;
-      width: 40%;
-      margin: 38px 27px 32px 28px;
-      padding: 32px 24px;
-      //  bottom: 0;
-    }
+  }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 32px 24px;
   }
 }
 </style>
