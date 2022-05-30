@@ -49,7 +49,7 @@
         </div>
       </div>
       <div class="btn">
-        <button>Next</button>
+        <Button :name="title" />
       </div>
     </div>
   </main>
@@ -60,7 +60,8 @@ export default {
   name: 'IndexPage',
   data () {
     return {
-      current: ''
+      current: '',
+      title: 'Next'
     }
   },
   methods: {
@@ -150,19 +151,6 @@ line-height: 38px;
       padding: 0 32px 32px 32px;
       margin-top: 56px;
       justify-content: center;
-      button {
-        background: #ffd60a;
-        border-radius: 8px;
-        width: 80%;
-        width: 364px;
-        height: 56px;
-        margin: 0 auto;
-        border-style: none;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 24px;
-        cursor: pointer;
-      }
     }
   }
 }

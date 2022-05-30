@@ -32,7 +32,7 @@
         </div>
       </form>
       <div class="btn">
-        <button>Pay NGN2000</button>
+        <Button :name="title" />
       </div>
     </div>
   </main>
@@ -40,7 +40,12 @@
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  data () {
+    return {
+      title: 'Pay NGN2000'
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

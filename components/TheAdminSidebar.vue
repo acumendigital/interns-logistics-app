@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar" :class="{hide : revealSidebar}">
+  <div class="sidebar" :class="{hide : revealSidebar, show : !revealSidebar}" >
       <div class="sidebar-hamburger">
           <div></div>
           <div></div>
@@ -65,7 +65,9 @@ export default {
     mounted(){
         this.$el.addEventListener('mouseover', this.showSidebar)
         this.$el.addEventListener('mouseleave', this.hideSidebar)
-        this.$el.addEventListener('click', this.showSidebar)
+        this.$el.addEventListener('click', () => {
+            this.revealSidebar = !this.revealSidebar
+        })
     },
     methods:{
         showSidebar(){
@@ -144,6 +146,19 @@ export default {
             animation-fill-mode: forwards;
         }
     }
+    .show{
+        width: 237px;
+        transition: all;
+        transition-delay: 3s;
+        animation: show-sidebar 1s ease-in-out;
+        animation-fill-mode: forwards;
+        p{
+            // font-size: 0px;
+            animation: show-font 1s ease-in-out;
+            animation-fill-mode: backwards;
+            width: 90px;
+        }
+    }
 
     @keyframes hide-sidebar {
         0%{
@@ -167,6 +182,28 @@ export default {
             transform: translateX(-20px);
             opacity: 0;
             font-size: 0px
+        }
+    }
+    @keyframes show-sidebar {
+        0%{
+            width: 118px;
+        }
+        100%{
+            width: 237px;
+        }
+    }
+
+    @keyframes show-font {
+        0%{
+            transform: translateX(-20px);
+            opacity: 0;
+            font-size: 0px
+        }
+        50%{
+            opacity: 0.9;
+        }
+        100%{
+            transform: translateX(0px);
         }
     }
 </style>

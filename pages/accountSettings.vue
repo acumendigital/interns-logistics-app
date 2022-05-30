@@ -1,4 +1,4 @@
-<template>
+<template lang="">
   <main>
     <div class="container">
       <div class="back">
@@ -7,37 +7,46 @@
         </nuxt-link>
       </div>
       <div class="title">
-        <h3>Pay with card</h3>
+        <nuxt-link to="/paymentWallet" class="" exact-active-class="">
+          <p>Profile Settings</p>
+        </nuxt-link>
+        <nuxt-link to="/paymentWallet" class="" exact-active-class="">
+          <p>Account Settings</p>
+        </nuxt-link>
       </div>
-      <div class="cardNumber">
-        <label>Card Number</label>
+      <div class="profileUpload">
+        <img src="../assets/images/profile.svg">
+        <p>Update your profile photo</p>
+      </div>
+      <div class="profileDetails">
+        <label>Password</label>
         <input type="text">
-        <img src="../assets/images/master.svg" class="master">
       </div>
-      <div class="cardDetails">
-        <div class="date">
-          <label>Expiry date</label>
-          <input type="text" class="expire">
-          <img src="../assets/images/Calendar.svg" class="calendar">
-        </div>
-        <div>
-          <label>Cvv</label>
-          <input type="text" class="cvv">
-        </div>
+      <div class="profileDetails">
+        <label>Confirm Password</label>
+        <input type="text">
       </div>
-      <div class="btn">
-        <Button :name="title" />
+      <div class="profileDetails debit">
+        <label>Add a debit card</label>
+        <nuxt-link to="/card" class="" exact-active-class="">
+          <img src="../assets/images/next.svg">
+        </nuxt-link>
       </div>
+    </div>
+
+    <section class="footer">
+      <TheBottomNav />
+    </section>
     </div>
   </main>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
+  name: 'Profile',
   data () {
     return {
-      title: 'Pay NGN2000'
+      title: 'Save'
     }
   }
 }
@@ -65,24 +74,62 @@ main {
       }
     }
     .title {
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 28px;
-      margin: 0 0 26px 0;
+      display: flex;
+      p{
+        font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+color: #B0B0B0;
+
+      }
     }
-    .cardNumber {
+    .profileUpload{
+      width: 100%;
+      display: flex;
+      margin: 20px auto;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 58px;
+      img{
+        cursor: pointer;
+      }
+      p{
+         margin: 16px 0 24px 0;
+        font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+color: #D9B608;
+      }
+    }
+    .debit{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #F4F4F4;
+border-radius: 8px;
+        width: 364px;
+        border-style: none;
+        padding: 20px;
+        margin-top: 8px;
+        img{
+            cursor: pointer;
+        }
+    }
+    .profileDetails {
       margin-bottom: 32px;
       position: relative;
       label {
         font-weight: 400;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 24px;
       }
       input {
-        border: 1px solid #b0b0b0;
-        border-radius: 8px;
+        background: #F4F4F4;
+border-radius: 8px;
         width: 364px;
-        padding: 20px 30px;
+        border-style: none;
+        padding: 20px;
         margin-top: 8px;
       }
       .master {
@@ -132,19 +179,12 @@ main {
       padding: 0 32px 32px 32px;
       margin-top: 466px;
       justify-content: center;
-      button {
-        background: #ffd60a;
-        border-radius: 8px;
-        width: 80%;
-        width: 364px;
-        height: 56px;
-        margin: 0 auto;
-        border-style: none;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 24px;
-        cursor: pointer;
-      }
+    }
+    .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      margin: 2rem;
     }
   }
 }

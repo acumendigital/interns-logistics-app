@@ -7,7 +7,7 @@
         </nuxt-link>
       </div>
       <div class="title">
-        <nuxt-link  to="/paymentWallet" class="" exact-active-class="">
+        <nuxt-link class="" exact-active-class="">
           <p>Profile Settings</p>
         </nuxt-link>
         <nuxt-link to="/paymentWallet" class="" exact-active-class="">
@@ -15,11 +15,11 @@
         </nuxt-link>
       </div>
       <div class="profileUpload">
-        <img src="../assets/images/profile.svg">
+        <img src="../assets/images/leftArrow.svg">
         <p>Update your profile photo</p>
       </div>
       <div>
-        <div class="profileDetails">
+        <div v-show="personalDetails" class="profileDetails">
           <label>First Name</label>
           <input type="text">
         </div>
@@ -40,9 +40,22 @@
           <input type="text">
         </div>
       </div>
-      <section class="footer">
-        <TheBottomNav />
-      </section>
+      <div v-show="!personalDetails" class="profileDetails">
+        <label>Password</label>
+        <input type="text">
+      </div>
+      <div class="profileDetails">
+        <label>Confirm Password</label>
+        <input type="text">
+      </div>
+    </div>
+
+    <div class="btn">
+      <Button :name="title" />
+    </div>
+    <section class="footer">
+      <TheBottomNav />
+    </section>
     </div>
   </main>
 </template>

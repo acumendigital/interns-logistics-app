@@ -19,7 +19,9 @@
       </div>
       <div class="overview">
         <p>Overview</p>
-        <div class="charts">CHART HERE!!!</div>
+        <div class="charts">
+          CHART HERE!!!
+        </div>
       </div>
       <div class="transactions">
         <div class="header">
@@ -34,10 +36,10 @@
           <TransactionHistory />
         </div>
       </div>
-      <section class="footer">
-        <TheBottomNav />
-      </section>
     </div>
+    <section class="footer">
+      <TheBottomNav />
+    </section>
   </main>
 </template>
 
@@ -50,7 +52,6 @@ export default {
 main {
   width: 100%;
   background: #1e1e1e;
-  // padding: 60px 0 30px;
   font-family: "Rubik Regular";
   color: #000;
   font-style: normal;
@@ -59,7 +60,7 @@ main {
     width: 90%;
     background: #fff;
     margin: 0 auto;
-    max-width: 428px;
+    // max-width: 428px;
     height: 926px;
     padding-top: 37px;
     .back {
@@ -132,13 +133,17 @@ main {
         }
       }
     }
-    .footer {
-      position: fixed;
-      width: 39%;
-      margin: 38px 27px 32px 28px;
-      // padding: 32px 24px;
-      //  bottom: 0;
-    }
+    // .footer {
+    //   position: fixed;
+    //   width: 39%;
+    //   margin: 38px 27px 32px 28px;
+    // }
+  }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 32px 24px;
   }
 }
 </style>
