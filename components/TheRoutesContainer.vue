@@ -22,23 +22,13 @@
             </div>
         </div>
         
-        <div class="routes-container">
-            <div class="routes-vehicle-details">
+        <div class="routes-container" :class="{ gridAuto : showVehicles}">
+            <div class="routes-vehicle-details" v-show="!showVehicles">
                 <the-vehicle-details />
                 <the-vehicle-details />
             </div>
             <div class="routes-delivery-details">
-                <TheDeliveryDetails />
-                <TheDeliveryDetails />
-                <TheDeliveryDetails />
-                <TheDeliveryDetails />
-                <TheDeliveryDetails />
-                <TheDeliveryDetails />
-                <TheDeliveryDetails />
-                <TheDeliveryDetails />
-                <TheDeliveryDetails />
-                <TheDeliveryDetails />
-                <TheDeliveryDetails />
+                <TheDeliveryDetails @show-freight-details="relayFreightDisplay" v-for="i in 10" :key="i" />
             </div>
         </div>
     </div> 
@@ -52,6 +42,21 @@ export default {
     components:{
         TheDeliveryDetails,
         TheVehicleDetails
+    },
+    props:{
+        showVehicles: {
+            type: Boolean
+        }
+    },
+    data(){
+        return{
+            showVehicleDetails: true
+        }
+    },
+    methods: {
+        relayFreightDisplay(){
+            this.$emit("display-freight-details")
+        }
     }
 }
 </script>
@@ -64,6 +69,9 @@ export default {
         ::-webkit-scrollbar {
             width: 5px;
             }
+    .gridAuto{
+        grid-template-columns: auto;
+    }
     }
     .routes-help-btn-container{
         @include flex-between;
