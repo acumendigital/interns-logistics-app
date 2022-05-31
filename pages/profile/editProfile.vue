@@ -2,52 +2,57 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/paymentWallet" class="" exact-active-class="">
-          <img src="../assets/images/leftArrow.svg">
+        <nuxt-link to="/profile" class="" exact-active-class="">
+          <img src="../../assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="title">
-        <nuxt-link
-          to="/profile"
-          :class="[
-            'kemi',
-            $route.name.includes('profile') ? 'nuxt-link-exact-active' : '',
-          ]"
-        >
+        <nuxt-link class="/profile" exact-active-class="">
           <p>Profile Settings</p>
         </nuxt-link>
-        <nuxt-link
-          to="/accountSettings"
-          :class="[
-            'kemi',
-            $route.name.includes('accountSettings')
-              ? 'nuxt-link-exact-active'
-              : '',
-          ]"
-          exact-active-class=""
-        >
+        <nuxt-link to="/account" class="" exact-active-class="">
           <p>Account Settings</p>
         </nuxt-link>
       </div>
       <div class="profileUpload">
-        <img src="../assets/images/profile.svg">
+        <img src="../../assets/images/leftArrow.svg">
         <p>Update your profile photo</p>
       </div>
-      <div class="profileDetails">
+      <div>
+        <div v-show="personalDetails" class="profileDetails">
+          <label>First Name</label>
+          <input type="text">
+        </div>
+        <div class="profileDetails">
+          <label>Last Name</label>
+          <input type="text">
+        </div>
+        <div class="profileDetails">
+          <label>Phone Number</label>
+          <input type="text">
+        </div>
+        <div class="profileDetails">
+          <label>Email Address</label>
+          <input type="text">
+        </div>
+        <div class="profileDetails">
+          <label>Home Address</label>
+          <input type="text">
+        </div>
+      </div>
+      <div v-show="!personalDetails" class="profileDetails">
         <label>Password</label>
-        <input type="text" placeholder="Old Password">
+        <input type="text">
       </div>
       <div class="profileDetails">
-        <input type="text" placeholder="New Password">
-      </div>
-      <div class="profileDetails debit">
-        <label>Add a debit card</label>
-        <nuxt-link to="/card" class="" exact-active-class="">
-          <img src="../assets/images/next.svg">
-        </nuxt-link>
+        <label>Confirm Password</label>
+        <input type="text">
       </div>
     </div>
 
+    <div class="btn">
+      <Button :name="title" />
+    </div>
     <section class="footer">
       <TheBottomNav />
     </section>
@@ -73,13 +78,6 @@ main {
   font-family: "Rubik Regular";
   color: #000;
   font-style: normal;
-   a {
-    text-decoration: none;
-  }
-
-  ul {
-    list-style: none;
-  }
 
   .container {
     width: 90%;
@@ -94,15 +92,6 @@ main {
         cursor: pointer;
       }
     }
-     a.nuxt-link-exact-active {
-
-      border-radius: 8px;
-      p {
-        color: #000;
-           border-radius: 8px;
-        background: #ffd60a;
-      }
-    }
     .title {
       display: flex;
       p{
@@ -110,8 +99,6 @@ main {
 font-size: 16px;
 line-height: 24px;
 color: #B0B0B0;
-padding: 2px 8px;
-        margin-right: 16px;
 
       }
     }
@@ -134,20 +121,6 @@ line-height: 21px;
 color: #D9B608;
       }
     }
-    .debit{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: #F4F4F4;
-border-radius: 8px;
-        width: 364px;
-        border-style: none;
-        padding: 20px;
-        margin-top: 8px;
-        img{
-            cursor: pointer;
-        }
-    }
     .profileDetails {
       margin-bottom: 32px;
       position: relative;
@@ -159,16 +132,11 @@ border-radius: 8px;
       input {
         background: #F4F4F4;
 border-radius: 8px;
+outline:none;
         width: 364px;
         border-style: none;
         padding: 20px;
         margin-top: 8px;
-      }
-      ::placeholder{
-          font-weight: 400;
-            font-size: 14px;
-            line-height: 21px;
-            color: #9E9E9E;
       }
       .master {
         position: absolute;

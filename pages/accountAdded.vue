@@ -2,13 +2,13 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/card" class="" exact-active-class="">
+        <nuxt-link to="/bankAccount" class="" exact-active-class="">
           <img src="../assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="detail">
         <img src="../assets/images/success.svg">
-        <p>Card added succeesful!</p>
+        <p>Account added succeesful!</p>
       </div>
       <div class="btn">
         <Button :name="title" />

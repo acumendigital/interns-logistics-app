@@ -1,58 +1,49 @@
-<template lang="">
+<template>
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/paymentWallet" class="" exact-active-class="">
-          <img src="../assets/images/leftArrow.svg">
+        <nuxt-link to="/wallet/addMoney" class="" exact-active-class="">
+          <img src="../../assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="title">
-        <nuxt-link  to="/paymentWallet" class="" exact-active-class="">
-          <p>Profile Settings</p>
-        </nuxt-link>
-        <nuxt-link to="/paymentWallet" class="" exact-active-class="">
-          <p>Account Settings</p>
-        </nuxt-link>
+        <h3>Pay with card</h3>
       </div>
-      <div class="profileUpload">
-        <img src="../assets/images/profile.svg">
-        <p>Update your profile photo</p>
+      <div class="cardNumber">
+        <label>Card Number</label>
+        <input type="text">
+        <img src="../../assets/images/master.svg" class="master">
       </div>
-      <div>
-        <div class="profileDetails">
-          <label>First Name</label>
-          <input type="text">
+      <div class="cardDetails">
+        <div class="date">
+          <label>Expiry date</label>
+          <input type="text" class="expire">
+          <img src="../../assets/images/Calendar.svg" class="calendar">
         </div>
-        <div class="profileDetails">
-          <label>Last Name</label>
-          <input type="text">
-        </div>
-        <div class="profileDetails">
-          <label>Phone Number</label>
-          <input type="text">
-        </div>
-        <div class="profileDetails">
-          <label>Email Address</label>
-          <input type="text">
-        </div>
-        <div class="profileDetails">
-          <label>Home Address</label>
-          <input type="text">
+        <div>
+          <label>Cvv</label>
+          <input type="text" class="cvv">
         </div>
       </div>
-      <section class="footer">
-        <TheBottomNav />
-      </section>
+      <div
+        class="btn"
+        @click="
+          clicked = true;
+          $router.push('/wallet/successfulPayment');
+        "
+      >
+        <Button :name="title" />
+      </div>
     </div>
   </main>
 </template>
 
 <script>
 export default {
-  name: 'Profile',
+  name: 'IndexPage',
   data () {
     return {
-      title: 'Save'
+      title: 'Pay NGN2000'
     }
   }
 }
@@ -80,48 +71,24 @@ main {
       }
     }
     .title {
-      display: flex;
-      p{
-        font-weight: 400;
-font-size: 16px;
-line-height: 24px;
-color: #B0B0B0;
-
-      }
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+      margin: 0 0 26px 0;
     }
-    .profileUpload{
-      width: 100%;
-      display: flex;
-      margin: 20px auto;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin-top: 58px;
-      img{
-        cursor: pointer;
-      }
-      p{
-         margin: 16px 0 24px 0;
-        font-weight: 400;
-font-size: 14px;
-line-height: 21px;
-color: #D9B608;
-      }
-    }
-    .profileDetails {
+    .cardNumber {
       margin-bottom: 32px;
       position: relative;
       label {
         font-weight: 400;
-        font-size: 16px;
+        font-size: 14px;
         line-height: 24px;
       }
       input {
-        background: #F4F4F4;
-border-radius: 8px;
+        border: 1px solid #b0b0b0;
+        border-radius: 8px;
         width: 364px;
-        border-style: none;
-        padding: 20px;
+        padding: 20px 30px;
         margin-top: 8px;
       }
       .master {
@@ -171,12 +138,19 @@ border-radius: 8px;
       padding: 0 32px 32px 32px;
       margin-top: 466px;
       justify-content: center;
-    }
-    .footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      margin: 2rem;
+      button {
+        background: #ffd60a;
+        border-radius: 8px;
+        width: 80%;
+        width: 364px;
+        height: 56px;
+        margin: 0 auto;
+        border-style: none;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 24px;
+        cursor: pointer;
+      }
     }
   }
 }

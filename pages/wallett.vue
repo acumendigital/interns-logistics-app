@@ -52,15 +52,16 @@ export default {
 main {
   width: 100%;
   background: #1e1e1e;
+  background: #fff;
   font-family: "Rubik Regular";
   color: #000;
   font-style: normal;
 
   .container {
-    width: 90%;
+    width: 100%;
     background: #fff;
     margin: 0 auto;
-    // max-width: 428px;
+    max-width:1200px;
     height: 926px;
     padding-top: 37px;
     .back {

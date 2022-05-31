@@ -2,8 +2,8 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/paymentWallet" class="" exact-active-class="">
-          <img src="../assets/images/leftArrow.svg">
+        <nuxt-link to="/account" class="" exact-active-class="">
+          <img src="../../assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="title">
@@ -17,10 +17,10 @@
           <p>Profile Settings</p>
         </nuxt-link>
         <nuxt-link
-          to="/accountSettings"
+          to="/account"
           :class="[
             'kemi',
-            $route.name.includes('accountSettings')
+            $route.name.includes('account')
               ? 'nuxt-link-exact-active'
               : '',
           ]"
@@ -29,10 +29,6 @@
           <p>Account Settings</p>
         </nuxt-link>
       </div>
-      <div class="profileUpload">
-        <img src="../assets/images/profile.svg">
-        <p>Update your profile photo</p>
-      </div>
       <div class="profileDetails">
         <label>Password</label>
         <input type="text" placeholder="Old Password">
@@ -40,17 +36,34 @@
       <div class="profileDetails">
         <input type="text" placeholder="New Password">
       </div>
-      <div class="profileDetails debit">
+      <div
+        class="profileDetails debit"
+        @click="
+          clicked = true;
+          $router.push('/card');
+        "
+      >
         <label>Add a debit card</label>
         <nuxt-link to="/card" class="" exact-active-class="">
-          <img src="../assets/images/next.svg">
+          <img src="../../assets/images/next.svg">
         </nuxt-link>
       </div>
+      <div
+        class="profileDetails bank"
+        @click="
+          clicked = true;
+          $router.push('/bankAccount');
+        "
+      >
+        <label>Add a bank account</label>
+        <nuxt-link to="/bankAccount" class="" exact-active-class="">
+          <img src="../../assets/images/next.svg">
+        </nuxt-link>
+      </div>
+      <div class="btn">
+        <Button :name="title" />
+      </div>
     </div>
-
-    <section class="footer">
-      <TheBottomNav />
-    </section>
     </div>
   </main>
 </template>
@@ -86,7 +99,7 @@ main {
     background: #fff;
     margin: 0 auto;
     max-width: 428px;
-    height: 926px;
+    // height: 926px;
     padding: 37px 32px 0 32px;
     .back {
       margin: 0 0 37px 0;
@@ -105,6 +118,7 @@ main {
     }
     .title {
       display: flex;
+      margin-bottom: 58px;
       p{
         font-weight: 400;
 font-size: 16px;
@@ -115,25 +129,7 @@ padding: 2px 8px;
 
       }
     }
-    .profileUpload{
-      width: 100%;
-      display: flex;
-      margin: 20px auto;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin-top: 58px;
-      img{
-        cursor: pointer;
-      }
-      p{
-         margin: 16px 0 24px 0;
-        font-weight: 400;
-font-size: 14px;
-line-height: 21px;
-color: #D9B608;
-      }
-    }
+
     .debit{
         display: flex;
         justify-content: space-between;
@@ -143,14 +139,31 @@ border-radius: 8px;
         width: 364px;
         border-style: none;
         padding: 20px;
-        margin-top: 8px;
-        img{
-            cursor: pointer;
-        }
+        margin-top: 64px;
+         cursor: pointer;
+    }
+    .bank{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #F4F4F4;
+border-radius: 8px;
+        width: 364px;
+        border-style: none;
+        padding: 20px;
+        margin-top: 32px;
+         cursor: pointer;
     }
     .profileDetails {
       margin-bottom: 32px;
       position: relative;
+      .pencil{
+        display: flex;
+        justify-content: space-between;
+        img{
+          cursor: pointer;
+        }
+      }
       label {
         font-weight: 400;
         font-size: 16px;
@@ -163,6 +176,7 @@ border-radius: 8px;
         border-style: none;
         padding: 20px;
         margin-top: 8px;
+        outline:none;
       }
       ::placeholder{
           font-weight: 400;
@@ -215,7 +229,7 @@ border-radius: 8px;
       width: 100%;
       display: flex;
       padding: 0 32px 32px 32px;
-      margin-top: 466px;
+      margin-top: 266px;
       justify-content: center;
     }
     .footer {

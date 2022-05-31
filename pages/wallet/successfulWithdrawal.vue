@@ -2,15 +2,21 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/paymentWallet" class="" exact-active-class="">
-          <img src="../assets/images/leftArrow.svg">
+        <nuxt-link to="/wallet/selectAccount" class="" exact-active-class="">
+          <img src="../../assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="detail">
-        <img src="../assets/images/success.svg">
-        <p>Payment succeesful!</p>
+        <img src="../../assets/images/success.svg">
+        <p>Withdrawal successful!</p>
       </div>
-      <div class="btn">
+      <div
+        class="btn"
+        @click="
+          clicked = true;
+          $router.push('/Home');
+        "
+      >
         <Button :name="title" />
       </div>
     </div>
@@ -23,7 +29,7 @@ export default {
   data () {
     return {
       current: '',
-      title: 'Send another item'
+      title: 'Go to Homepage'
     }
   }
 }

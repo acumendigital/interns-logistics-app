@@ -3,7 +3,7 @@
     <div class="container">
       <div class="back">
         <nuxt-link to="/paymentWallet" class="" exact-active-class="">
-          <img src="../assets/images/leftArrow.svg">
+          <img src="../../assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="title">
@@ -17,10 +17,10 @@
           <p>Profile Settings</p>
         </nuxt-link>
         <nuxt-link
-          to="/accountSettings"
+          to="#"
           :class="[
             'kemi',
-            $route.name.includes('accountSettings')
+            $route.name.includes('account')
               ? 'nuxt-link-exact-active'
               : '',
           ]"
@@ -29,21 +29,44 @@
           <p>Account Settings</p>
         </nuxt-link>
       </div>
-      <div class="profileUpload">
-        <img src="../assets/images/profile.svg">
-        <p>Update your profile photo</p>
-      </div>
       <div class="profileDetails">
-        <label>Password</label>
+        <div class="pencil">
+          <label>Password</label>
+          <img
+            src="../../assets/images/pencil.svg"
+            @click="
+              clicked = true;
+              $router.push('/account/editAccount');
+            "
+          >
+        </div>
         <input type="text" placeholder="Old Password">
       </div>
       <div class="profileDetails">
         <input type="text" placeholder="New Password">
       </div>
-      <div class="profileDetails debit">
+      <div
+        class="profileDetails debit"
+        @click="
+          clicked = true;
+          $router.push('/card');
+        "
+      >
         <label>Add a debit card</label>
         <nuxt-link to="/card" class="" exact-active-class="">
-          <img src="../assets/images/next.svg">
+          <img src="../../assets/images/next.svg">
+        </nuxt-link>
+      </div>
+      <div
+        class="profileDetails bank"
+        @click="
+          clicked = true;
+          $router.push('/bankAccount');
+        "
+      >
+        <label>Add a bank account</label>
+        <nuxt-link to="/card" class="" exact-active-class="">
+          <img src="../../assets/images/next.svg">
         </nuxt-link>
       </div>
     </div>
@@ -60,7 +83,8 @@ export default {
   name: 'Profile',
   data () {
     return {
-      title: 'Save'
+      title: 'Save',
+      clicked: false
     }
   }
 }
@@ -105,6 +129,7 @@ main {
     }
     .title {
       display: flex;
+      margin-bottom: 58px;
       p{
         font-weight: 400;
 font-size: 16px;
@@ -113,25 +138,6 @@ color: #B0B0B0;
 padding: 2px 8px;
         margin-right: 16px;
 
-      }
-    }
-    .profileUpload{
-      width: 100%;
-      display: flex;
-      margin: 20px auto;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin-top: 58px;
-      img{
-        cursor: pointer;
-      }
-      p{
-         margin: 16px 0 24px 0;
-        font-weight: 400;
-font-size: 14px;
-line-height: 21px;
-color: #D9B608;
       }
     }
     .debit{
@@ -143,14 +149,31 @@ border-radius: 8px;
         width: 364px;
         border-style: none;
         padding: 20px;
-        margin-top: 8px;
-        img{
-            cursor: pointer;
-        }
+        margin-top: 64px;
+         cursor: pointer;
+    }
+    .bank{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #F4F4F4;
+border-radius: 8px;
+        width: 364px;
+        border-style: none;
+        padding: 20px;
+        margin-top: 32px;
+         cursor: pointer;
     }
     .profileDetails {
       margin-bottom: 32px;
       position: relative;
+      .pencil{
+        display: flex;
+        justify-content: space-between;
+        img{
+          cursor: pointer;
+        }
+      }
       label {
         font-weight: 400;
         font-size: 16px;
@@ -159,6 +182,7 @@ border-radius: 8px;
       input {
         background: #F4F4F4;
 border-radius: 8px;
+outline:none;
         width: 364px;
         border-style: none;
         padding: 20px;
