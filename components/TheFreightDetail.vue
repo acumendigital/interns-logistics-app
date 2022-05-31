@@ -1,7 +1,7 @@
 <template lang="">
   <div class="freight-container">
     <div>
-      <div class="x">
+      <div class="x" @click="closeFreightDetails">
         <font-awesome-icon icon="x" />
       </div>
       <div class="freight-nav-bar">
@@ -192,6 +192,11 @@ export default {
   data () {
     return {
       active: null
+    }
+  },
+  methods: {
+    closeFreightDetails(){
+      this.$emit("close-freight-details")
     }
   }
 }
