@@ -14,7 +14,7 @@
         class="btn"
         @click="
           clicked = true;
-          $router.push('/Home');
+          $router.push('/');
         "
       >
         <Button :name="title" />

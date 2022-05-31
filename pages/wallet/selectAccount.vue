@@ -109,7 +109,7 @@ main {
             height: 24px;
             width: 24px;
             border-radius: 50%;
-            // padding: 10px;
+
             margin-right: 0;
             margin-left: 32px;
             border: 1px solid #d9b608;
