@@ -1,5 +1,5 @@
 <template>
-   <div class="delivery-detail-container">
+   <div class="delivery-detail-container" @click="showFreightDetails">
        <div class="header">
            <div class="tracking-number">
                <p>Tracking Number</p>
@@ -51,7 +51,12 @@
 
 <script>
 export default {
-    name: "deliveryDetails"
+    name: "deliveryDetails",
+    methods: {
+        showFreightDetails(){
+            this.$emit("show-freight-details")
+        }
+    }
 }
 </script>
 

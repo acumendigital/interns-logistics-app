@@ -1,74 +1,62 @@
 <template lang="">
   <div class="bottom-nav">
-    <div @click="home = !home">
-      <nuxt-link to="/" :class="home ? 'button' : 'dead'">
-        <img v-show="home" src="~assets/images/home-dark.png" alt="">
-        <img v-show="!home" src="~assets/images/home-light.png" alt="">
-        <p v-show="home">
-          Home
-        </p>
-      </nuxt-link>
-    </div>
-    <div @click="wallet = !wallet">
-      <nuxt-link to="/wallet" :class="wallet ? 'button' : 'dead'">
-        <img v-show="wallet" src="~assets/images/wallet-dark.svg" alt="">
-        <img v-show="!wallet" src="~assets/images/wallet-light.png" alt="">
-        <p v-show="wallet">
-          Wallet
-        </p>
-      </nuxt-link>
-    </div>
-    <div>
-      <nuxt-link to="/orders" :class="orders ? 'button' : 'dead'">
-        <font-awesome-icon icon="list" />
-        <p v-show="orders">
-          Orders
-        </p>
-      </nuxt-link>
-    </div>
+    <nuxt-link to="/" :class="home ? 'button' : 'dead'">
+      <img v-show="home" src="~assets/images/home-dark.png" alt="" />
+      <img v-show="!home" src="~assets/images/home-light.png" alt="" />
+      <p v-show="home">Home</p>
+    </nuxt-link>
+
+    <nuxt-link to="/wallet" :class="wallet ? 'button' : 'dead'">
+      <img v-show="wallet" src="~assets/images/wallet-dark.svg" alt="" />
+      <img v-show="!wallet" src="~assets/images/wallet-light.png" alt="" />
+      <p v-show="wallet">Wallet</p>
+    </nuxt-link>
+
+    <nuxt-link to="/orders" :class="orders ? 'button' : 'dead'">
+      <font-awesome-icon icon="list" />
+      <p v-show="orders">Orders</p>
+    </nuxt-link>
+
     <nuxt-link to="/profile" :class="profile ? 'button' : 'dead'">
       <font-awesome-icon icon="user" />
-      <p v-show="profile">
-        Profile
-      </p>
+      <p v-show="profile">Profile</p>
     </nuxt-link>
   </div>
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
       home: null,
       wallet: null,
       orders: null,
       profile: null,
-      route: this.$route
-    }
+      route: this.$route,
+    };
   },
-  created () {
-    console.log(this.route.name)
+  created() {
     switch (this.route.name) {
-      case 'index':
-        this.home = true
-        break
+      case "index":
+        this.home = true;
+        break;
 
-      case 'wallet':
-        this.wallet = true
-        break
+      case "wallet":
+        this.wallet = true;
+        break;
 
-      case 'orders':
-        this.orders = true
-        break
+      case "orders":
+        this.orders = true;
+        break;
 
-      case 'profile':
-        this.profile = true
-        break
+      case "profile":
+        this.profile = true;
+        break;
 
       default:
-        this.home = true
+        this.home = true;
     }
-  }
-}
+  },
+};
 </script>
 <style lang="scss" scoped>
 .bottom-nav {
@@ -121,7 +109,6 @@ export default {
   }
 
   // Mobile Responsiveness
-
   @media screen and (max-width: 500px) {
     .button {
       font-size: 12px;
