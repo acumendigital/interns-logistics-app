@@ -2,7 +2,7 @@
   <main>
     <div class="container">
       <div class="back">
-        <img src="../../assets/images/notifications.svg">
+        <img src="~/assets/images/notifications.svg">
       </div>
       <div class="title">
         <div>

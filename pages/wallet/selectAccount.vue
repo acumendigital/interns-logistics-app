@@ -3,7 +3,7 @@
     <div class="container">
       <div class="back">
         <nuxt-link to="/wallet/withdrawalPage" class="" exact-active-class="">
-          <img src="../../assets/images/leftArrow.svg">
+          <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="title">
@@ -55,7 +55,7 @@ export default {
 main {
   width: 100%;
   background: #1e1e1e;
-  padding: 60px 0 30px;
+  padding: 15px 0 20px;
   font-family: "Rubik Regular";
   color: #000;
   font-style: normal;

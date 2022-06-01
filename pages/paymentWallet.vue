@@ -2,7 +2,7 @@
   <main>
     <div class="container">
       <div class="back">
-        <img src="../assets/images/leftArrow.svg">
+        <img src="~/assets/images/leftArrow.svg">
       </div>
       <div class="title">
         <h3>Payment</h3>
