@@ -2,8 +2,8 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/account/editAccount" class="" exact-active-class="">
-          <img src="../assets/images/leftArrow.svg">
+        <nuxt-link to="/wallet/addMoney" class="" exact-active-class="">
+          <img src="../../assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="title">
@@ -12,13 +12,13 @@
       <div class="cardNumber">
         <label>Card Number</label>
         <input type="text">
-        <img src="../assets/images/master.svg" class="master">
+        <img src="../../assets/images/master.svg" class="master">
       </div>
       <div class="cardDetails">
         <div class="date">
           <label>Expiry date</label>
           <input type="text" class="expire">
-          <img src="../assets/images/Calendar.svg" class="calendar">
+          <img src="../../assets/images/Calendar.svg" class="calendar">
         </div>
         <div>
           <label>Cvv</label>
@@ -29,7 +29,7 @@
         class="btn"
         @click="
           clicked = true;
-          $router.push('/cardAdded');
+          $router.push('/wallet/successfulPayment');
         "
       >
         <Button :name="title" />
@@ -43,7 +43,7 @@ export default {
   name: 'IndexPage',
   data () {
     return {
-      title: 'Add'
+      title: 'Pay NGN2000'
     }
   }
 }

@@ -2,10 +2,10 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/paymentWallet" class="" exact-active-class="">
-          <img src="../assets/images/leftArrow.svg">
+        <nuxt-link to="/wallet" class="" exact-active-class="">
+          <img src="../../assets/images/leftArrow.svg">
         </nuxt-link>
-        <p>Fund Your Wallet</p>
+        <p>Select withdrawal amount</p>
       </div>
       <div class="screen">
         <span>N</span>
@@ -45,11 +45,19 @@
           0
         </div>
         <div class="grid-item" @click="remove()">
-          <img src="../assets/images/delete.svg">
+          <img src="../../assets/images/delete.svg">
         </div>
       </div>
-      <div class="btn">
-        <button>Next</button>
+      <div
+        class="btn"
+        @click="
+          clicked = true;
+          $router.push('/wallet/selectAccount');
+        "
+      >
+        <Button
+          :name="title"
+        />
       </div>
     </div>
   </main>
@@ -60,7 +68,9 @@ export default {
   name: 'IndexPage',
   data () {
     return {
-      current: ''
+      current: '',
+      title: 'Next',
+      clicked: false
     }
   },
   methods: {
@@ -103,7 +113,7 @@ main {
         font-size: 16px;
         line-height: 24px;
         text-align: center;
-        margin-left: 101px;
+        margin-left: 65px;
       }
     }
     .screen {
@@ -150,19 +160,6 @@ line-height: 38px;
       padding: 0 32px 32px 32px;
       margin-top: 56px;
       justify-content: center;
-      button {
-        background: #ffd60a;
-        border-radius: 8px;
-        width: 80%;
-        width: 364px;
-        height: 56px;
-        margin: 0 auto;
-        border-style: none;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 24px;
-        cursor: pointer;
-      }
     }
   }
 }

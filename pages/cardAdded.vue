@@ -1,0 +1,87 @@
+<template>
+  <main>
+    <div class="container">
+      <div class="back">
+        <nuxt-link to="/card" class="" exact-active-class="">
+          <img src="../assets/images/leftArrow.svg">
+        </nuxt-link>
+      </div>
+      <div class="detail">
+        <img src="../assets/images/success.svg">
+        <p>Card added succeesful!</p>
+      </div>
+      <div class="btn">
+        <Button :name="title" />
+      </div>
+    </div>
+  </main>
+</template>
+
+<script>
+export default {
+  name: 'IndexPage',
+  data () {
+    return {
+      current: '',
+      title: 'Send an item'
+    }
+  }
+}
+</script>
+<style lang="scss" scoped>
+main {
+  width: 100%;
+  background: #1e1e1e;
+  padding: 60px 0 30px;
+  font-family: "Rubik Regular";
+  color: #000;
+  font-style: normal;
+
+  .container {
+    width: 90%;
+    background: #fff;
+    margin: 0 auto;
+    max-width: 428px;
+    height: 926px;
+    // padding: 37px 32px 0 32px;
+    padding-top: 37px;
+    .back {
+      margin: 0 0 37px 32px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      img {
+        cursor: pointer;
+      }
+      p {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        margin-left: 101px;
+      }
+    }
+    .detail {
+        width: 85%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 269px auto 0 auto;
+      margin-top: 269px;
+      p {
+       font-weight: 400;
+font-size: 18px;
+line-height: 28px;
+ margin: 16px 0;
+      }
+    }
+    .btn {
+      width: 100%;
+      display: flex;
+      padding: 0 32px 32px 32px;
+      justify-content: center;
+    }
+  }
+}
+</style>

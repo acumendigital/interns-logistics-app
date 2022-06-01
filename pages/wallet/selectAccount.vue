@@ -2,7 +2,9 @@
   <main>
     <div class="container">
       <div class="back">
-        <img src="../assets/images/leftArrow.svg">
+        <nuxt-link to="/wallet/withdrawalPage" class="" exact-active-class="">
+          <img src="../../assets/images/leftArrow.svg">
+        </nuxt-link>
       </div>
       <div class="title">
         <h3>Payment</h3>
@@ -12,13 +14,8 @@
           <div class="details">
             <label>
               <input type="radio" name="payment" checked value="wallet">
-              <span class="">Pay with wallet</span>
+              <span class="">Gtb - Odu David</span>
             </label>
-          </div>
-          <div>
-            <p class="amount">
-              N12,000
-            </p>
           </div>
         </div>
 
@@ -26,12 +23,18 @@
           <div class="details">
             <label>
               <input type="radio" name="payment">
-              <span>Pay with card</span>
+              <span>Zenith - Odu David</span>
             </label>
           </div>
         </div>
       </form>
-      <div class="btn">
+      <div
+        class="btn"
+        @click="
+          clicked = true;
+          $router.push('/wallet/successfulWithdrawal');
+        "
+      >
         <Button :name="title" />
       </div>
     </div>
@@ -43,7 +46,7 @@ export default {
   name: 'IndexPage',
   data () {
     return {
-      title: 'Pay NGN2000'
+      title: 'Withdraw NGN2000'
     }
   }
 }
@@ -106,22 +109,25 @@ main {
             height: 24px;
             width: 24px;
             border-radius: 50%;
+
+            margin-right: 0;
             margin-left: 32px;
             border: 1px solid #d9b608;
           }
           input[type="radio"]:checked {
             background: #d9b608;
+            //  box-shadow: inset 1em 1em #d9b608;
             border: 1px solid #d9d9d9;
           }
         }
       }
       .amount {
-          margin-right: 32px;
-          font-weight: 400;
-          font-size: 16px;
-          line-height: 24px;
-          color: #ffd60a;
-        }
+        margin-right: 32px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #ffd60a;
+      }
     }
     .card {
       border-bottom: 1px solid #dedede;
