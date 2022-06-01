@@ -2,14 +2,12 @@
   <main>
     <div class="main">
       <section class="close">
-        <nuxt-link to="/home">
+        <nuxt-link to="/">
           <font-awesome-icon icon="x" />
         </nuxt-link>
       </section>
       <section class="toggle">
-        <p :class="send ? 'active' : 'inactive'" @click="toggleSend">
-          Send
-        </p>
+        <p :class="send ? 'active' : 'inactive'" @click="toggleSend">Send</p>
         <p :class="receive ? 'active' : 'inactive'" @click="toggleReceive">
           Receive
         </p>
@@ -25,21 +23,17 @@
                 type="text"
                 name="pickup"
                 placeholder="Choose pick-up location"
-              >
+              />
             </div>
           </div>
           <div class="input">
             <label for="pickup">Drop-off Location</label>
             <div class="input-form">
               <select placeholder="Select Country">
-                <option value="Select State">
-                  Select Country
-                </option>
+                <option value="Select State">Select Country</option>
               </select>
               <select placeholder="Select State">
-                <option value="Select State">
-                  Select State
-                </option>
+                <option value="Select State">Select State</option>
               </select>
               <div>
                 <font-awesome-icon icon="location-dot" class="red" />
@@ -47,7 +41,7 @@
                   type="text"
                   name="pickup"
                   placeholder="Choose drop-off location"
-                >
+                />
               </div>
             </div>
           </div>
@@ -60,14 +54,10 @@
             <label for="pickup">Pick-up Location</label>
             <div class="input-form">
               <select placeholder="Select Country">
-                <option value="Select State">
-                  Select Country
-                </option>
+                <option value="Select State">Select Country</option>
               </select>
               <select placeholder="Select State">
-                <option value="Select State">
-                  Select State
-                </option>
+                <option value="Select State">Select State</option>
               </select>
               <div>
                 <font-awesome-icon icon="location-dot" class="red" />
@@ -75,7 +65,7 @@
                   type="text"
                   name="pickup"
                   placeholder="Choose drop-off location"
-                >
+                />
               </div>
             </div>
           </div>
@@ -87,7 +77,7 @@
                 type="text"
                 name="pickup"
                 placeholder="Choose drop-off location"
-              >
+              />
             </div>
           </div>
         </div>
@@ -96,36 +86,36 @@
         <div class="input">
           <p>Contact Information (Sender)</p>
 
-          <input type="text" name="pickup" value="First Name"><input
+          <input type="text" name="pickup" value="First Name" /><input
             type="number"
             name="pickup"
             placeholder="+xxx (xxx)-xxx-xxxx"
             value="Phone Number"
             min="0"
-          ><input
+          /><input
             type="email"
             name="pickup"
             placeholder="Choose pick-up location"
             value="Email Address"
-          >
+          />
         </div>
         <div class="receiver">
           <div class="input">
             <p>Contact Information (Receiver)</p>
 
-            <input type="text" name="pickup" value="First Name">
+            <input type="text" name="pickup" value="First Name" />
             <input
               type="number"
               name="pickup"
               placeholder="+xxx (xxx)-xxx-xxxx"
               value="Phone Number"
               min="0"
-            ><input
+            /><input
               type="email"
               name="pickup"
               placeholder="Choose pick-up location"
               value="Email Address"
-            >
+            />
           </div>
         </div>
       </section>
@@ -139,44 +129,42 @@
               value="2022-06-01"
               min="2022-06-20"
               max="2025-12-31"
-            >
+            />
           </div>
         </div>
       </section>
       <div class="desc">
         <p>Package Description</p>
         <div class="desc-text">
-          <input type="text" value="Select Package">
-          <input type="text" value="More Description">
+          <input type="text" value="Select Package" />
+          <input type="text" value="More Description" />
         </div>
       </div>
-      <button class="payment-btn">
-        Continue to Payment
-      </button>
+      <button class="payment-btn">Continue to Payment</button>
     </div>
   </main>
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
       previewImage: [],
       isActive: true,
       send: true,
-      receive: false
-    }
+      receive: false,
+    };
   },
   methods: {
-    toggleSend () {
-      this.send = true
-      this.receive = false
+    toggleSend() {
+      this.send = true;
+      this.receive = false;
     },
-    toggleReceive () {
-      this.receive = true
-      this.send = false
-    }
-  }
-}
+    toggleReceive() {
+      this.receive = true;
+      this.send = false;
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 main {

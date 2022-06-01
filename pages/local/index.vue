@@ -2,7 +2,7 @@
   <main>
     <div class="main">
       <section class="close">
-        <nuxt-link to="/home"> <font-awesome-icon icon="x" /></nuxt-link>
+        <nuxt-link to="/"> <font-awesome-icon icon="x" /></nuxt-link>
       </section>
       <section class="toggle">
         <p :class="send ? 'active' : 'inactive'" @click="toggleSend">Send</p>
