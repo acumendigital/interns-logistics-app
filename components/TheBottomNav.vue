@@ -5,18 +5,15 @@
       <img v-show="!home" src="~assets/images/home-light.png" alt="" />
       <p v-show="home">Home</p>
     </nuxt-link>
-
     <nuxt-link to="/wallet" :class="wallet ? 'button' : 'dead'">
       <img v-show="wallet" src="~assets/images/wallet-dark.svg" alt="" />
       <img v-show="!wallet" src="~assets/images/wallet-light.png" alt="" />
       <p v-show="wallet">Wallet</p>
     </nuxt-link>
-
     <nuxt-link to="/orders" :class="orders ? 'button' : 'dead'">
       <font-awesome-icon icon="list" />
       <p v-show="orders">Orders</p>
     </nuxt-link>
-
     <nuxt-link to="/profile" :class="profile ? 'button' : 'dead'">
       <font-awesome-icon icon="user" />
       <p v-show="profile">Profile</p>
