@@ -55,17 +55,41 @@
         <div class="info">
           <p class="title">Order Number</p>
           <p class="num">Nywj-879</p>
-          <p class="det">
+          <p class="det" @click="toggleModal">
             More Details <font-awesome-icon icon="angle-down" />
           </p>
         </div>
       </div>
       <div class="button"><font-awesome-icon icon="phone" /> Call</div>
     </div>
+
+    <div class="track-modal-container" v-show="modalOpen" @click="toggleModal">
+      <div class="x" @click="toggleModal">
+        <font-awesome-icon icon="circle-xmark" @click="toggleModal" />
+      </div>
+      <div class="content">
+        <TheTrackModal />
+      </div>
+    </div>
   </div>
 </template>
 <script>
-export default {};
+import TheTrackModal from "~/components/track-order/TheTrackModal.vue";
+export default {
+  components: {
+    TheTrackModal,
+  },
+  data() {
+    return {
+      modalOpen: false,
+    };
+  },
+  methods: {
+    toggleModal() {
+      this.modalOpen = !this.modalOpen;
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 .track-active-container {
@@ -100,7 +124,8 @@ export default {};
       }
     }
     .rider-img {
-      z-index: 1;
+      z-index: 0;
+      border-radius: 5px;
       margin-right: 10px;
     }
   }
@@ -116,10 +141,9 @@ export default {};
       @include flex-row();
       gap: 1rem;
       .delivered {
-        // position: absolute;
         color: #06d6a0;
         font-size: 20px;
-        z-index: 2;
+        z-index: 0;
       }
     }
     .line {
@@ -134,8 +158,6 @@ export default {};
     background-color: #fff;
     border-top: 1px solid #e9e9e9;
     padding: 2rem;
-    // position: fixed;
-    // bottom: 0px;
     width: 100%;
     .text {
       @include flex-row();
@@ -166,6 +188,7 @@ export default {};
         .det {
           color: #d9b608;
           font-size: 12px;
+          cursor: pointer;
         }
       }
     }
@@ -190,6 +213,78 @@ export default {};
       svg {
         transform: scale(1.03);
       }
+    }
+  }
+  .track-modal-container {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-animation-name: slideIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slideIn;
+    animation-duration: 0.4s;
+    .x {
+      position: fixed;
+      right: 2rem;
+      bottom: 480px;
+      margin-bottom: 32px;
+      cursor: pointer;
+      svg {
+        color: #d9b608;
+        font-size: 24px;
+        background-color: #000;
+        border-radius: 20px;
+        // cursor: pointer;
+      }
+    }
+    .content {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  }
+  @-webkit-keyframes slideIn {
+    from {
+      bottom: -300px;
+      opacity: 0;
+    }
+    to {
+      bottom: 0;
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      bottom: -300px;
+      opacity: 0;
+    }
+    to {
+      bottom: 0;
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 }

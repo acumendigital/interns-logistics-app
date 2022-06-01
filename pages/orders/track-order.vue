@@ -1,8 +1,6 @@
 <template lang="">
   <div class="track-order-container">
-    <TheTrackActive />
     <TheTrackDelivered />
-    <TheTrackCancelled />
   </div>
 </template>
 <script>
