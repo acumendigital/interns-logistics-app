@@ -52,7 +52,7 @@ export default {
 main {
   width: 100%;
   background: #1e1e1e;
-  padding: 60px 0 30px;
+ padding: 15px 0 20px;
   font-family: "Rubik Regular";
   color: #000;
   font-style: normal;

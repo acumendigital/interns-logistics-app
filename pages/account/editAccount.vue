@@ -40,25 +40,21 @@
         class="profileDetails debit"
         @click="
           clicked = true;
-          $router.push('/card');
+          $router.push('/account/card');
         "
       >
         <label>Add a debit card</label>
-        <nuxt-link to="/card" class="" exact-active-class="">
           <img src="~/assets/images/next.svg">
-        </nuxt-link>
       </div>
       <div
         class="profileDetails bank"
         @click="
           clicked = true;
-          $router.push('/bankAccount');
+          $router.push('/account/bankAccount');
         "
       >
         <label>Add a bank account</label>
-        <nuxt-link to="/bankAccount" class="" exact-active-class="">
           <img src="~/assets/images/next.svg">
-        </nuxt-link>
       </div>
       <div class="btn">
         <Button :name="title" />

@@ -2,16 +2,13 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/card" class="" exact-active-class="">
+        <nuxt-link to="/account/card" class="" exact-active-class="">
           <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="detail">
-        <img src="~/assets/images/decline.svg">
-        <p>Unable to Add</p>
-        <p class="decline">
-          Kindly check your card details and try again
-        </p>
+        <img src="~/assets/images/success.svg">
+        <p>Card added succeesful!</p>
       </div>
       <div class="btn">
         <Button :name="title" />
@@ -26,7 +23,7 @@ export default {
   data () {
     return {
       current: '',
-      title: 'Try again'
+      title: 'Send an item'
     }
   }
 }
@@ -56,28 +53,27 @@ main {
       img {
         cursor: pointer;
       }
-    }
-    .detail {
-      width: 85%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin: 269px auto 0 auto;
-      margin-top: 269px;
       p {
         font-weight: 400;
-        font-size: 18px;
-        line-height: 28px;
-        margin: 24px 0 8px 0;
-      }
-      .decline{
-          font-weight: 400;
-        font-size: 14px;
-        line-height: 21px;
+        font-size: 16px;
+        line-height: 24px;
         text-align: center;
-        margin: 0 32px 32px;
-        color: #666;
+        margin-left: 101px;
+      }
+    }
+    .detail {
+        width: 85%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 269px auto 0 auto;
+      margin-top: 269px;
+      p {
+       font-weight: 400;
+font-size: 18px;
+line-height: 28px;
+ margin: 16px 0;
       }
     }
     .btn {
