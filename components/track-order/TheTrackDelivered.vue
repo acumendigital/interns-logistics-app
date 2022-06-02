@@ -5,7 +5,7 @@
         <font-awesome-icon icon="arrow-left" />
       </nuxt-link>
     </div>
-    <div class="rider">
+    <nuxt-link to="/orders/rider-chat" class="rider">
       <img src="~assets/images/track-rider.png" alt="" />
       <div class="rider-chat">
         <div class="left">
@@ -19,7 +19,7 @@
           <font-awesome-icon icon="message" />
         </div>
       </div>
-    </div>
+    </nuxt-link>
     <div class="journey">
       <div class="stop">
         <div class="line"></div>
@@ -101,6 +101,7 @@ export default {
     @include flex-center();
     margin-top: 35px;
     padding: 2rem;
+    text-decoration: none;
     .rider-chat {
       @include flex-center();
       justify-content: space-between;
@@ -115,6 +116,7 @@ export default {
         gap: 22px;
         .name {
           font-family: "Rubik Regular";
+          color: #000;
         }
         .tag {
           font-size: 12px;

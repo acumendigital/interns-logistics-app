@@ -7,7 +7,7 @@
     </div>
     <div class="rider">
       <img src="~assets/images/track-rider.png" alt="" />
-      <div class="rider-chat">
+      <nuxt-link to="/orders/rider-chat" class="rider-chat">
         <div class="left">
           <img src="~assets/images/rider-img.png" alt="" class="rider-img" />
           <div>
@@ -18,7 +18,7 @@
         <div class="right">
           <font-awesome-icon icon="message" />
         </div>
-      </div>
+      </nuxt-link>
     </div>
     <div class="journey">
       <div class="stop">
@@ -100,6 +100,7 @@ export default {
     @include flex-center();
     margin-top: 35px;
     padding: 2rem;
+    text-decoration: none;
     .rider-chat {
       @include flex-center();
       justify-content: space-between;
@@ -114,6 +115,8 @@ export default {
         gap: 22px;
         .name {
           font-family: "Rubik Regular";
+          color: #000;
+          z-index: 0;
         }
         .tag {
           font-size: 12px;
