@@ -3,23 +3,38 @@
     <div class="container">
       <div class="back">
         <nuxt-link to="/profile" class="" exact-active-class="">
-          <img src="../../assets/images/leftArrow.svg">
+          <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="title">
-        <nuxt-link class="/profile" exact-active-class="">
+        <nuxt-link
+          to="/profile"
+          :class="[
+            'kemi',
+            $route.name.includes('profile') ? 'nuxt-link-exact-active' : '',
+          ]"
+        >
           <p>Profile Settings</p>
         </nuxt-link>
-        <nuxt-link to="/account" class="" exact-active-class="">
+        <nuxt-link
+          to="/account"
+          :class="[
+            'kemi',
+            $route.name.includes('account')
+              ? 'nuxt-link-exact-active'
+              : '',
+          ]"
+          exact-active-class=""
+        >
           <p>Account Settings</p>
         </nuxt-link>
       </div>
       <div class="profileUpload">
-        <img src="../../assets/images/leftArrow.svg">
+        <img src="~/assets/images/profile.svg">
         <p>Update your profile photo</p>
       </div>
       <div>
-        <div v-show="personalDetails" class="profileDetails">
+        <div class="profileDetails">
           <label>First Name</label>
           <input type="text">
         </div>
@@ -40,22 +55,10 @@
           <input type="text">
         </div>
       </div>
-      <div v-show="!personalDetails" class="profileDetails">
-        <label>Password</label>
-        <input type="text">
-      </div>
-      <div class="profileDetails">
-        <label>Confirm Password</label>
-        <input type="text">
-      </div>
-    </div>
-
-    <div class="btn">
+      <div class="btn">
       <Button :name="title" />
     </div>
-    <section class="footer">
-      <TheBottomNav />
-    </section>
+    </div>
     </div>
   </main>
 </template>
@@ -74,15 +77,23 @@ export default {
 main {
   width: 100%;
   background: #1e1e1e;
-  padding: 60px 0 30px;
+ padding: 15px 0 20px;
   font-family: "Rubik Regular";
   color: #000;
   font-style: normal;
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+  }
 
   .container {
     width: 90%;
     background: #fff;
     margin: 0 auto;
+    overflow-y: scroll;
     max-width: 428px;
     height: 926px;
     padding: 37px 32px 0 32px;
@@ -92,14 +103,25 @@ main {
         cursor: pointer;
       }
     }
+    a.nuxt-link-exact-active {
+      border-radius: 8px;
+      p {
+        color: #000;
+        border-radius: 8px;
+        background: #ffd60a;
+      }
+    }
     .title {
       display: flex;
-      p{
-        font-weight: 400;
-font-size: 16px;
-line-height: 24px;
-color: #B0B0B0;
 
+      p {
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #b0b0b0;
+        padding: 2px 8px;
+        margin-right: 16px;
       }
     }
     .profileUpload{
@@ -183,14 +205,8 @@ outline:none;
       width: 100%;
       display: flex;
       padding: 0 32px 32px 32px;
-      margin-top: 466px;
+      margin-top: 51px;
       justify-content: center;
-    }
-    .footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      margin: 2rem;
     }
   }
 }

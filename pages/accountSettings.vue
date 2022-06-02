@@ -3,7 +3,7 @@
     <div class="container">
       <div class="back">
         <nuxt-link to="/paymentWallet" class="" exact-active-class="">
-          <img src="../assets/images/leftArrow.svg">
+          <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="title">
@@ -30,7 +30,7 @@
         </nuxt-link>
       </div>
       <div class="profileUpload">
-        <img src="../assets/images/profile.svg">
+        <img src="~/assets/images/profile.svg">
         <p>Update your profile photo</p>
       </div>
       <div class="profileDetails">
@@ -43,7 +43,7 @@
       <div class="profileDetails debit">
         <label>Add a debit card</label>
         <nuxt-link to="/card" class="" exact-active-class="">
-          <img src="../assets/images/next.svg">
+          <img src="~/assets/images/next.svg">
         </nuxt-link>
       </div>
     </div>

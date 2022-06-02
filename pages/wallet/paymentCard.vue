@@ -3,7 +3,7 @@
     <div class="container">
       <div class="back">
         <nuxt-link to="/wallet/addMoney" class="" exact-active-class="">
-          <img src="../../assets/images/leftArrow.svg">
+          <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="title">
@@ -12,13 +12,13 @@
       <div class="cardNumber">
         <label>Card Number</label>
         <input type="text">
-        <img src="../../assets/images/master.svg" class="master">
+        <img src="~/assets/images/master.svg" class="master">
       </div>
       <div class="cardDetails">
         <div class="date">
           <label>Expiry date</label>
           <input type="text" class="expire">
-          <img src="../../assets/images/Calendar.svg" class="calendar">
+          <img src="~/assets/images/Calendar.svg" class="calendar">
         </div>
         <div>
           <label>Cvv</label>
@@ -52,7 +52,7 @@ export default {
 main {
   width: 100%;
   background: #1e1e1e;
-  padding: 60px 0 30px;
+  padding: 15px 0 20px;
   font-family: "Rubik Regular";
   color: #000;
   font-style: normal;

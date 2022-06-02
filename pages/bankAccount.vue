@@ -3,7 +3,7 @@
     <div class="container">
       <div class="back">
         <nuxt-link to="/account/editAccount" class="" exact-active-class="">
-          <img src="../assets/images/leftArrow.svg">
+          <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="title">
@@ -126,7 +126,7 @@ main {
         display: none;
       }
       .select {
-        background-image: url("../assets/images/select.svg");
+        background-image: url("~/assets/images/select.svg");
         background-repeat: no-repeat;
         background-position: right center;
         background-position-x: 320px;
