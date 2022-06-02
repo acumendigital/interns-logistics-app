@@ -64,13 +64,13 @@
           <input type="text">
         </div>
       </div>
-      <!-- <section class="footer">
-        <TheBottomNav />
-      </section> -->
-    </div>
-    <section class="footer">
+      <section class="footer">
         <TheBottomNav />
       </section>
+    </div>
+    <!-- <section class="footer">
+        <TheBottomNav />
+      </section> -->
   </main>
 </template>
 
@@ -107,6 +107,7 @@ main {
     margin: 0 auto;
     max-width: 428px;
     height: 926px;
+    //  height: 926px;
     padding: 37px 32px 0 32px;
     overflow-y: scroll;
     .back {
@@ -234,13 +235,25 @@ main {
     //    width: 100%;
     //   margin: 0px 27px 32px 0px;
     // }
+    .footer {
+      // position: fixed;
+      // bottom: 20px;
+      // bottom: 130px;
+       width: 19%;
+       width: 100%;
+      left: 40.5%;
+      margin: 0px 27px 32px 0px;
+
+    }
   }
   .footer {
-      position: fixed;
-      bottom: 130px;
+      // position: fixed;
+      // bottom: 20px;
+      // bottom: 130px;
        width: 19%;
+       width: 100%;
       //  width: 100%;
-      left: 40%;
+      left: 40.5%;
       margin: 0px 27px 32px 0px;
 
     }
