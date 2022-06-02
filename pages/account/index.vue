@@ -2,7 +2,7 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/paymentWallet" class="" exact-active-class="">
+        <nuxt-link to="#" class="" exact-active-class="">
           <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
@@ -49,25 +49,21 @@
         class="profileDetails debit"
         @click="
           clicked = true;
-          $router.push('/card');
+          $router.push('/account/card');
         "
       >
         <label>Add a debit card</label>
-        <nuxt-link to="/card" class="" exact-active-class="">
           <img src="~/assets/images/next.svg">
-        </nuxt-link>
       </div>
       <div
         class="profileDetails bank"
         @click="
           clicked = true;
-          $router.push('/bankAccount');
+          $router.push('/account/bankAccount');
         "
       >
         <label>Add a bank account</label>
-        <nuxt-link to="/card" class="" exact-active-class="">
           <img src="~/assets/images/next.svg">
-        </nuxt-link>
       </div>
       <section class="footer">
       <TheBottomNav />

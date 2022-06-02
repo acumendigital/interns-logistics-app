@@ -107,9 +107,9 @@ main {
     margin: 0 auto;
     max-width: 428px;
     height: 926px;
-    //  height: 926px;
     padding: 37px 32px 0 32px;
     overflow-y: scroll;
+    // overflow-x: hidden;
     .back {
       margin: 0 0 37px 0;
       img {
@@ -228,34 +228,23 @@ main {
       margin-top: 466px;
       justify-content: center;
     }
-    // .footer {
-    //   position: fixed;
-    //   // bottom: 130px;
-    //    width: 19%;
-    //    width: 100%;
-    //   margin: 0px 27px 32px 0px;
-    // }
     .footer {
-      // position: fixed;
-      // bottom: 20px;
-      // bottom: 130px;
-       width: 19%;
        width: 100%;
-      left: 40.5%;
-      margin: 0px 27px 32px 0px;
+      margin: 0 0 32px 0;
 
     }
   }
-  .footer {
+  // .footer {
       // position: fixed;
       // bottom: 20px;
       // bottom: 130px;
-       width: 19%;
-       width: 100%;
+      //  width: 19%;
       //  width: 100%;
-      left: 40.5%;
-      margin: 0px 27px 32px 0px;
+      //  width: 100%;
+      // left: 40.5%;
+      // background: red;
+      // margin: 0px 27px 32px 0px;
 
-    }
+    // }
 }
 </style>
