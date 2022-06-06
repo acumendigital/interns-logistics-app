@@ -85,7 +85,7 @@ line-height: 28px;
     .btn {
       width: 100%;
       display: flex;
-      padding: 0 32px 32px 32px;
+        padding: 0 0 32px 0;
       justify-content: center;
     }
   }

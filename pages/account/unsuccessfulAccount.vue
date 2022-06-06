@@ -71,8 +71,8 @@ main {
         line-height: 28px;
         margin: 24px 0 8px 0;
       }
-      .decline{
-          font-weight: 400;
+      .decline {
+        font-weight: 400;
         font-size: 14px;
         line-height: 21px;
         text-align: center;
@@ -83,7 +83,7 @@ main {
     .btn {
       width: 100%;
       display: flex;
-      padding: 0 32px 32px 32px;
+      padding: 0 0 32px 0;
       justify-content: center;
     }
   }
