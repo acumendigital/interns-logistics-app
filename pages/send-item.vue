@@ -134,7 +134,7 @@ main {
   padding: 2rem;
   .close {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     svg {
       font-size: 20px;
       color: #d9b608;

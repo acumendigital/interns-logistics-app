@@ -66,6 +66,7 @@ export default {
         background: #EBEBEB;
         border-radius: 10px;
         width: 335px;
+        cursor: pointer;
         h3{
             font-weight: 600;
             font-size: 16px;

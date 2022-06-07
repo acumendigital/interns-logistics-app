@@ -26,7 +26,7 @@
         </div>
 
         <div class="input-entry">
-          <img src="~/assets/images/location.svg" alt="location" />
+          <img src="~/assets/images/Location.svg" alt="location" />
           <input type="text" id="pick-up" placeholder="Enter Location" />
         </div>
       </div>
