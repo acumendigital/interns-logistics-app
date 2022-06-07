@@ -1,11 +1,11 @@
 <template lang="">
-  <div class="package-container">
+  <nuxt-link to="/orders/track-order" class="package-container">
     <div class="package-card">
       <div class="package-info">
         <img src="~assets/images/tracker.png" alt="" />
         <div class="package">
           <p class="time">Iyana Ipaja, Lagos</p>
-          <p>Festac Lagos</p>
+          <p class="black">Festac Lagos</p>
           <p class="time">Nywj-079</p>
         </div>
       </div>
@@ -13,13 +13,14 @@
         <span></span>
       </div>
     </div>
-  </div>
+  </nuxt-link>
 </template>
 <script>
 export default {};
 </script>
 <style lang="scss" scoped>
 .package-container {
+  text-decoration: none;
   .package-card {
     display: flex;
     flex-direction: row;
@@ -120,6 +121,9 @@ export default {};
       100% {
         transform: rotate(360deg);
       }
+    }
+    .black {
+      color: #000;
     }
   }
 }

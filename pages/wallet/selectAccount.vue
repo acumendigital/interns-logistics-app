@@ -2,7 +2,9 @@
   <main>
     <div class="container">
       <div class="back">
-        <img src="../assets/images/leftArrow.svg">
+        <nuxt-link to="/wallet/withdrawalPage" class="" exact-active-class="">
+          <img src="~/assets/images/leftArrow.svg">
+        </nuxt-link>
       </div>
       <div class="title">
         <h3>Payment</h3>
@@ -12,13 +14,8 @@
           <div class="details">
             <label>
               <input type="radio" name="payment" checked value="wallet">
-              <span class="">Pay with wallet</span>
+              <span class="">Gtb - Odu David</span>
             </label>
-          </div>
-          <div>
-            <p class="amount">
-              N12,000
-            </p>
           </div>
         </div>
 
@@ -26,13 +23,19 @@
           <div class="details">
             <label>
               <input type="radio" name="payment">
-              <span>Pay with card</span>
+              <span>Zenith - Odu David</span>
             </label>
           </div>
         </div>
       </form>
-      <div class="btn">
-        <button>Pay NGN2000</button>
+      <div
+        class="btn"
+        @click="
+          clicked = true;
+          $router.push('/wallet/successfulWithdrawal');
+        "
+      >
+        <Button :name="title" />
       </div>
     </div>
   </main>
@@ -40,14 +43,19 @@
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  data () {
+    return {
+      title: 'Withdraw NGN2000'
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
 main {
   width: 100%;
   background: #1e1e1e;
-  padding: 60px 0 30px;
+  padding: 15px 0 20px;
   font-family: "Rubik Regular";
   color: #000;
   font-style: normal;
@@ -101,22 +109,25 @@ main {
             height: 24px;
             width: 24px;
             border-radius: 50%;
+
+            margin-right: 0;
             margin-left: 32px;
             border: 1px solid #d9b608;
           }
           input[type="radio"]:checked {
             background: #d9b608;
+            //  box-shadow: inset 1em 1em #d9b608;
             border: 1px solid #d9d9d9;
           }
         }
       }
       .amount {
-          margin-right: 32px;
-          font-weight: 400;
-          font-size: 16px;
-          line-height: 24px;
-          color: #ffd60a;
-        }
+        margin-right: 32px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #ffd60a;
+      }
     }
     .card {
       border-bottom: 1px solid #dedede;
@@ -157,7 +168,7 @@ main {
     .btn {
       width: 100%;
       display: flex;
-      padding: 0 32px 32px 32px;
+        padding: 0 0 32px 0;
       margin-top: 540px;
       margin-bottom: 32px;
       justify-content: center;

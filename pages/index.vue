@@ -10,8 +10,12 @@
           <p>Wallet Balance</p>
         </div>
         <div class="top-btns">
-          <div class="add btn">+ Add Money</div>
-          <div class="add btn">- Withdraw</div>
+          <div class="add btn">
+            + Add Money
+          </div>
+          <div class="add btn">
+            - Withdraw
+          </div>
         </div>
       </div>
       <div class="break" />
@@ -19,11 +23,11 @@
         <p>Send or Receive Item</p>
         <div class="cards">
           <nuxt-link to="/local" class="card">
-            <img src="~assets/images/local.png" alt="" />
+            <img src="~assets/images/local.png" alt="">
             <p>Local</p>
           </nuxt-link>
           <nuxt-link to="/international" class="card">
-            <img src="~assets/images/international.png" alt="" />
+            <img src="~assets/images/international.png" alt="">
             <p>International</p>
           </nuxt-link>
         </div>
@@ -37,7 +41,7 @@
               type="search"
               name="track"
               placeholder="Enter Tracking Number"
-            />
+            >
             <button>
               <font-awesome-icon icon="magnifying-glass" />
             </button>
@@ -59,8 +63,8 @@
 </template>
 <script>
 export default {
-  layout: "auth-layout",
-};
+  layout: 'auth-layout'
+}
 </script>
 <style lang="scss" scoped>
 main {

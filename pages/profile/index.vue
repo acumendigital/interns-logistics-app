@@ -1,0 +1,250 @@
+<template lang="">
+  <main>
+    <div class="container">
+      <div class="back">
+        <nuxt-link to="#" class="" exact-active-class="">
+          <img src="~/assets/images/leftArrow.svg">
+        </nuxt-link>
+      </div>
+      <div class="title">
+        <nuxt-link
+          to="#"
+          :class="[
+            'kemi',
+            $route.name.includes('profile') ? 'nuxt-link-exact-active' : '',
+          ]"
+        >
+          <p>Profile Settings</p>
+        </nuxt-link>
+        <nuxt-link
+          to="/account"
+          :class="[
+            'kemi',
+            $route.name.includes('account')
+              ? 'nuxt-link-exact-active'
+              : '',
+          ]"
+          exact-active-class=""
+        >
+          <p>Account Settings</p>
+        </nuxt-link>
+      </div>
+      <div class="profileUpload">
+        <img src="~/assets/images/profile.svg">
+        <p>Update your profile photo</p>
+      </div>
+      <div>
+        <div class="profileDetails">
+          <div class="pencil">
+            <label>First Name</label>
+            <img
+              src="~/assets/images/pencil.svg"
+              @click="
+                clicked = true;
+                $router.push('/profile/editProfile');
+              "
+            >
+          </div>
+          <input type="text">
+        </div>
+        <div class="profileDetails">
+          <label>Last Name</label>
+          <input type="text">
+        </div>
+        <div class="profileDetails">
+          <label>Phone Number</label>
+          <input type="text">
+        </div>
+        <div class="profileDetails">
+          <label>Email Address</label>
+          <input type="text">
+        </div>
+        <div class="profileDetails">
+          <label>Home Address</label>
+          <input type="text">
+        </div>
+      </div>
+      <section class="footer">
+        <TheBottomNav />
+      </section>
+    </div>
+    <!-- <section class="footer">
+        <TheBottomNav />
+      </section> -->
+  </main>
+</template>
+
+<script>
+export default {
+  name: 'Profile',
+  data () {
+    return {
+      title: 'Save',
+      clicked: false
+    }
+  }
+}
+</script>
+<style lang="scss" scoped>
+main {
+  width: 100%;
+  background: #1e1e1e;
+  padding: 15px 0 20px;
+  font-family: "Rubik Regular";
+  color: #000;
+  font-style: normal;
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .container {
+    width: 90%;
+    background: #fff;
+    margin: 0 auto;
+    max-width: 428px;
+    height: 926px;
+    padding: 37px 32px 0 32px;
+    overflow-y: scroll;
+    // overflow-x: hidden;
+    .back {
+      margin: 0 0 37px 0;
+      img {
+        cursor: pointer;
+      }
+    }
+    a.nuxt-link-exact-active {
+      border-radius: 8px;
+      p {
+        color: #000;
+        border-radius: 8px;
+        background: #ffd60a;
+      }
+    }
+    .title {
+      display: flex;
+
+      p {
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #b0b0b0;
+        padding: 2px 8px;
+        margin-right: 16px;
+      }
+    }
+    .profileUpload {
+      width: 100%;
+      display: flex;
+      margin: 20px auto;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 58px;
+      img {
+        cursor: pointer;
+      }
+      p {
+        margin: 16px 0 24px 0;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+        color: #d9b608;
+      }
+    }
+    .profileDetails {
+      margin-bottom: 32px;
+      position: relative;
+      .pencil{
+        display: flex;
+        justify-content: space-between;
+        img{
+          cursor: pointer;
+        }
+      }
+      label {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+      }
+      input {
+        background: #f4f4f4;
+        border-radius: 8px;
+        outline:none;
+        width: 364px;
+        border-style: none;
+        padding: 20px;
+        margin-top: 8px;
+      }
+      .master {
+        position: absolute;
+        top: 50px;
+        right: 16px;
+        cursor: pointer;
+      }
+    }
+    .cardDetails {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      label {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+      }
+      .date {
+        position: relative;
+        // background: pink;
+        .expire {
+          border: 1px solid #b0b0b0;
+          border-radius: 8px;
+          width: 196px;
+          margin-top: 8px;
+          padding: 20px 30px;
+        }
+        .calendar {
+          position: absolute;
+          top: 49px;
+          left: 16px;
+          cursor: pointer;
+        }
+      }
+      .cvv {
+        border: 1px solid #b0b0b0;
+        border-radius: 8px;
+        width: 132px;
+        margin-top: 8px;
+        padding: 20px 30px;
+      }
+    }
+    .btn {
+      width: 100%;
+      display: flex;
+        padding: 0 0 32px 0;
+      margin-top: 466px;
+      justify-content: center;
+    }
+    .footer {
+       width: 100%;
+      margin: 0 0 32px 0;
+
+    }
+  }
+  // .footer {
+      // position: fixed;
+      // bottom: 20px;
+      // bottom: 130px;
+      //  width: 19%;
+      //  width: 100%;
+      //  width: 100%;
+      // left: 40.5%;
+      // background: red;
+      // margin: 0px 27px 32px 0px;
+
+    // }
+}
+</style>
