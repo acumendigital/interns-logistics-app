@@ -204,7 +204,7 @@ outline:none;
     .btn {
       width: 100%;
       display: flex;
-      padding: 0 32px 32px 32px;
+        padding: 0 0 32px 0;
       margin-top: 51px;
       justify-content: center;
     }

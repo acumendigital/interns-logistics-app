@@ -20,7 +20,6 @@ export default {
       button {
         background: #ffd60a;
         border-radius: 8px;
-        width: 80%;
         width: 364px;
         height: 56px;
         margin: 0 auto;
