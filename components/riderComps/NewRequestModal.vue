@@ -31,7 +31,7 @@
           </div>
           <div class="call">
               <button>
-                  <img src="~/assets/images/call.svg" alt="call">
+                  <img src="~/assets/images/Call.svg" alt="call">
                   <p>Call</p>
               </button>
           </div>
