@@ -3,11 +3,11 @@
     <div class="container">
       <div class="back">
         <nuxt-link to="/wallet/paymentCard" class="" exact-active-class="">
-          <img src="../../assets/images/leftArrow.svg">
+          <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="detail">
-        <img src="../../assets/images/success.svg">
+        <img src="~/assets/images/success.svg">
         <p>Payment succeesful!</p>
       </div>
       <div
@@ -38,7 +38,7 @@ export default {
 main {
   width: 100%;
   background: #1e1e1e;
-  padding: 60px 0 30px;
+  padding: 15px 0 20px;
   font-family: "Rubik Regular";
   color: #000;
   font-style: normal;
@@ -49,7 +49,6 @@ main {
     margin: 0 auto;
     max-width: 428px;
     height: 926px;
-    // padding: 37px 32px 0 32px;
     padding-top: 37px;
     .back {
       margin: 0 0 37px 32px;
@@ -85,7 +84,7 @@ line-height: 28px;
     .btn {
       width: 100%;
       display: flex;
-      padding: 0 32px 32px 32px;
+        padding: 0 0 32px 0;
       justify-content: center;
     }
   }

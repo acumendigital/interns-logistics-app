@@ -2,8 +2,8 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/paymentWallet" class="" exact-active-class="">
-          <img src="../../assets/images/leftArrow.svg">
+        <nuxt-link to="#" class="" exact-active-class="">
+          <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="title">
@@ -33,7 +33,7 @@
         <div class="pencil">
           <label>Password</label>
           <img
-            src="../../assets/images/pencil.svg"
+            src="~/assets/images/pencil.svg"
             @click="
               clicked = true;
               $router.push('/account/editAccount');
@@ -49,31 +49,30 @@
         class="profileDetails debit"
         @click="
           clicked = true;
-          $router.push('/card');
+          $router.push('/account/card');
         "
       >
         <label>Add a debit card</label>
-        <nuxt-link to="/card" class="" exact-active-class="">
-          <img src="../../assets/images/next.svg">
-        </nuxt-link>
+          <img src="~/assets/images/next.svg">
       </div>
       <div
         class="profileDetails bank"
         @click="
           clicked = true;
-          $router.push('/bankAccount');
+          $router.push('/account/bankAccount');
         "
       >
         <label>Add a bank account</label>
-        <nuxt-link to="/card" class="" exact-active-class="">
-          <img src="../../assets/images/next.svg">
-        </nuxt-link>
+          <img src="~/assets/images/next.svg">
       </div>
-    </div>
-
-    <section class="footer">
+      <section class="footer">
       <TheBottomNav />
     </section>
+    </div>
+
+    <!-- <section class="footer">
+      <TheBottomNav />
+    </section> -->
     </div>
   </main>
 </template>
@@ -93,7 +92,7 @@ export default {
 main {
   width: 100%;
   background: #1e1e1e;
-  padding: 60px 0 30px;
+  padding: 15px 0 20px;
   font-family: "Rubik Regular";
   color: #000;
   font-style: normal;
@@ -110,6 +109,7 @@ main {
     background: #fff;
     margin: 0 auto;
     max-width: 428px;
+    //  max-width:1200px;
     height: 926px;
     padding: 37px 32px 0 32px;
     .back {
@@ -238,16 +238,28 @@ outline:none;
     .btn {
       width: 100%;
       display: flex;
-      padding: 0 32px 32px 32px;
+        padding: 0 0 32px 0;
       margin-top: 466px;
       justify-content: center;
     }
     .footer {
-      position: fixed;
-      bottom: 0;
+      // position: fixed;
+      // bottom: 0;
+      // width: 100%;
+      // margin: 2rem;
+      // padding: 32px 24px;
       width: 100%;
-      margin: 2rem;
+      margin: 250px 27px 32px 0px;
     }
   }
+  .footer {
+      // position: fixed;
+      // bottom: 0;
+      // width: 100%;
+      // margin: 2rem;
+      // padding: 32px 24px;
+      width: 39%;
+      margin: 38px 27px 32px 28px;
+    }
 }
 </style>

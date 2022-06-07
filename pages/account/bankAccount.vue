@@ -3,7 +3,7 @@
     <div class="container">
       <div class="back">
         <nuxt-link to="/account/editAccount" class="" exact-active-class="">
-          <img src="../assets/images/leftArrow.svg">
+          <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="title">
@@ -43,7 +43,7 @@
         class="btn"
         @click="
           clicked = true;
-          $router.push('/accountAdded');
+          $router.push('/account/accountAdded');
         "
       >
         <Button :name="title" />
@@ -71,7 +71,7 @@ main {
   }
   width: 100%;
   background: #1e1e1e;
-  padding: 60px 0 30px;
+ padding: 15px 0 20px;
   font-family: "Rubik Regular";
   color: #000;
   font-style: normal;
@@ -126,7 +126,7 @@ main {
         display: none;
       }
       .select {
-        background-image: url("../assets/images/select.svg");
+        background-image: url("~/assets/images/select.svg");
         background-repeat: no-repeat;
         background-position: right center;
         background-position-x: 320px;
@@ -161,7 +161,7 @@ main {
     .btn {
       width: 100%;
       display: flex;
-      padding: 0 32px 32px 32px;
+        padding: 0 0 32px 0;
       margin-top: 418px;
       justify-content: center;
       button {

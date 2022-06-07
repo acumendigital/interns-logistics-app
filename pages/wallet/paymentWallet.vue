@@ -2,7 +2,7 @@
   <main>
     <div class="container">
       <div class="back">
-        <img src="../assets/images/leftArrow.svg">
+        <img src="~/assets/images/leftArrow.svg">
       </div>
       <div class="title">
         <h3>Payment</h3>
@@ -52,7 +52,7 @@ export default {
 main {
   width: 100%;
   background: #1e1e1e;
-  padding: 60px 0 30px;
+ padding: 15px 0 20px;
   font-family: "Rubik Regular";
   color: #000;
   font-style: normal;
@@ -162,7 +162,7 @@ main {
     .btn {
       width: 100%;
       display: flex;
-      padding: 0 32px 32px 32px;
+       padding: 0 0 32px 0;
       margin-top: 540px;
       margin-bottom: 32px;
       justify-content: center;

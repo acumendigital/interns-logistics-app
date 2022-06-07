@@ -2,7 +2,7 @@
   <main>
     <div class="container">
       <div class="back">
-        <img src="../../assets/images/notifications.svg">
+        <img src="~/assets/images/notifications.svg">
       </div>
       <div class="title">
         <div>
@@ -64,6 +64,7 @@ main {
     background: #fff;
     margin: 0 auto;
     max-width:1200px;
+    // max-width: 428px;
     height: 926px;
     padding-top: 37px;
     .back {
@@ -89,7 +90,8 @@ main {
       .btns {
         width: 100%;
         display: flex;
-        padding: 0 32px 32px 32px;
+          // padding: 0 0 32px 0;
+          padding: 0 32px 32px 32px;
         margin: 24px 0;
         align-items: center;
         button {
@@ -148,5 +150,6 @@ main {
     width: 100%;
     padding: 32px 24px;
   }
+   @media screen and(min-width: 800px) {}
 }
 </style>
