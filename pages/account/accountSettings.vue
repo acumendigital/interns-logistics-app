@@ -226,4 +226,18 @@ border-radius: 8px;
     }
   }
 }
+@media screen and (max-width: 500px) {
+  main {
+    .container {
+      .profileDetails{
+        input{
+          width: 100%;
+        }
+      }
+      .bank, .debit{
+        width: 100%
+      }
+      }
+  }
+}
 </style>

@@ -98,10 +98,10 @@ main {
     margin: 0 auto;
     max-width: 428px;
     height: 926px;
-    // padding: 37px 32px 0 32px;
+    padding: 37px 32px 0 32px;
     padding-top: 37px;
     .back {
-      margin: 0 0 37px 32px;
+      margin: 0 0 37px 0px;
       width: 100%;
       display: flex;
       align-items: center;
@@ -160,6 +160,22 @@ line-height: 38px;
        padding: 0 0 32px 0;
       margin-top: 56px;
       justify-content: center;
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  main {
+    .container {
+      .btn {
+        width: 70%;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .back{
+        p{
+          font-size: 14px;
+        }
+      }
     }
   }
 }

@@ -66,7 +66,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .more-details-modal-container{
         background: rgba(0, 0, 0, 0.4);
         position: absolute;

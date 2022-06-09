@@ -187,40 +187,7 @@ main {
         cursor: pointer;
       }
     }
-    .cardDetails {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      label {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 24px;
-      }
-      .date {
-        position: relative;
-        // background: pink;
-        .expire {
-          border: 1px solid #b0b0b0;
-          border-radius: 8px;
-          width: 196px;
-          margin-top: 8px;
-          padding: 20px 30px;
-        }
-        .calendar {
-          position: absolute;
-          top: 49px;
-          left: 16px;
-          cursor: pointer;
-        }
-      }
-      .cvv {
-        border: 1px solid #b0b0b0;
-        border-radius: 8px;
-        width: 132px;
-        margin-top: 8px;
-        padding: 20px 30px;
-      }
-    }
+
     .btn {
       width: 100%;
       display: flex;
@@ -246,5 +213,16 @@ main {
       // margin: 0px 27px 32px 0px;
 
     // }
+}
+@media screen and (max-width: 500px) {
+  main {
+    .container {
+      .profileDetails{
+        input{
+          width: 100%;
+        }
+      }
+      }
+  }
 }
 </style>

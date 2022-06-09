@@ -45,7 +45,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .new-request-modal-container{
         z-index: 3;
         position: absolute;

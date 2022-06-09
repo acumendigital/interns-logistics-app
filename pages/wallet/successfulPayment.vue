@@ -8,7 +8,7 @@
       </div>
       <div class="detail">
         <img src="~/assets/images/success.svg">
-        <p>Payment succeesful!</p>
+        <p>Payment successful!</p>
       </div>
       <div
         class="btn"
@@ -86,6 +86,17 @@ line-height: 28px;
       display: flex;
         padding: 0 0 32px 0;
       justify-content: center;
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  main {
+    .container {
+      .btn {
+        width: 70%;
+        margin-right: auto;
+        margin-left: auto;
+      }
     }
   }
 }
