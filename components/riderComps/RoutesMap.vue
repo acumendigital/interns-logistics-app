@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .map-container{
         width: 85.047vw;
         @include flex-center;

@@ -1,34 +1,32 @@
 <template>
-    <nuxt-link to="/rider/OrderMapView">
-        <div class="track-order-container">
-            <div class="lhs">
-                <div class="vector">
-                    <div class="transparent-circle"></div>
-                    <div class="line"></div>
-                    <div class="filled-circle"></div>
-                </div>
-                <div class="order-details">
-                    <p>Iyana Ipaja, Lagos</p>
-                    <h2>Festac, Lagos</h2>
-                    <p>Nywj-879</p>
-                </div>
-            </div>
-            <div class="rhs">
-                <img src="~/assets/images/chevron-right.svg" alt="right arrow">
-            </div>
-        
+  <nuxt-link to="/rider/OrderMapView">
+    <div class="track-order-container">
+      <div class="lhs">
+        <div class="vector">
+          <div class="transparent-circle" />
+          <div class="line" />
+          <div class="filled-circle" />
         </div>
-    </nuxt-link>
-  
+        <div class="order-details">
+          <p>Iyana Ipaja, Lagos</p>
+          <h2>Festac, Lagos</h2>
+          <p>Nywj-879</p>
+        </div>
+      </div>
+      <div class="rhs">
+        <img src="~/assets/images/chevron-right.svg" alt="right arrow">
+      </div>
+    </div>
+  </nuxt-link>
 </template>
 
 <script>
 export default {
-    name: 'riderOrderCard'
+  name: 'RiderOrderCard'
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 a{
     width: 100%;
     text-decoration: none;
@@ -81,7 +79,7 @@ a{
                 p:nth-child(1){
                     font-weight: 400;
                     font-size: 14px;
-                    line-height: 21px;                
+                    line-height: 21px;
                     color: #949494;
                     margin-bottom: 16px;
                 }
@@ -99,6 +97,6 @@ a{
                 }
             }
         }
-        
+
     }
 </style>
