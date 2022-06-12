@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <main>
     <div class="main">
       <section class="close">
