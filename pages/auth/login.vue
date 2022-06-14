@@ -60,7 +60,7 @@ export default {
               duration: 2500,
               type: 'success',
             })
-          this.$router.push('/')
+          this.$router.push('/home')
           console.log(loginReq);
         } catch (error) {
           this.$toasted.show(

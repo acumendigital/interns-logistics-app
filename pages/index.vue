@@ -1,199 +1,91 @@
-<template lang="">
-  <main>
-    <section class="nav">
-      <TheBellButton />
-    </section>
-    <section class="body">
-      <div class="top">
-        <div class="top-text">
-          <h1>N 12, 000</h1>
-          <p>Wallet Balance</p>
+<template>
+    <div class="desktop-container">
+        <div class="splash-screen-container">
+            <div class="splash-screen-image">
+                <img src="~/assets/images/splash-screen.png" alt="splash screen">
+            </div>
+            <div class="splash-screen-content">
+                <p>
+                    Welcome to the Best way to <strong>send</strong> or <strong>receive</strong> an Item.
+                </p>
+                <p>Send or Recieve Items locally or internationally.</p>
+            </div>
+            <div class="splash-screen-btns">
+                <nuxt-link to="/auth/register" class="nuxt-link-btn">Get Started</nuxt-link>
+                <div class="login-link">
+                    <p>Already have an account?</p>
+                    <nuxt-link to="/auth/login">Login</nuxt-link>
+                </div>
+            </div>
         </div>
-        <div class="top-btns">
-          <div class="add btn">
-            + Add Money
-          </div>
-          <div class="add btn">
-            - Withdraw
-          </div>
-        </div>
-      </div>
-      <div class="break" />
-      <div class="location">
-        <p>Send or Receive Item</p>
-        <div class="cards">
-          <nuxt-link to="/local" class="card">
-            <img src="~assets/images/local.png" alt="">
-            <p>Local</p>
-          </nuxt-link>
-          <nuxt-link to="/international" class="card">
-            <img src="~assets/images/international.png" alt="">
-            <p>International</p>
-          </nuxt-link>
-        </div>
-      </div>
-      <div class="break" />
-      <div class="shipments">
-        <div class="tracking">
-          <div>
-            <input
-              id=""
-              type="search"
-              name="track"
-              placeholder="Enter Tracking Number"
-            >
-            <button>
-              <font-awesome-icon icon="magnifying-glass" />
-            </button>
-          </div>
-        </div>
-        <div>
-          <p>Active Shipments</p>
-          <TheActiveShipment />
-          <TheActiveShipment />
-          <TheActiveShipment />
-          <TheActiveShipment />
-        </div>
-      </div>
-    </section>
-    <section class="footer">
-      <TheBottomNav />
-    </section>
-  </main>
+    </div>
 </template>
+
 <script>
 export default {
-  layout: 'auth-layout'
+    name: "splashScreen"
 }
 </script>
+
 <style lang="scss" scoped>
-main {
-  font-family: "Rubik Regular";
-  .body {
-    .top {
-      display: flex;
-      flex-direction: column;
-      justify-content: left;
-      align-items: left;
-      margin: 0rem 2rem;
-      .top-text {
-        text-align: start;
-        margin: 0.5rem;
-        h1 {
-          font-family: "Rubik Regular";
-          font-size: 40px;
+    .splash-screen-container{
+        font-family: "Rubik Regular";
+        .splash-screen-image{
+            @include flex-center;
         }
-        p {
-          font-size: 14px;
+        .splash-screen-content{
+            padding: 11px 32px 51px;
+            p{
+                &:nth-child(1){
+                    // width: 73.364vw;
+                    font-weight: 400;
+                    font-size: 2.5rem;
+                    line-height: 56px;
+                }
+                &:nth-child(2){
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 21px;
+                }
+            }
         }
-      }
-      .top-btns {
-        display: flex;
-        flex-direction: row;
-        gap: 24px;
-        margin-top: 24px;
-      }
-      .btn {
-        min-width: 100px;
-        height: 24px;
-        border-radius: 8px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 12px;
-        cursor: pointer;
-      }
-      .add {
-        background-color: #ffd60a;
-        color: #000;
-      }
-    }
-    .location {
-      display: flex;
-      flex-direction: column;
-      padding: 1rem 2rem;
-      .cards {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        gap: 32px;
-        margin-top: 1rem;
-        .card {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          text-decoration: none;
-          color: #000;
-          width: 169;
-          height: 230;
-          margin: 1rem 0rem;
-          padding: 1rem 2.3rem;
-          border-radius: 8px;
-          background-color: #fff;
-          border: 1px solid #efefef;
-          img {
-            max-width: 90%;
-            // height: 130px;
-            margin-bottom: 10px;
-          }
-          p {
-            font-size: 14px;
-            margin: 1%;
-          }
+        .splash-screen-btns{
+            padding: 0px 32px 32px;
+            @include flex-center;
+            flex-direction: column;
+            gap: 16px;
+            .nuxt-link-btn{
+                @include active-btn;
+                width: 100%;
+                border: none;
+                outline: none;
+                text-decoration: none;
+                color: black;
+                text-align: center
+            }
+            .login-link{
+                @include flex-center;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 21px;
+                gap: 4px;
+                a{
+                    text-decoration: none;
+                    color: #CC5500;
+                    font-weight: bold;
+                }
+            }
         }
-      }
     }
 
-    .shipments {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      .tracking {
-        margin-left: -3.5rem;
-        margin-bottom: 1rem;
-        input {
-          width: 305px;
-          height: 56px;
-          border-radius: 8px 0px 0px 8px;
-          outline: none;
-          padding: 1rem 2rem;
-          border: 1px solid #dedede;
+    @media (min-width: 1029px) {
+        .desktop-container{
+            @include flex-center;
+            width: 100%
         }
-        button {
-          position: absolute;
-          height: 56px;
-          width: 56px;
-          background-color: #ffd60a;
-          border-radius: 0px 8px 8px 0px;
-          border: 0px;
-          svg {
-            font-size: 20px;
-          }
+        .splash-screen-container{
+            width: 50%;
+            flex-direction: column;
         }
-      }
-      p {
-        color: #575757;
-        padding: 1rem 0rem;
-        font-size: 12px;
-      }
     }
-  }
-  .footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding: 32px 24px;
-  }
-
-  .break {
-    background-color: #ccc;
-    height: 1px;
-    margin: 2rem 0rem;
-  }
-  a {
-    text-decoration: none;
-  }
-}
 </style>
