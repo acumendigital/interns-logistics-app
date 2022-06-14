@@ -1,11 +1,15 @@
 import axios from "axios";
 
 const getCsrfToken = async () => {
-  const request = await axios.get(
-    "https://xyz-logistics-api.herokuapp.com/api/v1/csrf-token"
-  );
-  axios.defaults.headers["X-CSRF-Token"] = request.csrfToken;
-  return request.csrfToken;
+  try {
+    const request = await axios.get(
+      "https://xyz-logistics-api.herokuapp.com/api/v1/csrf-token"
+    );
+    console.log(request);
+    return request.data.csrfToken;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default function ({ $axios, store }, inject, error) {
@@ -30,7 +34,8 @@ export default function ({ $axios, store }, inject, error) {
   $axios.onRequest(async (config) => {
     console.log("Making request to " + config.url);
     const csrfToken = await getCsrfToken();
-    console.log(csrfToken);
-    return Promise.reject(error);
+    $axios.setHeader("X-CSRF-Token", csrfToken);
+    // console.log(csrfToken);
+    return config;
   });
 }

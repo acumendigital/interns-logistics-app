@@ -52,11 +52,25 @@ export default {
   methods:{
     async loginUser(){
       try {
-        const loginReq = await this.$axios.post('/api/v1/auth/signup', this.loginDetails)
+        const loginReq = await this.$axios.post('/api/v1/auth/signin', this.loginDetails)
+          this.$toasted.show('You have logged in successfully', {
+            position: 'top-center',
+            duration: 2500,
+            type: 'success',
+          })
+        this.$router.push('/')
         console.log(loginReq);
       } catch (error) {
-        console.log(error.message);
-      }
+        this.$toasted.show(
+            error,
+            {
+              position: 'top-center',
+              type: 'danger',
+              duration: 3500,
+            }
+          )
+          console.log(error);
+        }
     },
     goToPrev(){
         this.$router.go(-1)

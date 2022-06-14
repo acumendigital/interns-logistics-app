@@ -70,13 +70,14 @@ export default {
           }
         } catch (error) {
           this.$toasted.show(
-            'An error occurred. Please enter the correct details and try again',
+            error,
             {
               position: 'top-center',
               type: 'danger',
               duration: 3500,
             }
           )
+          console.log(error);
         }
         
       }
