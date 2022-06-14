@@ -35,7 +35,7 @@
 //     console.log("Making request to " + config.url);
 //     const csrfToken = await getCsrfToken();
 //     $axios.setHeader("X-CSRF-Token", csrfToken);
-//     // console.log(csrfToken);
+//     console.log(csrfToken);
 //     return config;
 //   });
 // }

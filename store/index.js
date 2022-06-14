@@ -1,9 +1,15 @@
 import axios from "@nuxtjs/axios";
 
-export const state = () => ({});
+export const state = () => ({
+  userDetails: [],
+});
 
-export const mutations = () => {};
+export const mutations = {
+  addUserDetails(state, userDetails) {
+    state.userDetails = userDetails;
+  },
+};
 
-export const actions = () => {};
+export const actions = {};
 
-export const getters = () => {};
+export const getters = {};
