@@ -53,6 +53,7 @@ export default {
     async loginUser(){
       try {
         const loginReq = await this.$axios.post('/api/v1/auth/signin', this.loginDetails)
+        this.$store.commit("addUserDetails", loginReq.data)
           this.$toasted.show('You have logged in successfully', {
             position: 'top-center',
             duration: 2500,
