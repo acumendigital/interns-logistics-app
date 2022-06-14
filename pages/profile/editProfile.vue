@@ -36,28 +36,28 @@
       <div>
         <div class="profileDetails">
           <label>First Name</label>
-          <input type="text">
+          <input v-model="first_name" type="text">
         </div>
         <div class="profileDetails">
           <label>Last Name</label>
-          <input type="text">
+          <input v-model="last_name" type="text">
         </div>
         <div class="profileDetails">
           <label>Phone Number</label>
-          <input type="text">
+          <input v-model="number" type="text">
         </div>
         <div class="profileDetails">
           <label>Email Address</label>
-          <input type="text">
+          <input v-model="email" type="text">
         </div>
         <div class="profileDetails">
           <label>Home Address</label>
-          <input type="text">
+          <input v-model="address" type="text">
         </div>
       </div>
-      <div class="btn">
-      <Button :name="title" />
-    </div>
+      <div class="btn" @click="save()">
+        <Button :name="title" />
+      </div>
     </div>
     </div>
   </main>
@@ -68,7 +68,72 @@ export default {
   name: 'Profile',
   data () {
     return {
-      title: 'Save'
+      title: 'Save',
+      first_name: '',
+      last_name: '',
+      email: '',
+      number: '',
+      address: ''
+    }
+  },
+  created () {
+
+  },
+  methods: {
+    async save () {
+      //   console.log(this.imgSrc)
+      // this.$store.commit('setLoading', true)
+      const data = {
+        first_name: this.first_name,
+        last_name: this.last_name,
+        phone: this.phone_number,
+        logo: this.imgSrc
+      }
+      await this.$axios
+        .patch('/landlord/update', data)
+        .then((res) => {
+          this.$toasted.success(res.data.message).goAway(3000)
+          this.$router.push('/settings')
+        })
+        .catch((err) => {
+          if (
+            err.message.includes(
+              "Cannot read properties of null (reading 'toLowerCase')"
+            ) ||
+            err.message.includes('Network')
+          ) {
+            this.$toasted.error('Check your connection.').goAway(3000)
+          } else {
+            this.$toasted.error(err.response.data.message).goAway(3000)
+          }
+        })
+      let passData
+      if (this.new_password) {
+        passData = {
+          newPassword: this.new_password,
+          password: this.old_password
+        }
+
+        await this.$axios
+          .patch('/landlord/update_password', passData)
+          .then((res) => {
+            // console.log(res)
+            this.$toasted.success(res.data.message).goAway(3000)
+            this.$router.push('/settings')
+          })
+          .catch((err) => {
+            if (
+              err.message.includes(
+                "Cannot read properties of null (reading 'toLowerCase')"
+              ) ||
+              err.message.includes('Network')
+            ) {
+              this.$toasted.error('Check your connection.').goAway(3000)
+            } else {
+              this.$toasted.error(err.response.data.message).goAway(3000)
+            }
+          })
+      }
     }
   }
 }

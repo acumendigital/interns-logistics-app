@@ -45,23 +45,23 @@
               "
             >
           </div>
-          <input type="text">
+          <input v-model="first_name" type="text">
         </div>
         <div class="profileDetails">
           <label>Last Name</label>
-          <input type="text">
+          <input v-model="last_name" type="text">
         </div>
         <div class="profileDetails">
           <label>Phone Number</label>
-          <input type="text">
+          <input v-model="number" type="text">
         </div>
         <div class="profileDetails">
           <label>Email Address</label>
-          <input type="text">
+          <input v-model="email" type="text">
         </div>
         <div class="profileDetails">
           <label>Home Address</label>
-          <input type="text">
+          <input v-model="address" type="text">
         </div>
       </div>
       <section class="footer">
@@ -80,7 +80,32 @@ export default {
   data () {
     return {
       title: 'Save',
-      clicked: false
+      clicked: false,
+      first_name: '',
+      last_name: '',
+      email: '',
+      number: '',
+      address: ''
+
+    }
+  },
+  created () {
+    this.getUserdetails()
+  },
+  methods: {
+    async getUserdetails () {
+      const promise = await this.$axios.get(`https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/${this.$route.query.id}`)
+      const response = promise
+      console.log(response.data)
+      if (promise) {
+        console.log(response.data)
+      }
+      // this.$store.commit('setUserInfo', response.data.data)
+      // this.first_name = response.data.data.first_name
+      // this.last_name = response.data.data.last_name
+      // this.email = response.data.data.email
+      // this.number = response.data.data.phone
+      // this.address = response.data.data.logo
     }
   }
 }
