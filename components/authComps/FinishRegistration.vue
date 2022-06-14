@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="submit-btn">
-        <button @click="finishRegistrationHandler">Finish</button>
+        <button @click="finishRegistrationHandler" :class="{ loading : loading }">Finish <span v-show="loading"><img src="~/assets/images/loader.svg" alt="loader"></span></button>
     </div>
   </div>
 </template>
@@ -34,12 +34,19 @@ export default {
                 lastname: "",
                 address1: "",
                 phone_number: "",
-            }
+            },
         }
     },
     methods:{
         finishRegistrationHandler(){
-            this.$emit("finish-registration", this.finishRegData);
+            if(!this.loading){
+                this.$emit("finish-registration", this.finishRegData);
+            }
+        }
+    },
+    computed:{
+        loading(){
+            return this.$store.state.loading
         }
     }
 }
@@ -70,6 +77,21 @@ export default {
                 border: none;
                 outline: none;
                 width: 100%;
+            }
+            .loading{
+              @include flex-center;
+              position: relative;
+              background: grey;
+              color: white;
+                span{
+                  position: absolute;
+                  right: 5px;
+                  bottom: 5px;
+                  img{
+                    width: 20px;
+                    height: 20px;
+                  }
+                }
             }
         }
     }

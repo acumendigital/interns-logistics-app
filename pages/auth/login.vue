@@ -33,7 +33,7 @@
           </div>
       </div>
       <div class="continue-btn">
-          <button @click="loginUser">Continue</button>
+          <button @click="loginUser" :class="{ loading : loading }">Continue <span v-show="loading"><img src="~/assets/images/loader.svg" alt="loader"></span></button>
       </div>
     </div>
   </div>
@@ -46,36 +46,43 @@ export default {
       loginDetails:{
         email: "",
         password: ""
-      }
+      },
     }
   },
   methods:{
     async loginUser(){
-      try {
-        const loginReq = await this.$axios.post('/api/v1/auth/signin', this.loginDetails)
-        this.$store.commit("addUserDetails", loginReq.data)
-          this.$toasted.show('You have logged in successfully', {
-            position: 'top-center',
-            duration: 2500,
-            type: 'success',
-          })
-        this.$router.push('/')
-        console.log(loginReq);
-      } catch (error) {
-        this.$toasted.show(
-            error,
-            {
+      if(!this.loading){
+        try {
+          const loginReq = await this.$axios.post('/api/v1/auth/signin', this.loginDetails)
+          this.$store.commit("addUserDetails", loginReq.data)
+            this.$toasted.show('You have logged in successfully', {
               position: 'top-center',
-              type: 'danger',
-              duration: 3500,
-            }
-          )
-          console.log(error);
-        }
+              duration: 2500,
+              type: 'success',
+            })
+          this.$router.push('/')
+          console.log(loginReq);
+        } catch (error) {
+          this.$toasted.show(
+              error,
+              {
+                position: 'top-center',
+                type: 'danger',
+                duration: 3500,
+              }
+            )
+            console.log(error);
+          }
+      }
     },
     goToPrev(){
         this.$router.go(-1)
       }
+  },
+  computed:{
+    loading(){
+      return this.$store.state.loading
+    }
   }
 };
 </script>
@@ -152,6 +159,21 @@ export default {
             }
             .disabled{
                 background: grey;
+            }
+            .loading{
+              @include flex-center;
+              position: relative;
+              background: grey;
+              color: white;
+                span{
+                  position: absolute;
+                  right: 5px;
+                  bottom: 5px;
+                  img{
+                    width: 20px;
+                    height: 20px;
+                  }
+                }
             }
         }
   }
