@@ -1,6 +1,6 @@
 <template lang="">
   <div class="bottom-nav">
-    <nuxt-link to="/" :class="home ? 'button' : 'dead'">
+    <nuxt-link to="/home" :class="home ? 'button' : 'dead'">
       <img v-show="home" src="~assets/images/home-dark.png" alt="" />
       <img v-show="!home" src="~assets/images/home-light.png" alt="" />
       <p v-show="home">Home</p>
@@ -33,7 +33,7 @@ export default {
   },
   created() {
     switch (this.route.name) {
-      case "index":
+      case "home":
         this.home = true;
         break;
 

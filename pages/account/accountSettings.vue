@@ -17,7 +17,7 @@
           <p>Profile Settings</p>
         </nuxt-link>
         <nuxt-link
-          to="/accountSettings"
+          to="/account/accountSettings"
           :class="[
             'kemi',
             $route.name.includes('accountSettings')
@@ -42,7 +42,7 @@
       </div>
       <div class="profileDetails debit">
         <label>Add a debit card</label>
-        <nuxt-link to="/card" class="" exact-active-class="">
+        <nuxt-link to="/account/card" class="" exact-active-class="">
           <img src="~/assets/images/next.svg">
         </nuxt-link>
       </div>
