@@ -1,6 +1,6 @@
 <template lang="">
   <main class="top-nav">
-    <nuxt-link to="/store"> <font-awesome-icon icon="bell" /></nuxt-link>
+    <nuxt-link to=""> <font-awesome-icon icon="bell" /></nuxt-link>
   </main>
 </template>
 <script>
