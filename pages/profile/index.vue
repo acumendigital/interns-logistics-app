@@ -20,9 +20,7 @@
           to="/account"
           :class="[
             'kemi',
-            $route.name.includes('account')
-              ? 'nuxt-link-exact-active'
-              : '',
+            $route.name.includes('account') ? 'nuxt-link-exact-active' : '',
           ]"
           exact-active-class=""
         >
@@ -81,12 +79,16 @@ export default {
     return {
       title: 'Save',
       clicked: false,
-      first_name: '',
+      // first_name: this.userDetails.firstname,
       last_name: '',
       email: '',
       number: '',
       address: ''
-
+    }
+  },
+  computed: {
+    userDetails () {
+      return this.$store.state.userDetails
     }
   },
   created () {
@@ -94,13 +96,15 @@ export default {
   },
   methods: {
     async getUserdetails () {
-      const promise = await this.$axios.get(`https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/${this.$route.query.id}`)
+      const promise = await this.$axios.get(
+        `https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/${this.$route.query.id}`
+      )
       const response = promise
       console.log(response.data)
       if (promise) {
         console.log(response.data)
       }
-      // this.$store.commit('setUserInfo', response.data.data)
+      // this.$store.commit('userDetails', response.data.data)
       // this.first_name = response.data.data.first_name
       // this.last_name = response.data.data.last_name
       // this.email = response.data.data.email
@@ -184,10 +188,10 @@ main {
     .profileDetails {
       margin-bottom: 32px;
       position: relative;
-      .pencil{
+      .pencil {
         display: flex;
         justify-content: space-between;
-        img{
+        img {
           cursor: pointer;
         }
       }
@@ -199,7 +203,7 @@ main {
       input {
         background: #f4f4f4;
         border-radius: 8px;
-        outline:none;
+        outline: none;
         width: 364px;
         border-style: none;
         padding: 20px;
@@ -216,38 +220,37 @@ main {
     .btn {
       width: 100%;
       display: flex;
-        padding: 0 0 32px 0;
+      padding: 0 0 32px 0;
       margin-top: 466px;
       justify-content: center;
     }
     .footer {
-       width: 100%;
+      width: 100%;
       margin: 0 0 32px 0;
-
     }
   }
   // .footer {
-      // position: fixed;
-      // bottom: 20px;
-      // bottom: 130px;
-      //  width: 19%;
-      //  width: 100%;
-      //  width: 100%;
-      // left: 40.5%;
-      // background: red;
-      // margin: 0px 27px 32px 0px;
+  // position: fixed;
+  // bottom: 20px;
+  // bottom: 130px;
+  //  width: 19%;
+  //  width: 100%;
+  //  width: 100%;
+  // left: 40.5%;
+  // background: red;
+  // margin: 0px 27px 32px 0px;
 
-    // }
+  // }
 }
 @media screen and (max-width: 500px) {
   main {
     .container {
-      .profileDetails{
-        input{
+      .profileDetails {
+        input {
           width: 100%;
         }
       }
-      }
+    }
   }
 }
 </style>
