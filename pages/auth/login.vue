@@ -62,7 +62,7 @@ export default {
               type: 'success',
             })
           this.$router.push('/home')
-          console.log(loginReq);
+          console.log(loginReq, loginReq.data.data.user, loginReq.data.data.token);
         } catch (error) {
           this.$toasted.show(
               error,
