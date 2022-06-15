@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-container">
     <!-- <h2>Orders</h2>
     <p>Manage all your dispatchers, assign orders, and track orders here.</p>
     <div>
