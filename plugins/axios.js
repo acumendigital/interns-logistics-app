@@ -17,6 +17,7 @@ export default function ({ $axios, store }, inject, error) {
 
   $axios.onRequest(async (config) => {
     store.commit("updateLoadState", true);
+    $axios.setHeader("Authorization", `Bearer ${store.state.token}`);
     return config;
   });
 
