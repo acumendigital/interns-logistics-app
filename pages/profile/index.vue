@@ -95,17 +95,20 @@ export default {
   },
   methods: {
     async getUserdetails () {
-      const requestPromise = await fetch('https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/62a85c36f43605272c9690dd')
-      const requestJson = requestPromise.json()
-      requestJson.then((response) => {
-        console.log(response)
-      }
+      const response = await this.$axios.get(`https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/${this.$store.state.userDetails._id}`
       )
-      // this.$store.commit('addUserDetails', request.data)
+      console.log(response.data.data)
+      this.first_name = response.data.data.firstname
+      this.last_name = response.data.data.lastname
+      this.email = response.data.data.email
+      this.number = response.data.data.phone_number
+      this.address = response.data.data.address.primary
     }
-  }
 
+    // this.$store.commit('addUserDetails', request.data)
+  }
 }
+
 </script>
 <style lang="scss" scoped>
 main {

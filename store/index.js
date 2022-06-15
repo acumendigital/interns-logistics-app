@@ -17,7 +17,8 @@ export const plugins = getPlugins()
 
 export const state = () => ({
   userDetails: [],
-  loading: false
+  loading: false,
+  token: ''
 })
 
 export const mutations = {
@@ -26,6 +27,9 @@ export const mutations = {
   },
   updateLoadState (state, loadBool) {
     state.loading = loadBool
+  },
+  setToken (state, token) {
+    state.token = token
   }
 }
 

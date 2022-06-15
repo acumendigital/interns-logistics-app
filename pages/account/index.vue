@@ -2,7 +2,7 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="#" class="" exact-active-class="">
+        <nuxt-link to="/account" class="" exact-active-class="">
           <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
@@ -17,7 +17,7 @@
           <p>Profile Settings</p>
         </nuxt-link>
         <nuxt-link
-          to="#"
+          to="/account"
           :class="[
             'kemi',
             $route.name.includes('account')
@@ -30,20 +30,11 @@
         </nuxt-link>
       </div>
       <div class="profileDetails">
-        <div class="pencil">
-          <label>Password</label>
-          <img
-            src="~/assets/images/pencil.svg"
-            @click="
-              clicked = true;
-              $router.push('/account/editAccount');
-            "
-          >
-        </div>
-        <input type="text" placeholder="Old Password">
+        <label>Password</label>
+        <input v-model="oldPassword" type="text" placeholder="Old Password">
       </div>
       <div class="profileDetails">
-        <input type="text" placeholder="New Password">
+        <input v-model="newPassword" type="text" placeholder="New Password">
       </div>
       <div
         class="profileDetails debit"
@@ -65,14 +56,10 @@
         <label>Add a bank account</label>
         <img src="~/assets/images/next.svg">
       </div>
-      <section class="footer">
-        <TheBottomNav />
-      </section>
+      <div class="btn" @click="save()">
+        <Button :name="title" />
+      </div>
     </div>
-
-    <!-- <section class="footer">
-      <TheBottomNav />
-    </section> -->
     </div>
   </main>
 </template>
@@ -83,7 +70,47 @@ export default {
   data () {
     return {
       title: 'Save',
-      clicked: false
+      oldPassword: '',
+      newPassword: ''
+    }
+  },
+  methods: {
+    async save () {
+      const data = {
+        oldPassword: this.oldPassword,
+        password: this.newPassword,
+        phone_number: this.number,
+        email: this.email,
+        address: this.address
+      }
+      try {
+        if (
+          this.oldPassword !== '' ||
+            this.newPassword !== ''
+        ) {
+          const request = await this.$axios
+            .put('https://xyz-logistics-api.herokuapp.com/api/v1/user/change-password', data)
+          this.$toasted.show('You have changed your password successfully', {
+            position: 'top-center',
+            duration: 2500,
+            type: 'success'
+          })
+          this.$router.push('/auth/login')
+          if (request) {
+            console.log(request)
+          }
+        }
+      } catch (error) {
+        this.$toasted.show(
+          error,
+          {
+            position: 'top-center',
+            type: 'danger',
+            duration: 3500
+          }
+        )
+        console.log(error)
+      }
     }
   }
 }
@@ -109,7 +136,6 @@ main {
     background: #fff;
     margin: 0 auto;
     max-width: 428px;
-    //  max-width:1200px;
     height: 926px;
     padding: 37px 32px 0 32px;
     .back {
@@ -140,6 +166,7 @@ padding: 2px 8px;
 
       }
     }
+
     .debit{
         display: flex;
         justify-content: space-between;
@@ -182,11 +209,11 @@ border-radius: 8px;
       input {
         background: #F4F4F4;
 border-radius: 8px;
-outline:none;
         width: 364px;
         border-style: none;
         padding: 20px;
         margin-top: 8px;
+        outline:none;
       }
       ::placeholder{
           font-weight: 400;
@@ -201,33 +228,54 @@ outline:none;
         cursor: pointer;
       }
     }
+    .cardDetails {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      label {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+      }
+      .date {
+        position: relative;
+        // background: pink;
+        .expire {
+          border: 1px solid #b0b0b0;
+          border-radius: 8px;
+          width: 196px;
+          margin-top: 8px;
+          padding: 20px 30px;
+        }
+        .calendar {
+          position: absolute;
+          top: 49px;
+          left: 16px;
+          cursor: pointer;
+        }
+      }
+      .cvv {
+        border: 1px solid #b0b0b0;
+        border-radius: 8px;
+        width: 132px;
+        margin-top: 8px;
+        padding: 20px 30px;
+      }
+    }
     .btn {
       width: 100%;
       display: flex;
-        padding: 0 0 32px 0;
-      margin-top: 466px;
-       background: red;
+      padding: 0 0 32px 0;
+      margin-top: 266px;
       justify-content: center;
     }
     .footer {
-      // position: fixed;
-      // bottom: 0;
-      // width: 100%;
-      // margin: 2rem;
-      // padding: 32px 24px;
+      position: fixed;
+      bottom: 0;
       width: 100%;
-      margin: 250px 27px 32px 0px;
+      margin: 2rem;
     }
   }
-  .footer {
-      // position: fixed;
-      // bottom: 0;
-      // width: 100%;
-      // margin: 2rem;
-      // padding: 32px 24px;
-      width: 39%;
-      margin: 38px 27px 32px 28px;
-    }
 }
 @media screen and (max-width: 500px) {
   main {
@@ -240,8 +288,11 @@ outline:none;
       .bank, .debit{
         width: 100%
       }
-      .footer{
-        margin-top: 200px;
+      .btn {
+        width: 70%;
+         margin-top: 200px;
+        margin-right: auto;
+        margin-left: auto;
       }
       }
   }

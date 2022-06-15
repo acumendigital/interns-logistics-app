@@ -54,14 +54,15 @@ export default {
       if(!this.loading){
         try {
           const loginReq = await this.$axios.post('/api/v1/auth/signin', this.loginDetails)
-          this.$store.commit("addUserDetails", loginReq.data)
+          this.$store.commit("addUserDetails", loginReq.data.data.user)
+          this.$store.commit("setToken", loginReq.data.data.token)
             this.$toasted.show('You have logged in successfully', {
               position: 'top-center',
               duration: 2500,
               type: 'success',
             })
           this.$router.push('/home')
-          console.log(loginReq);
+          console.log(loginReq, loginReq.data.data.user, loginReq.data.data.token);
         } catch (error) {
           this.$toasted.show(
               error,

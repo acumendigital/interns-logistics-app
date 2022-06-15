@@ -40,11 +40,11 @@
         </div>
         <div class="profileDetails">
           <label>Last Name</label>
-          <input v-model="last_name" type="text" disabled>
+          <input v-model="last_name" type="text">
         </div>
         <div class="profileDetails">
           <label>Phone Number</label>
-          <input v-model="number" type="text" disabled>
+          <input v-model="number" type="text">
         </div>
         <div class="profileDetails">
           <label>Email Address</label>
@@ -55,7 +55,6 @@
           <input
             v-model="address"
             type="text"
-            disabled
           >
         </div>
       </div>
@@ -77,49 +76,45 @@ export default {
       last_name: '',
       email: '',
       number: '',
-      address: ''
+      address: '',
+      kemiData: {}
     }
   },
-  computed: {
-    userDetails () {
-      return this.$store.state.userDetails
-    }
-  },
+  // computed: {
+  //   userDetails () {
+  //     return this.$store.state.userDetails
+  //   }
+  // },
   created () {
     this.getUserdetails()
   },
   methods: {
     async getUserdetails () {
-      const requestPromise = await fetch(`https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/${this.$route.query.id}`)
-      const requestJson = requestPromise.json()
-      requestJson.then((response) => {
-        console.log(response)
-      }
+      const response = await this.$axios.get(`https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/${this.$store.state.userDetails._id}`
       )
+      console.log(response.data.data)
+      this.first_name = response.data.data.firstname
+      this.last_name = response.data.data.lastname
+      this.email = response.data.data.email
+      this.number = response.data.data.phone_number
+      this.address = response.data.data.address.primary
+    },
+    async save () {
+      const data = {
+        firstname: this.first_name,
+        lastname: this.last_name,
+        phone_number: this.number,
+        email: this.email,
+        address: this.address
+      }
+
+      const request = await this.$axios
+        .patch('https://xyz-logistics-api.herokuapp.com/api/v1/user/me', data)
+      // this.$router.push('/profile/editProfile')
+      if (request) {
+        console.log(request)
+      }
     }
-    // async save () {
-    //   const request = await this.$axios
-    //     .patch('https://xyz-logistics-api.herokuapp.com/api/v1/user/me')
-    //     .then((res) => {
-    //       this.$toasted.success(res.data.message).goAway(3000)
-    //       this.$router.push('/profile/editProfile')
-    //     })
-    //     .catch((err) => {
-    //       if (
-    //         err.message.includes(
-    //           "Cannot read properties of null (reading 'toLowerCase')"
-    //         ) ||
-    //         err.message.includes('Network')
-    //       ) {
-    //         this.$toasted.error('Check your connection.').goAway(3000)
-    //       } else {
-    //         this.$toasted.error(err.response.data.message).goAway(3000)
-    //       }
-    //     })
-    //   if (request.data) {
-    //     console.log(request.data)
-    //   }
-    // }
   }
 }
 </script>
