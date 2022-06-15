@@ -43,23 +43,27 @@
               "
             >
           </div>
-          <input v-model="first_name" type="text">
+          <input v-model="first_name" type="text" disabled>
         </div>
         <div class="profileDetails">
           <label>Last Name</label>
-          <input v-model="last_name" type="text">
+          <input v-model="last_name" type="text" disabled>
         </div>
         <div class="profileDetails">
           <label>Phone Number</label>
-          <input v-model="number" type="text">
+          <input v-model="number" type="text" disabled>
         </div>
         <div class="profileDetails">
           <label>Email Address</label>
-          <input v-model="email" type="text">
+          <input v-model="email" type="text" disabled>
         </div>
         <div class="profileDetails">
           <label>Home Address</label>
-          <input v-model="address" type="text">
+          <input
+            v-model="address"
+            type="text"
+            disabled
+          >
         </div>
       </div>
       <section class="footer">
@@ -79,16 +83,11 @@ export default {
     return {
       title: 'Save',
       clicked: false,
-      // first_name: this.userDetails.firstname,
+      first_name: '',
       last_name: '',
       email: '',
       number: '',
       address: ''
-    }
-  },
-  computed: {
-    userDetails () {
-      return this.$store.state.userDetails
     }
   },
   created () {
@@ -96,22 +95,16 @@ export default {
   },
   methods: {
     async getUserdetails () {
-      const promise = await this.$axios.get(
-        `https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/${this.$route.query.id}`
-      )
-      const response = promise
-      console.log(response.data)
-      if (promise) {
-        console.log(response.data)
+      const requestPromise = await fetch('https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/62a85c36f43605272c9690dd')
+      const requestJson = requestPromise.json()
+      requestJson.then((response) => {
+        console.log(response)
       }
-      // this.$store.commit('userDetails', response.data.data)
-      // this.first_name = response.data.data.first_name
-      // this.last_name = response.data.data.last_name
-      // this.email = response.data.data.email
-      // this.number = response.data.data.phone
-      // this.address = response.data.data.logo
+      )
+      // this.$store.commit('addUserDetails', request.data)
     }
   }
+
 }
 </script>
 <style lang="scss" scoped>
