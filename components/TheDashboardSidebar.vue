@@ -34,7 +34,7 @@
     </div>
     <transition>
       <div class="order-items" v-if="orderDropDownIsVisible">
-        <NuxtLink to="/admin/orders/active-order">
+        <NuxtLink to="/admin/orders">
         <h2>Active Orders</h2>
         </NuxtLink>
         <NuxtLink to="/admin/orders/delivered">
