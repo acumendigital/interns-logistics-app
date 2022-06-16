@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/orders/track-order", {data:[{}],fetch:{},mutations:[]});

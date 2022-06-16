@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <main>
     <div class="main">
       <section class="close">
@@ -36,6 +36,7 @@
                   type="text"
                   name="pickup"
                   placeholder="Choose drop-off location"
+                  v-model="requestDelivery.delivery_address"
                 />
               </div>
             </div>
@@ -78,7 +79,7 @@
         <div class="input">
           <p>Contact Information (Sender)</p>
 
-          <input type="text" name="pickup" value="First Name" /><input
+          <input type="text" name="pickup" placeholder="First Name" /><input
             type="number"
             name="pickup"
             placeholder="+xxx (xxx)-xxx-xxxx"
@@ -89,19 +90,21 @@
             name="pickup"
             placeholder="Choose pick-up location"
             value="Email Address"
+            v-model="requestDelivery.pickup_address"
           />
         </div>
         <div class="receiver">
           <div class="input">
             <p>Contact Information (Receiver)</p>
 
-            <input type="text" name="pickup" value="First Name" />
+            <input type="text" name="pickup" placeholder="First Name" v-model="requestDelivery.receiver" />
             <input
               type="number"
               name="pickup"
               placeholder="+xxx (xxx)-xxx-xxxx"
               value="Phone Number"
               min="0"
+              v-model="requestDelivery.receiver_phone"
             /><input
               type="email"
               name="pickup"
@@ -127,12 +130,18 @@
       </section>
       <div class="desc">
         <p>Package Description</p>
-        <div class="desc-text">
-          <input type="text" value="Select Package" />
-          <input type="text" value="More Description" />
+        <div class="package-description">
+          <select name="package" id="package" v-model="requestDelivery.weight">
+            <option value="package1" selected disabled>Select Package</option>
+            <option value="2.5"><img src="~/assets/images/select-box.svg" alt="box"> Small (30 x 25 cm)</option>
+            <option value="3.5"><img src="~/assets/images/select-box.svg" alt="box"> Medium (30 x 25 cm)</option>
+            <option value="5"><img src="~/assets/images/select-box.svg" alt="box"> Big (30 x 25 cm)</option>
+            <option value="7.5"><img src="~/assets/images/select-box.svg" alt="box"> Large (30 x 25 cm)</option>
+          </select>
         </div>
+        <input type="text" class="name of package?" v-model="requestDelivery.name">
       </div>
-      <button class="payment-btn">Continue to Payment</button>
+      <button class="payment-btn" @click="requestDeliveryHandler">Continue to Payment</button>
     </div>
   </main>
 </template>
@@ -144,6 +153,15 @@ export default {
       isActive: true,
       send: true,
       receive: false,
+      requestDelivery: {
+        name: "",
+        receiver: "",
+        receiver_phone: "",
+        weight: "",
+        pickup_address: "",
+        delivery_address: "",
+        deliveryType: "pickup"
+      }
     };
   },
   methods: {
@@ -155,6 +173,28 @@ export default {
       this.receive = true;
       this.send = false;
     },
+    async requestDeliveryHandler(){
+      try {
+        const deliveryReq = await this.$axios.post(`/api/v1/request`, this.requestDelivery);
+        this.$toasted.show("Request Successfully made", {
+          position: 'top-center',
+          duration: 2500,
+          type: 'success',
+        })
+        console.log(deliveryReq); 
+      } catch (error) {
+        this.$toasted.show(
+          error,
+          {
+            position: 'top-center',
+            type: 'danger',
+            duration: 3500,
+          }
+        )
+        console.log(error.message);
+      }
+      
+    }
   },
 };
 </script>
@@ -234,11 +274,21 @@ main {
   // Package Description
   .desc {
     @include form-header();
-    .desc-text {
-      @include input-box();
+    .package-description {
+      @include select-field;
+    }
+    .more-description{
+      @include input-box;
     }
     input {
       margin-bottom: 2rem;
+      height: 55px;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #b0b0b0;
+      outline: none;
+      padding: 1rem 2.5rem;
+      margin-top: 16px;
     }
   }
 

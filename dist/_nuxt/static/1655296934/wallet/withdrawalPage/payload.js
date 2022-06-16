@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/wallet/withdrawalPage", {data:[{}],fetch:{},mutations:[]});
