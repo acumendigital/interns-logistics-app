@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/admin/orders/cancelled", {data:[{}],fetch:{},mutations:[]});

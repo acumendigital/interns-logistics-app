@@ -26,8 +26,8 @@ export default function ({ $axios, store }, inject, error) {
     return config;
   });
 
-  $axios.onError((config) => {
+  $axios.onError((config, error) => {
     store.commit("updateLoadState", false);
-    return config;
+    return error;
   });
 }
