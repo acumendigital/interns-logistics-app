@@ -105,7 +105,6 @@ export default {
       this.address = response.data.data.address.primary
     }
 
-    // this.$store.commit('addUserDetails', request.data)
   }
 }
 
