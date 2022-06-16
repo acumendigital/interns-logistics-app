@@ -83,33 +83,28 @@ export default {
         email: this.email,
         address: this.address
       }
-      try {
-        if (
-          this.oldPassword !== '' ||
+      if (
+        this.oldPassword !== '' ||
             this.newPassword !== ''
-        ) {
-          const request = await this.$axios
-            .put('https://xyz-logistics-api.herokuapp.com/api/v1/user/change-password', data)
+      ) {
+        const request = await this.$axios
+          .put('https://xyz-logistics-api.herokuapp.com/api/v1/user/change-password', data)
+
+        if (request.status === 200) {
+          console.log(request)
           this.$toasted.show('You have changed your password successfully', {
             position: 'top-center',
-            duration: 2500,
+            duration: 2000,
             type: 'success'
           })
           this.$router.push('/auth/login')
-          if (request) {
-            console.log(request)
-          }
-        }
-      } catch (error) {
-        this.$toasted.show(
-          error,
-          {
+        } else if (request.status !== 200) {
+          this.$toasted.show('Your current password is incorrect', {
             position: 'top-center',
-            type: 'danger',
-            duration: 3500
-          }
-        )
-        console.log(error)
+            duration: 3000,
+            type: 'danger'
+          })
+        }
       }
     }
   }

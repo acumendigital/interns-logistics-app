@@ -100,19 +100,26 @@ export default {
       this.address = response.data.data.address.primary
     },
     async save () {
+      const formData = new FormData()
       const data = {
         firstname: this.first_name,
         lastname: this.last_name,
         phone_number: this.number,
         email: this.email,
-        address: this.address
+        address2: this.address
       }
-
+      formData.set('data', JSON.stringify(data))
       const request = await this.$axios
-        .patch('https://xyz-logistics-api.herokuapp.com/api/v1/user/me', data)
-      // this.$router.push('/profile/editProfile')
+        .put('https://xyz-logistics-api.herokuapp.com/api/v1/user/me', formData)
+      this.$toasted.show('profile updated successfully', {
+        position: 'top-center',
+        duration: 2000,
+        type: 'success'
+      })
+      this.$router.push('/profile')
       if (request) {
         console.log(request)
+        console.log(formData.get('data'))
       }
     }
   }
