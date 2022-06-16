@@ -22,7 +22,7 @@
                 name="pickup"
                 placeholder="Choose pick-up location"
               />
-              <the-select-place />
+              <!-- <the-select-place /> -->
             </div>
           </div>
           <div class="input">

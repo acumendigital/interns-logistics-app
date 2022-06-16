@@ -34,7 +34,7 @@ export default {
             @include flex-center;
             img{
                 width: 100vw;
-                height: 50%;
+                height: 40%;
                 object-fit: contain;
             }
         }
