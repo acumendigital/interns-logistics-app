@@ -32,6 +32,11 @@ export default {
         font-family: "Rubik Regular";
         .splash-screen-image{
             @include flex-center;
+            img{
+                width: 100vw;
+                height: 50%;
+                object-fit: contain;
+            }
         }
         .splash-screen-content{
             padding: 11px 32px 51px;

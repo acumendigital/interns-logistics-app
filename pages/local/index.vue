@@ -2,7 +2,7 @@
   <main>
     <div class="main">
       <section class="close">
-        <nuxt-link to="/"> <font-awesome-icon icon="x" /></nuxt-link>
+        <nuxt-link to="/home"> <font-awesome-icon icon="x" /></nuxt-link>
       </section>
       <section class="toggle">
         <p :class="send ? 'active' : 'inactive'" @click="toggleSend">Send</p>
@@ -22,6 +22,7 @@
                 name="pickup"
                 placeholder="Choose pick-up location"
               />
+              <the-select-place />
             </div>
           </div>
           <div class="input">
@@ -81,7 +82,7 @@
 
           <input type="text" name="pickup" placeholder="First Name" /><input
             type="number"
-            name="pickup"
+            name="first name"
             placeholder="+xxx (xxx)-xxx-xxxx"
             value="Phone Number"
             min="0"
@@ -131,22 +132,25 @@
       <div class="desc">
         <p>Package Description</p>
         <div class="package-description">
-          <select name="package" id="package" v-model="requestDelivery.weight">
+          <select name="package" id="package" v-model="requestDelivery.package_type">
             <option value="package1" selected disabled>Select Package</option>
-            <option value="2.5"><img src="~/assets/images/select-box.svg" alt="box"> Small (30 x 25 cm)</option>
-            <option value="3.5"><img src="~/assets/images/select-box.svg" alt="box"> Medium (30 x 25 cm)</option>
-            <option value="5"><img src="~/assets/images/select-box.svg" alt="box"> Big (30 x 25 cm)</option>
-            <option value="7.5"><img src="~/assets/images/select-box.svg" alt="box"> Large (30 x 25 cm)</option>
+            <option value="Small"><img src="~/assets/images/select-box.svg" alt="box"> Small (30 x 25 cm)</option>
+            <option value="Medium"><img src="~/assets/images/select-box.svg" alt="box"> Medium (30 x 25 cm)</option>
+            <option value="Big"><img src="~/assets/images/select-box.svg" alt="box"> Big (30 x 25 cm)</option>
+            <option value="Large"><img src="~/assets/images/select-box.svg" alt="box"> Large (30 x 25 cm)</option>
           </select>
         </div>
-        <input type="text" class="name of package?" v-model="requestDelivery.name">
+        <input type="text" placeholder="name of package?" v-model="requestDelivery.name">
+        <input type="text" placeholder="Weight (Kg)" v-model.number="requestDelivery.weight">
       </div>
       <button class="payment-btn" @click="requestDeliveryHandler">Continue to Payment</button>
     </div>
   </main>
 </template>
 <script>
+import TheSelectPlace from '~/components/TheSelectPlace.vue';
 export default {
+  components: { TheSelectPlace },
   data() {
     return {
       previewImage: [],
@@ -157,9 +161,10 @@ export default {
         name: "",
         receiver: "",
         receiver_phone: "",
-        weight: "",
+        weight: 0,
         pickup_address: "",
         delivery_address: "",
+        package_type: "",
         deliveryType: "pickup"
       }
     };
@@ -176,7 +181,7 @@ export default {
     async requestDeliveryHandler(){
       try {
         const deliveryReq = await this.$axios.post(`/api/v1/request`, this.requestDelivery);
-        this.$toasted.show("Request Successfully made", {
+        this.$toasted.show(deliveryReq.data.message, {
           position: 'top-center',
           duration: 2500,
           type: 'success',
@@ -184,7 +189,7 @@ export default {
         console.log(deliveryReq); 
       } catch (error) {
         this.$toasted.show(
-          error,
+          error.response.data.message,
           {
             position: 'top-center',
             type: 'danger',

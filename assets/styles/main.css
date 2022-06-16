@@ -77,6 +77,43 @@
   src: url("../fonts/Inter-Medium.otf") format("embedded-opentype"),
     url("../fonts/Inter-Medium.otf") format("truetype");
 }
+/* DM Sans Font */
+@font-face {
+  font-family: "DM Sans Bold";
+  src: url("../fonts/DMSans-Bold.ttf");
+  src: url("../fonts/DMSans-Bold.ttf") format("embedded-opentype"),
+    url("../fonts/DMSans-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "DM Sans BoldItalic";
+  src: url("../fonts/DMSans-BoldItalic.ttf");
+  src: url("../fonts/DMSans-BoldItalic.ttf") format("embedded-opentype"),
+    url("../fonts/DMSans-BoldItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "DM Sans Italic";
+  src: url("../fonts/DMSans-Italic.ttf");
+  src: url("../fonts/DMSans-Italic.ttf") format("embedded-opentype"),
+    url("../fonts/DMSans-Italic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "DM Sans Medium";
+  src: url("../fonts/DMSans-Medium.ttf");
+  src: url("../fonts/DMSans-Medium.ttf") format("embedded-opentype"),
+    url("../fonts/DMSans-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "DM Sans MediumItalic";
+  src: url("../fonts/DMSans-MediumItalic.ttf");
+  src: url("../fonts/DMSans-MediumItalic.ttf") format("embedded-opentype"),
+    url("../fonts/DMSans-MediumItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "DM Sans Regular";
+  src: url("../fonts/DMSans-Regular.ttf");
+  src: url("../fonts/DMSans-Regular.ttf") format("embedded-opentype"),
+    url("../fonts/DMSans-Regular.ttf") format("truetype");
+}
 /* Page Transitions */
 .page-enter-active,
 .page-leave-active {

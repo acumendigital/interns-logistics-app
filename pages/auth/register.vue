@@ -55,22 +55,24 @@ export default {
         this.registerData.lastname = e.lastname
         this.registerData.address1 = e.address1
         this.registerData.phone_number = e.phone_number
-        try {
+        this.$axios.post(`/api/v1/auth/signup`, this.registerData)
+        .then( res => {
           if(
             this.registerData.email !== "" ||
             this.registerData.password !== ""
           ){
-            const registerUser = await this.$axios.post(`/api/v1/auth/signup`, this.registerData)
-            this.$toasted.show('You have registered successfully', {
+            this.$toasted.show(res, {
             position: 'top-center',
             duration: 2500,
             type: 'success',
             })
             this.$router.push('/auth/login')
+            console.log(res);
           }
-        } catch (error) {
+        })
+        .catch(error => {
           this.$toasted.show(
-            error,
+            error.response.data.message,
             {
               position: 'top-center',
               type: 'danger',
@@ -78,7 +80,31 @@ export default {
             }
           )
           console.log(error);
-        }
+        })
+        // try {
+        //   if(
+        //     this.registerData.email !== "" ||
+        //     this.registerData.password !== ""
+        //   ){
+        //     const registerUser = await this.$axios.post(`/api/v1/auth/signup`, this.registerData)
+        //     this.$toasted.show('You have registered successfully', {
+        //     position: 'top-center',
+        //     duration: 2500,
+        //     type: 'success',
+        //     })
+        //     this.$router.push('/auth/login')
+        //   }
+        // } catch (error) {
+        //   this.$toasted.show(
+        //     error,
+        //     {
+        //       position: 'top-center',
+        //       type: 'danger',
+        //       duration: 3500,
+        //     }
+        //   )
+        //   console.log(error);
+        // }
         
       }
     }
