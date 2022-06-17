@@ -33,6 +33,7 @@ export default {
     // '@nuxtjs/eslint-module',
     // style resources
     "@nuxtjs/style-resources",
+    "@nuxtjs/moment",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

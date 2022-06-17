@@ -4,9 +4,9 @@
       <div class="package-info">
         <img src="~assets/images/tracker.png" alt="" />
         <div class="package">
-          <p class="time">Iyana Ipaja, Lagos</p>
-          <p class="black">Festac Lagos</p>
-          <p class="time">Nywj-079</p>
+          <p class="time">{{ shipmentProp.pickup_address }}</p>
+          <p class="black">{{ shipmentProp.delivery_address }}</p>
+          <p class="time">{{ shipmentProp.package_id }}</p>
         </div>
       </div>
       <div class="loader center">
@@ -16,7 +16,14 @@
   </nuxt-link>
 </template>
 <script>
-export default {};
+export default {
+  props:{
+    shipmentProp: {
+      required: true,
+      type: Object
+    }
+  }
+};
 </script>
 <style lang="scss" scoped>
 .package-container {

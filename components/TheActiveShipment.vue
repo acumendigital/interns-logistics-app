@@ -5,14 +5,27 @@
         <div class="loader center">
           <span></span>
         </div>
-        <p>Nywj-079</p>
+        <p>{{ shipmentData.package_id }}</p>
       </div>
-      <p class="time">30mins</p>
+      <p class="time">{{this.$moment(`${shipmentData.updatedAt}`).fromNow()}}</p>
     </div>
   </main>
 </template>
 <script>
-export default {};
+export default {
+  name: "activeShipment",
+  props:{
+    shipmentData:{
+      required: true,
+      type: Object
+    }
+  },
+  computed:{
+    date(){
+      return this.$moment(`${shipmentData.updatedAt}`).fromNow()
+    }
+  }
+};
 </script>
 <style lang="scss" scoped>
 main {

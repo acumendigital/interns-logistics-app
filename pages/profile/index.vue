@@ -2,7 +2,7 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="#" class="" exact-active-class="">
+        <nuxt-link to="/orders" class="" exact-active-class="">
           <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
