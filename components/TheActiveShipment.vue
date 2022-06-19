@@ -34,9 +34,9 @@ main {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    min-width: 364px;
+    min-width: 310px;
     height: 56px;
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     margin-bottom: 2rem;
     border: 1px solid #dedede;
     border-radius: 8px;

@@ -19,6 +19,8 @@ export const state = () => ({
   userDetails: [],
   loading: false,
   token: "",
+  pickUpRef: {},
+  dropOffRef: {},
 });
 
 export const mutations = {
@@ -30,6 +32,12 @@ export const mutations = {
   },
   setToken(state, token) {
     state.token = token;
+  },
+  setPickUpRef(state, pickUpRef) {
+    state.pickUpRef = pickUpRef;
+  },
+  setDropOffRef(state, dropOffRef) {
+    state.dropOffRef = dropOffRef;
   },
 };
 

@@ -69,7 +69,7 @@ export default {
       activeShipments: []
     }
   },
-  async fetch(){
+  async mounted(){
     try {
       const activeShipmentsReq = await this.$axios.get(`/api/v1/requests/user?status=pending`)
       this.activeShipments = activeShipmentsReq.data.data
@@ -178,8 +178,12 @@ main {
       justify-content: center;
       align-items: center;
       .tracking {
-        margin-left: -3.5rem;
+        // margin-left: -3.5rem;
+        width: 100%;
         margin-bottom: 1rem;
+        div{
+          @include flex-center;
+        }
         input {
           width: 305px;
           height: 56px;
@@ -189,7 +193,7 @@ main {
           border: 1px solid #dedede;
         }
         button {
-          position: absolute;
+          // position: absolute;
           height: 56px;
           width: 56px;
           background-color: #ffd60a;
