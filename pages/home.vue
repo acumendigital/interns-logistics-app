@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <main>
     <section class="nav">
       <TheBellButton />
@@ -49,10 +49,10 @@
         </div>
         <div>
           <p>Active Shipments</p>
-          <TheActiveShipment />
-          <TheActiveShipment />
-          <TheActiveShipment />
-          <TheActiveShipment />
+          <TheActiveShipment v-for="shipments in activeShipments" :key="shipments._id" :shipmentData="shipments" v-show="!loading" />
+          <div class="img-container" v-show="loading">
+            <img src="~/assets/images/loader_black.svg" alt="Loading...">
+          </div>
         </div>
       </div>
     </section>
@@ -63,7 +63,33 @@
 </template>
 <script>
 export default {
-  layout: 'auth-layout'
+  layout: 'auth-layout',
+  data(){
+    return{
+      activeShipments: []
+    }
+  },
+  async mounted(){
+    try {
+      const activeShipmentsReq = await this.$axios.get(`/api/v1/requests/user?status=pending`)
+      this.activeShipments = activeShipmentsReq.data.data
+    } catch (error) {
+      this.$toasted.show(
+        `Can't load active shipments: ${error.response.data.message.message}`,
+        {
+          position: 'top-center',
+          type: 'danger',
+          duration: 3500,
+        }
+      )
+    }
+    
+  },
+  computed:{
+    loading(){
+      return this.$store.state.loading
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -146,13 +172,18 @@ main {
     }
 
     .shipments {
+      padding: 0px 32px 32px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       .tracking {
-        margin-left: -3.5rem;
+        // margin-left: -3.5rem;
+        width: 100%;
         margin-bottom: 1rem;
+        div{
+          @include flex-center;
+        }
         input {
           width: 305px;
           height: 56px;
@@ -162,7 +193,7 @@ main {
           border: 1px solid #dedede;
         }
         button {
-          position: absolute;
+          // position: absolute;
           height: 56px;
           width: 56px;
           background-color: #ffd60a;
@@ -177,6 +208,13 @@ main {
         color: #575757;
         padding: 1rem 0rem;
         font-size: 12px;
+      }
+    }
+    .img-container{
+      @include flex-center;
+      img{
+        width: 30px;
+        height: 30px;
       }
     }
   }

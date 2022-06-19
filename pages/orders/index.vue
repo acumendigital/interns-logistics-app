@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <main>
     <div class="main">
       <section class="close">
@@ -16,12 +16,7 @@
         </p>
       </section>
       <section v-show="active" class="active-cards">
-        <TheActiveOrder />
-        <TheActiveOrder />
-        <TheActiveOrder />
-        <TheActiveOrder />
-        <TheActiveOrder />
-        <TheActiveOrder />
+        <TheActiveOrder v-for="shipment in activeShipments" :key="shipment._id" :shipmentProp="shipment" />
       </section>
       <section v-show="delivered" class="active-cards">
         <TheDeliveredOrder />
@@ -53,7 +48,23 @@ export default {
       active: true,
       delivered: false,
       cancelled: false,
+      activeShipments: []
     };
+  },
+  async mounted(){
+    try {
+      const activeShipmentsReq = await this.$axios.get(`/api/v1/requests/user?status=pending`)
+      this.activeShipments = activeShipmentsReq.data.data
+    } catch (error) {
+      this.$toasted.show(
+        `Can't load active shipments: ${error.response.data.message.message}`,
+        {
+          position: 'top-center',
+          type: 'danger',
+          duration: 3500,
+        }
+      )
+    }
   },
   methods: {
     toggleActive() {
@@ -81,7 +92,7 @@ main {
   justify-content: center;
   align-items: center;
   font-family: "Rubik Regular";
-  padding: 2rem;
+  padding: 2rem 1rem;
   background: #fafafa;
   .main {
     width: 100%;

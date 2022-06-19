@@ -21,8 +21,10 @@
                 type="text"
                 name="pickup"
                 placeholder="Choose pick-up location"
+                ref="pickUpRefSend"
+                v-model="requestDelivery.pickup_address"
               />
-              <the-select-place />
+              <!-- <the-select-place :inputRef="pickUpRef" /> -->
             </div>
           </div>
           <div class="input">
@@ -37,8 +39,10 @@
                   type="text"
                   name="pickup"
                   placeholder="Choose drop-off location"
+                  ref="dropOffRefSend"
                   v-model="requestDelivery.delivery_address"
                 />
+              <!-- <the-select-place :inputRef="dropOffRef" /> -->
               </div>
             </div>
           </div>
@@ -59,6 +63,8 @@
                   type="text"
                   name="pickup"
                   placeholder="Choose drop-off location"
+                  ref="dropOffRef"
+                  v-model="requestDelivery.delivery_address"
                 />
               </div>
             </div>
@@ -71,6 +77,8 @@
                 type="text"
                 name="pickup"
                 placeholder="Choose drop-off location"
+                ref="pickUpRef"
+                v-model="requestDelivery.pickup_address"
               />
             </div>
           </div>
@@ -80,18 +88,13 @@
         <div class="input">
           <p>Contact Information (Sender)</p>
 
-          <input type="text" name="pickup" placeholder="First Name" /><input
+          <input type="text" name="first name" placeholder="First Name" />
+          <input
             type="number"
-            name="first name"
+            name="number"
             placeholder="+xxx (xxx)-xxx-xxxx"
             value="Phone Number"
             min="0"
-          /><input
-            type="email"
-            name="pickup"
-            placeholder="Choose pick-up location"
-            value="Email Address"
-            v-model="requestDelivery.pickup_address"
           />
         </div>
         <div class="receiver">
@@ -103,7 +106,6 @@
               type="number"
               name="pickup"
               placeholder="+xxx (xxx)-xxx-xxxx"
-              value="Phone Number"
               min="0"
               v-model="requestDelivery.receiver_phone"
             /><input
@@ -121,7 +123,7 @@
           <div class="input-form">
             <font-awesome-icon icon="calendar" class="red" />
             <input
-              type="date"
+              type="datetime-local"
               value="2022-06-01"
               min="2022-06-20"
               max="2025-12-31"
@@ -134,16 +136,16 @@
         <div class="package-description">
           <select name="package" id="package" v-model="requestDelivery.package_type">
             <option value="package1" selected disabled>Select Package</option>
-            <option value="Small"><img src="~/assets/images/select-box.svg" alt="box"> Small (30 x 25 cm)</option>
-            <option value="Medium"><img src="~/assets/images/select-box.svg" alt="box"> Medium (30 x 25 cm)</option>
-            <option value="Big"><img src="~/assets/images/select-box.svg" alt="box"> Big (30 x 25 cm)</option>
-            <option value="Large"><img src="~/assets/images/select-box.svg" alt="box"> Large (30 x 25 cm)</option>
+            <option value="Small"> Small (30 x 25 cm)</option>
+            <option value="Medium"> Medium (30 x 25 cm)</option>
+            <option value="Big"> Big (30 x 25 cm)</option>
+            <option value="Large"> Large (30 x 25 cm)</option>
           </select>
         </div>
         <input type="text" placeholder="name of package?" v-model="requestDelivery.name">
         <input type="text" placeholder="Weight (Kg)" v-model.number="requestDelivery.weight">
       </div>
-      <button class="payment-btn" @click="requestDeliveryHandler">Continue to Payment</button>
+      <button class="payment-btn" @click="requestDeliveryHandler" :class="{ loading : loading }"> Continue to Payment <span v-show="loading"><img src="~/assets/images/loader.svg" alt="loader"></span></button>
     </div>
   </main>
 </template>
@@ -166,17 +168,62 @@ export default {
         delivery_address: "",
         package_type: "",
         deliveryType: "pickup"
-      }
+      },
     };
+  },
+  async mounted(){
+
+        const options = {
+            componentRestrictions: { 'country': "ng" },
+            fields: ["address_components",],
+            strictBounds: false,
+            types: ["address"],
+        };
+
+        // Instantiating Google Place API for all four Input fields
+        const pickUpRefService = await new google.maps.places.Autocomplete(this.$refs.pickUpRef, options)
+        const pickUpRefSendService = await new google.maps.places.Autocomplete(this.$refs.pickUpRefSend, options)
+        const dropOffRefService = await new google.maps.places.Autocomplete(this.$refs.dropOffRef, options)
+        const dropOffRefSendService = await new google.maps.places.Autocomplete(this.$refs.dropOffRefSend, options)
+
+
+          // Adding Event Listeners for when user clicks a new place 
+          google.maps.event.addListener(pickUpRefSendService, "place_changed", ()=> {
+            console.log(pickUpRefSendService.getPlace());
+            let place = pickUpRefSendService.getPlace()
+            let addressLiteral = `${place.address_components[0].long_name}, ${place.address_components[1].long_name}`
+            this.requestDelivery.pickup_address = addressLiteral
+          })
+          google.maps.event.addListener(dropOffRefSendService, "place_changed", ()=> {
+            console.log(dropOffRefSendService.getPlace());
+            let place = dropOffRefSendService.getPlace()
+            let addressLiteral = `${place.address_components[0].long_name}, ${place.address_components[1].long_name}`
+            this.requestDelivery.delivery_address = addressLiteral
+          })
+          google.maps.event.addListener(pickUpRefService, "place_changed", ()=> {
+            console.log(pickUpRefService.getPlace());
+            let place = pickUpRefService.getPlace()
+            let addressLiteral = `${place.address_components[0].long_name}, ${place.address_components[1].long_name}`
+            this.requestDelivery.pickup_address = addressLiteral
+          })
+          
+          google.maps.event.addListener(dropOffRefService, "place_changed", ()=> {
+            console.log(dropOffRefService.getPlace());
+            let place = dropOffRefService.getPlace()
+            let addressLiteral = `${place.address_components[0].long_name}, ${place.address_components[1].long_name}`
+            this.requestDelivery.delivery_address = addressLiteral
+          })
   },
   methods: {
     toggleSend() {
       this.send = true;
       this.receive = false;
+      this.requestDelivery.deliveryType = "pickup"
     },
     toggleReceive() {
       this.receive = true;
       this.send = false;
+      this.requestDelivery.deliveryType = "dropoff"
     },
     async requestDeliveryHandler(){
       try {
@@ -201,6 +248,11 @@ export default {
       
     }
   },
+  computed:{
+    loading(){
+      return this.$store.state.loading
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -307,6 +359,21 @@ main {
     border-radius: 8px;
     font-size: 18px;
     transition: all ease-in-out 200ms;
+  }
+  .loading{
+    @include flex-center;
+    position: relative;
+    background: grey;
+    color: white;
+      span{
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        img{
+          width: 20px;
+          height: 20px;
+        }
+      }
   }
   .payment-btn:hover {
     transform: scale(1.02);
