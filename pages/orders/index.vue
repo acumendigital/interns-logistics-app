@@ -51,7 +51,7 @@ export default {
       activeShipments: []
     };
   },
-  async fetch(){
+  async mounted(){
     try {
       const activeShipmentsReq = await this.$axios.get(`/api/v1/requests/user?status=pending`)
       this.activeShipments = activeShipmentsReq.data.data
