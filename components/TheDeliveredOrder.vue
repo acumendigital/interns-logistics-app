@@ -1,5 +1,5 @@
 <template lang="">
-  <nuxt-link to="/orders/track-order" class="package-container">
+  <nuxt-link to="/" class="package-container">
     <div class="package-card">
       <div class="package-info">
         <img src="~assets/images/tracker.png" alt="" />
