@@ -275,6 +275,7 @@ border-radius: 8px;
 @media screen and (max-width: 500px) {
   main {
     .container {
+       width: 100%;
       .profileDetails{
         input{
           width: 100%;

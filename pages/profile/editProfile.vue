@@ -29,9 +29,45 @@
           <p>Account Settings</p>
         </nuxt-link>
       </div>
+      <!-- <div class="img-change">
+          <div class="img-div">
+            <img :src="imgSrc || '/profile.jpg'" alt="avatar" class="imgSrc">
+            <div v-if="imgLoading" class="load">
+              <Loader />
+            </div>
+          </div>
+          <div class="img-text-div">
+            Change profile picture
+            <input
+              id="file-upload"
+              type="file"
+              name="file"
+              required
+              accept=".jpeg, .png, .jpg"
+              @click="resetFile($event)"
+              @change="uploadImg"
+            >
+          </div>
+        </div> -->
       <div class="profileUpload">
-        <img src="~/assets/images/profile.svg">
+        <!-- <img src="~/assets/images/profile.svg"> -->
+        <img :src="imgSrc || '/profile.svg'" alt="avatar" class="imgSrc">
         <p>Update your profile photo</p>
+        <div class="img-text-div">
+          <!-- <p> -->
+          Update your profile photo
+          <input
+            id="file-upload"
+            type="file"
+            name="file"
+            required
+            accept=".jpeg, .png, .jpg"
+            @click="resetFile($event)"
+            @change="uploadImg"
+          >
+          <!-- </p> -->
+        </div>
+        uploadImg
       </div>
       <div>
         <div class="profileDetails">
@@ -77,18 +113,41 @@ export default {
       email: '',
       number: '',
       address: '',
+      imgSrc: '',
       kemiData: {}
     }
   },
-  // computed: {
-  //   userDetails () {
-  //     return this.$store.state.userDetails
-  //   }
-  // },
   created () {
     this.getUserdetails()
   },
   methods: {
+    resetFile (event) {
+      event.target.value = ''
+    },
+    async uploadImg (event) {
+      const fileId = event.target.files[0]
+
+      const fd = new FormData()
+      fd.append('files', fileId)
+      const request = await this.$axios
+        .post('/files/upload', fd, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+        .catch((err) => {
+          this.$toasted.error('Image upload failed').goAway(3000)
+          return err
+        })
+      if (request) {
+        // console.log(fileId)
+        // this.document.push(fileId)
+        this.imgSrc = request.data.data.url[0]
+        console.log(this.imgSrc)
+      }
+      this.imgLoading = false
+      //   this.loading1 = false
+    },
     async getUserdetails () {
       const response = await this.$axios.get(`https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/${this.$store.state.userDetails._id}`
       )
@@ -106,7 +165,8 @@ export default {
         lastname: this.last_name,
         phone_number: this.number,
         email: this.email,
-        address2: this.address
+        address2: this.address,
+        photo: this.imgSrc
       }
       formData.set('data', JSON.stringify(data))
       const request = await this.$axios
@@ -176,6 +236,30 @@ main {
         margin-right: 16px;
       }
     }
+    .imgSrc {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.img-text-div {
+  /* border: 2px solid red; */
+  position: relative;
+  cursor: pointer;
+}
+/* .img-text-div input{
+    border: 2px solid yellow;
+    width:10px;
+    height:10px;
+} */
+.img-change {
+  display: flex;
+  align-items: center;
+  color: #3cda7d;
+}
+.img-change p {
+  cursor: pointer;
+}
     .profileUpload{
       width: 100%;
       display: flex;
@@ -265,6 +349,7 @@ outline:none;
 @media screen and (max-width: 500px) {
   main {
     .container {
+       width: 100%;
       .profileDetails{
         input{
           width: 100%;

@@ -97,14 +97,9 @@ export default {
 
       const request = await this.$axios
         .post('https://xyz-logistics-api.herokuapp.com/api/v1/wallet/paystack/initialize', data)
-      // this.$router.push(request.data.data.authorization_url)
       window.location.href = request.data.data.authorization_url
-      // this.$router.push('' + request.data.data.authorization_url)
-      // this.$router.push(/request.data.data.authorization_url)
-      // this.$redirect(request.data.data.authorization_url)
       if (request) {
         console.log(request.data.data.authorization_url)
-        // console.log(this.$router.push(request.data.data.authorization_url))
       }
     }
   }
@@ -193,6 +188,7 @@ line-height: 38px;
 @media screen and (max-width: 500px) {
   main {
     .container {
+       width: 100%;
       .btn {
         width: 70%;
         margin-right: auto;
