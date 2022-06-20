@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/orders/rider-chat", {data:[{}],fetch:{},mutations:[]});

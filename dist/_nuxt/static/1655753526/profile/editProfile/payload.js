@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/profile/editProfile", {data:[{}],fetch:{},mutations:[]});
