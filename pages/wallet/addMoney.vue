@@ -51,8 +51,7 @@
       <div
         class="btn"
         @click="
-          clicked = true;
-          $router.push('/wallet/paymentCard');
+          pay();
         "
       >
         <Button
@@ -70,8 +69,17 @@ export default {
     return {
       current: '',
       title: 'Next',
+      email: this.$store.state.userDetails.email,
+      //  property: this.$store.state.Id,
       clicked: false
     }
+  },
+  // computed: {
+  //   userDetails () {
+  //     return this.$store.state.userDetails
+  //   }
+  // },
+  created () {
   },
   methods: {
     append (number) {
@@ -79,6 +87,25 @@ export default {
     },
     remove () {
       this.current = this.current.slice(0, -1)
+    },
+    async pay () {
+      const data = {
+
+        email: this.email,
+        amount: this.current
+      }
+
+      const request = await this.$axios
+        .post('https://xyz-logistics-api.herokuapp.com/api/v1/wallet/paystack/initialize', data)
+      // this.$router.push(request.data.data.authorization_url)
+      window.location.href = request.data.data.authorization_url
+      // this.$router.push('' + request.data.data.authorization_url)
+      // this.$router.push(/request.data.data.authorization_url)
+      // this.$redirect(request.data.data.authorization_url)
+      if (request) {
+        console.log(request.data.data.authorization_url)
+        // console.log(this.$router.push(request.data.data.authorization_url))
+      }
     }
   }
 }

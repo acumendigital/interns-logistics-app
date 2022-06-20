@@ -2,13 +2,13 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/profile" class="" exact-active-class="">
+        <nuxt-link to="#" class="" exact-active-class="">
           <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="title">
         <nuxt-link
-          to="/profile"
+          to="#"
           :class="[
             'kemi',
             $route.name.includes('profile') ? 'nuxt-link-exact-active' : '',
@@ -20,9 +20,7 @@
           to="/account"
           :class="[
             'kemi',
-            $route.name.includes('account')
-              ? 'nuxt-link-exact-active'
-              : '',
+            $route.name.includes('account') ? 'nuxt-link-exact-active' : '',
           ]"
           exact-active-class=""
         >
@@ -35,34 +33,46 @@
       </div>
       <div>
         <div class="profileDetails">
-          <label>First Name</label>
-          <input v-model="first_name" type="text">
+          <div class="pencil">
+            <label>First Name</label>
+            <img
+              src="~/assets/images/pencil.svg"
+              @click="
+                clicked = true;
+                $router.push('/profile/editProfile');
+              "
+            >
+          </div>
+          <input v-model="first_name" type="text" disabled>
         </div>
-        <div class="profileDetails">
+        <!-- <div class="profileDetails">
           <label>Last Name</label>
-          <input v-model="last_name" type="text">
+          <input type="text" :value="userDetails.data.lastname" disabled>
         </div>
         <div class="profileDetails">
           <label>Phone Number</label>
-          <input v-model="number" type="text">
+          <input type="text" :value="userDetails.data.phone_number" disabled>
         </div>
         <div class="profileDetails">
           <label>Email Address</label>
-          <input v-model="email" type="text" disabled>
+          <input type="text" :value="userDetails.data.email" disabled>
         </div>
         <div class="profileDetails">
           <label>Home Address</label>
           <input
-            v-model="address"
             type="text"
+            :value="userDetails.data.address.primary"
+            disabled
           >
-        </div>
+        </div> -->
       </div>
-      <div class="btn" @click="save()">
-        <Button :name="title" />
-      </div>
+      <section class="footer">
+        <TheBottomNav />
+      </section>
     </div>
-    </div>
+    <!-- <section class="footer">
+        <TheBottomNav />
+      </section> -->
   </main>
 </template>
 
@@ -72,12 +82,12 @@ export default {
   data () {
     return {
       title: 'Save',
-      first_name: '',
-      last_name: '',
-      email: '',
-      number: '',
-      address: '',
-      kemiData: {}
+      clicked: false,
+      first_name: ''
+      // last_name: '',
+      // email: '',
+      // number: '',
+      // address: ''
     }
   },
   // computed: {
@@ -86,50 +96,41 @@ export default {
   //   }
   // },
   created () {
+    // this.updateDetails()
     this.getUserdetails()
   },
   methods: {
-    async getUserdetails () {
-      const response = await this.$axios.get(`https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/${this.$store.state.userDetails._id}`
-      )
-      console.log(response.data.data)
-      this.first_name = response.data.data.firstname
-      this.last_name = response.data.data.lastname
-      this.email = response.data.data.email
-      this.number = response.data.data.phone_number
-      this.address = response.data.data.address.primary
+    updateDetails () {
+      // this.first_name = this.userDetails.data.firstname
+      // this.last_name = this.userDetails.data.lastname
+      // this.email = this.userDetails.data.email
+      // this.address = this.userDetails.data.address.primary
+      // this.number = this.userDetails.data.phone_number
     },
-    async save () {
-      const formData = new FormData()
-      const data = {
-        firstname: this.first_name,
-        lastname: this.last_name,
-        phone_number: this.number,
-        email: this.email,
-        address2: this.address
+    async getUserdetails () {
+      const requestPromise = await fetch(`https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/${this.$route.query.id}`)
+      const requestJson = requestPromise.json()
+      requestJson.then((response) => {
+        console.log(response)
       }
-      formData.set('data', JSON.stringify(data))
-      const request = await this.$axios
-        .put('https://xyz-logistics-api.herokuapp.com/api/v1/user/me', formData)
-      this.$toasted.show('profile updated successfully', {
-        position: 'top-center',
-        duration: 2000,
-        type: 'success'
-      })
-      this.$router.push('/profile')
-      if (request) {
-        console.log(request)
-        console.log(formData.get('data'))
-      }
+      )
+      // this.$store.commit('addUserDetails', request.data)
+      // this.$store.commit('userDetails', response.data.data)
+      // this.first_name = response.data.data.first_name
+      // this.last_name = response.data.data.last_name
+      // this.email = response.data.data.email
+      // this.number = response.data.data.phone
+      // this.address = response.data.data.logo
     }
   }
+
 }
 </script>
 <style lang="scss" scoped>
 main {
   width: 100%;
   background: #1e1e1e;
- padding: 15px 0 20px;
+  padding: 15px 0 20px;
   font-family: "Rubik Regular";
   color: #000;
   font-style: normal;
@@ -145,10 +146,11 @@ main {
     width: 90%;
     background: #fff;
     margin: 0 auto;
-    overflow-y: scroll;
     max-width: 428px;
     height: 926px;
     padding: 37px 32px 0 32px;
+    overflow-y: scroll;
+    // overflow-x: hidden;
     .back {
       margin: 0 0 37px 0;
       img {
@@ -176,7 +178,7 @@ main {
         margin-right: 16px;
       }
     }
-    .profileUpload{
+    .profileUpload {
       width: 100%;
       display: flex;
       margin: 20px auto;
@@ -184,29 +186,36 @@ main {
       justify-content: center;
       align-items: center;
       margin-top: 58px;
-      img{
+      img {
         cursor: pointer;
       }
-      p{
-         margin: 16px 0 24px 0;
+      p {
+        margin: 16px 0 24px 0;
         font-weight: 400;
-font-size: 14px;
-line-height: 21px;
-color: #D9B608;
+        font-size: 14px;
+        line-height: 21px;
+        color: #d9b608;
       }
     }
     .profileDetails {
       margin-bottom: 32px;
       position: relative;
+      .pencil {
+        display: flex;
+        justify-content: space-between;
+        img {
+          cursor: pointer;
+        }
+      }
       label {
         font-weight: 400;
         font-size: 16px;
         line-height: 24px;
       }
       input {
-        background: #F4F4F4;
-border-radius: 8px;
-outline:none;
+        background: #f4f4f4;
+        border-radius: 8px;
+        outline: none;
         width: 364px;
         border-style: none;
         padding: 20px;
@@ -219,67 +228,41 @@ outline:none;
         cursor: pointer;
       }
     }
-    .cardDetails {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      label {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 24px;
-      }
-      .date {
-        position: relative;
-        // background: pink;
-        .expire {
-          border: 1px solid #b0b0b0;
-          border-radius: 8px;
-          width: 196px;
-          margin-top: 8px;
-          padding: 20px 30px;
-        }
-        .calendar {
-          position: absolute;
-          top: 49px;
-          left: 16px;
-          cursor: pointer;
-        }
-      }
-      .cvv {
-        border: 1px solid #b0b0b0;
-        border-radius: 8px;
-        width: 132px;
-        margin-top: 8px;
-        padding: 20px 30px;
-      }
-    }
+
     .btn {
       width: 100%;
       display: flex;
-        padding: 0 0 32px 0;
-      margin-top: 51px;
+      padding: 0 0 32px 0;
+      margin-top: 466px;
       justify-content: center;
     }
+    .footer {
+      width: 100%;
+      margin: 0 0 32px 0;
+    }
   }
+  // .footer {
+  // position: fixed;
+  // bottom: 20px;
+  // bottom: 130px;
+  //  width: 19%;
+  //  width: 100%;
+  //  width: 100%;
+  // left: 40.5%;
+  // background: red;
+  // margin: 0px 27px 32px 0px;
+
+  // }
 }
 @media screen and (max-width: 500px) {
   main {
     .container {
-      .profileDetails{
-        input{
+      .profileDetails {
+        input {
           width: 100%;
         }
       }
-      .bank, .debit{
-        width: 100%
-      }
-      .btn {
-        width: 70%;
-         margin-top: 200px;
-        margin-right: auto;
-        margin-left: auto;
-      }
-      }
+    }
   }
 }
 </style>

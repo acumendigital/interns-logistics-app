@@ -20,9 +20,7 @@
           to="/account"
           :class="[
             'kemi',
-            $route.name.includes('account')
-              ? 'nuxt-link-exact-active'
-              : '',
+            $route.name.includes('account') ? 'nuxt-link-exact-active' : '',
           ]"
           exact-active-class=""
         >
@@ -45,23 +43,27 @@
               "
             >
           </div>
-          <input type="text">
+          <input v-model="first_name" type="text" disabled>
         </div>
         <div class="profileDetails">
           <label>Last Name</label>
-          <input type="text">
+          <input v-model="last_name" type="text" disabled>
         </div>
         <div class="profileDetails">
           <label>Phone Number</label>
-          <input type="text">
+          <input v-model="number" type="text" disabled>
         </div>
         <div class="profileDetails">
           <label>Email Address</label>
-          <input type="text">
+          <input v-model="email" type="text" disabled>
         </div>
         <div class="profileDetails">
           <label>Home Address</label>
-          <input type="text">
+          <input
+            v-model="address"
+            type="text"
+            disabled
+          >
         </div>
       </div>
       <section class="footer">
@@ -80,10 +82,32 @@ export default {
   data () {
     return {
       title: 'Save',
-      clicked: false
+      clicked: false,
+      first_name: '',
+      last_name: '',
+      email: '',
+      number: '',
+      address: ''
     }
+  },
+  created () {
+    this.getUserdetails()
+  },
+  methods: {
+    async getUserdetails () {
+      const response = await this.$axios.get(`https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/${this.$store.state.userDetails._id}`
+      )
+      console.log(response.data.data)
+      this.first_name = response.data.data.firstname
+      this.last_name = response.data.data.lastname
+      this.email = response.data.data.email
+      this.number = response.data.data.phone_number
+      this.address = response.data.data.address.primary
+    }
+
   }
 }
+
 </script>
 <style lang="scss" scoped>
 main {
@@ -159,10 +183,10 @@ main {
     .profileDetails {
       margin-bottom: 32px;
       position: relative;
-      .pencil{
+      .pencil {
         display: flex;
         justify-content: space-between;
-        img{
+        img {
           cursor: pointer;
         }
       }
@@ -174,7 +198,7 @@ main {
       input {
         background: #f4f4f4;
         border-radius: 8px;
-        outline:none;
+        outline: none;
         width: 364px;
         border-style: none;
         padding: 20px;
@@ -191,38 +215,37 @@ main {
     .btn {
       width: 100%;
       display: flex;
-        padding: 0 0 32px 0;
+      padding: 0 0 32px 0;
       margin-top: 466px;
       justify-content: center;
     }
     .footer {
-       width: 100%;
+      width: 100%;
       margin: 0 0 32px 0;
-
     }
   }
   // .footer {
-      // position: fixed;
-      // bottom: 20px;
-      // bottom: 130px;
-      //  width: 19%;
-      //  width: 100%;
-      //  width: 100%;
-      // left: 40.5%;
-      // background: red;
-      // margin: 0px 27px 32px 0px;
+  // position: fixed;
+  // bottom: 20px;
+  // bottom: 130px;
+  //  width: 19%;
+  //  width: 100%;
+  //  width: 100%;
+  // left: 40.5%;
+  // background: red;
+  // margin: 0px 27px 32px 0px;
 
-    // }
+  // }
 }
 @media screen and (max-width: 500px) {
   main {
     .container {
-      .profileDetails{
-        input{
+      .profileDetails {
+        input {
           width: 100%;
         }
       }
-      }
+    }
   }
 }
 </style>
