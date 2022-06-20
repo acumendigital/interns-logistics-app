@@ -36,28 +36,31 @@
       <div>
         <div class="profileDetails">
           <label>First Name</label>
-          <input type="text">
+          <input v-model="first_name" type="text">
         </div>
         <div class="profileDetails">
           <label>Last Name</label>
-          <input type="text">
+          <input v-model="last_name" type="text">
         </div>
         <div class="profileDetails">
           <label>Phone Number</label>
-          <input type="text">
+          <input v-model="number" type="text">
         </div>
         <div class="profileDetails">
           <label>Email Address</label>
-          <input type="text">
+          <input v-model="email" type="text" disabled>
         </div>
         <div class="profileDetails">
           <label>Home Address</label>
-          <input type="text">
+          <input
+            v-model="address"
+            type="text"
+          >
         </div>
       </div>
-      <div class="btn">
-      <Button :name="title" />
-    </div>
+      <div class="btn" @click="save()">
+        <Button :name="title" />
+      </div>
     </div>
     </div>
   </main>
@@ -68,7 +71,56 @@ export default {
   name: 'Profile',
   data () {
     return {
-      title: 'Save'
+      title: 'Save',
+      first_name: '',
+      last_name: '',
+      email: '',
+      number: '',
+      address: '',
+      kemiData: {}
+    }
+  },
+  // computed: {
+  //   userDetails () {
+  //     return this.$store.state.userDetails
+  //   }
+  // },
+  created () {
+    this.getUserdetails()
+  },
+  methods: {
+    async getUserdetails () {
+      const response = await this.$axios.get(`https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/${this.$store.state.userDetails._id}`
+      )
+      console.log(response.data.data)
+      this.first_name = response.data.data.firstname
+      this.last_name = response.data.data.lastname
+      this.email = response.data.data.email
+      this.number = response.data.data.phone_number
+      this.address = response.data.data.address.primary
+    },
+    async save () {
+      const formData = new FormData()
+      const data = {
+        firstname: this.first_name,
+        lastname: this.last_name,
+        phone_number: this.number,
+        email: this.email,
+        address2: this.address
+      }
+      formData.set('data', JSON.stringify(data))
+      const request = await this.$axios
+        .put('https://xyz-logistics-api.herokuapp.com/api/v1/user/me', formData)
+      this.$toasted.show('profile updated successfully', {
+        position: 'top-center',
+        duration: 2000,
+        type: 'success'
+      })
+      this.$router.push('/profile')
+      if (request) {
+        console.log(request)
+        console.log(formData.get('data'))
+      }
     }
   }
 }

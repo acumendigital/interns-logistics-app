@@ -2,11 +2,14 @@
   <div class="main-container">
     <h2 class="text-header">Orders</h2>
     <p class="intro-message">Manage all your dispatchers, assign orders, and track orders here.</p>
+    <OrderLinks />
   </div>
 </template>
 
 <script>
+import OrderLinks from '~/components/OrderLinks.vue'
   export default {
+  components: { OrderLinks },
     layout: 'AdminLayout'
   }
 </script>

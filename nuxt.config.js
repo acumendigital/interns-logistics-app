@@ -1,4 +1,29 @@
+import axios from "axios";
+
 export default {
+  // generating links for dynamic pages
+  // generate: {
+  //   async routes() {
+  //     let config = {
+  //       headers: {
+  //         Authorization: `Bearer yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmE2MmUyYWUzMDkxYzg4NmUxOGUwNTYiLCJpYXQiOjE2NTU3Mzk2MjMsImV4cCI6MTY1NTgyNjAyM30.ILkFvCX6zm7IqcIN7-XRnVKCJPRuaFyetpI562A3-8U`,
+  //       },
+  //     };
+  //     const orderDetailsReq = await axios.get(
+  //       `https://xyz-logistics-api.herokuapp.com/api/v1/requests/user?status=pending`,
+  //       config
+  //     );
+  //     const orderDetailsArray = orderDetailsReq.data.data.map((data) => {
+  //       return {
+  //         route: "/orders/track-order/" + data._id,
+  //       };
+  //     });
+
+  //     const routes = orderDetailsArray;
+  //     return routes;
+  //   },
+  // },
+
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
 

@@ -1,16 +1,16 @@
-import axios from "axios";
+// import axios from "axios";
 
-const getCsrfToken = async () => {
-  try {
-    const request = await axios.get(
-      "https://xyz-logistics-api.herokuapp.com/api/v1/csrf-token"
-    );
-    console.log(request);
-    return request.data.csrfToken;
-  } catch (error) {
-    console.log(error);
-  }
-};
+// const getCsrfToken = async () => {
+//   try {
+//     const request = await axios.get(
+//       "https://xyz-logistics-api.herokuapp.com/api/v1/csrf-token"
+//     );
+//     console.log(request);
+//     return request.data.csrfToken;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 export default function ({ $axios, store }, inject, error) {
   // Add configuration

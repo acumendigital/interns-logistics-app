@@ -32,12 +32,6 @@ export const mutations = {
   setToken(state, token) {
     state.token = token;
   },
-  setPickUpRef(state, pickUpRef) {
-    state.pickUpRef = pickUpRef;
-  },
-  setDropOffRef(state, dropOffRef) {
-    state.dropOffRef = dropOffRef;
-  },
   setOrderDetails(state, orderDetails) {
     state.orderDetails = orderDetails;
   },
