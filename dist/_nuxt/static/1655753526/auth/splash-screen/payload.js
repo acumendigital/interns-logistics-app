@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/auth/splash-screen", {data:[{}],fetch:{},mutations:[]});
