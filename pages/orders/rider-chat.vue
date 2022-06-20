@@ -1,10 +1,10 @@
-<template lang="">
+<template>
   <div class="chat-container">
     <div class="chat-navigation">
       <div class="left">
-        <nuxt-link to="/orders/track-order">
+        <div @click="goToPrev">
           <font-awesome-icon icon="arrow-left" class="arrow" />
-        </nuxt-link>
+        </div>
         <div class="rider-info">
           <img src="~assets/images/rider-img.png" alt="" />
           <p>Yusuf Aina</p>
@@ -39,7 +39,13 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  methods:{
+    goToPrev(){
+      this.$router.go(-1)
+    }
+  }
+};
 </script>
 <style lang="scss" scoped>
 .chat-container {

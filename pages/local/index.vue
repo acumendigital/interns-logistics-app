@@ -30,9 +30,9 @@
           <div class="input">
             <label for="pickup">Drop-off Location</label>
             <div class="input-form">
-              <select placeholder="Select State">
+              <!-- <select placeholder="Select State">
                 <option value="Select State">Select State</option>
-              </select>
+              </select> -->
               <div>
                 <font-awesome-icon icon="location-dot" class="red" />
                 <input
@@ -54,9 +54,9 @@
           <div class="input">
             <label for="pickup">Pick-up Location</label>
             <div class="input-form">
-              <select placeholder="Select State">
+              <!-- <select placeholder="Select State">
                 <option value="Select State">Select State</option>
-              </select>
+              </select> -->
               <div>
                 <font-awesome-icon icon="location-dot" class="red" />
                 <input
@@ -167,7 +167,8 @@ export default {
         pickup_address: "",
         delivery_address: "",
         package_type: "",
-        deliveryType: "pickup"
+        deliveryType: "pickup",
+        regionType: this.$route.name
       },
     };
   },

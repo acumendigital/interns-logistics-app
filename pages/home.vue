@@ -47,7 +47,7 @@
             </button>
           </div>
         </div>
-        <div>
+        <div class="active-shipments">
           <p>Active Shipments</p>
           <TheActiveShipment v-for="shipments in activeShipments" :key="shipments._id" :shipmentData="shipments" v-show="!loading" />
           <div class="img-container" v-show="loading">
@@ -177,6 +177,9 @@ main {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      .active-shipments{
+        margin-bottom: 70px;
+      }
       .tracking {
         // margin-left: -3.5rem;
         width: 100%;

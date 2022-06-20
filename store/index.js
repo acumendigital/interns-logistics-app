@@ -19,8 +19,7 @@ export const state = () => ({
   userDetails: [],
   loading: false,
   token: "",
-  pickUpRef: {},
-  dropOffRef: {},
+  orderDetails: [],
 });
 
 export const mutations = {
@@ -38,6 +37,9 @@ export const mutations = {
   },
   setDropOffRef(state, dropOffRef) {
     state.dropOffRef = dropOffRef;
+  },
+  setOrderDetails(state, orderDetails) {
+    state.orderDetails = orderDetails;
   },
 };
 
