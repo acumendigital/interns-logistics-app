@@ -1,4 +1,5 @@
-<template lang="">
+<template >
+<nuxt-link :to='`/orders/track-order/${shipmentData._id}`'>
   <main>
     <div class="shipment-card">
       <div class="package">
@@ -10,6 +11,7 @@
       <p class="time">{{this.$moment(`${shipmentData.updatedAt}`).fromNow()}}</p>
     </div>
   </main>
+</nuxt-link>
 </template>
 <script>
 export default {
@@ -45,6 +47,9 @@ main {
       flex-direction: row;
       align-items: center;
       gap: 1rem;
+      p{
+        color: black;
+      }
       .loader {
         display: block;
         height: 32px;
