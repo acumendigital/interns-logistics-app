@@ -2,6 +2,7 @@
   <div class="main-container">
     <h2 class="text-header">Orders</h2>
     <p class="intro-message">Manage all your dispatchers, assign orders, and track orders here.</p>
+    <OrderLinks />
     <div class="pickup-requests">
       <div class="pickup-details">
         <div class="pickup-header">
@@ -233,6 +234,7 @@
 }
 .pickup-time{
   display: flex;
+  align-items: flex-start;
   /*   */
 }
 .time-icon{

@@ -2,7 +2,7 @@
   <main>
     <div class="main">
       <section class="close">
-        <nuxt-link to="/"> <font-awesome-icon icon="x" /></nuxt-link>
+        <nuxt-link to="/home"> <font-awesome-icon icon="x" /></nuxt-link>
       </section>
       <section class="toggle">
         <p :class="active ? 'active' : 'inactive'" @click="toggleActive">
@@ -128,6 +128,9 @@ main {
     bottom: 0;
     width: 100%;
     padding: 32px 24px;
+  }
+  .active-cards{
+    margin-bottom: 100px;
   }
   @media screen and(min-width: 800px) {
     .main {

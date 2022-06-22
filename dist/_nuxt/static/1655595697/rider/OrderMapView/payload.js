@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/rider/OrderMapView", {data:[{}],fetch:{},mutations:[]});

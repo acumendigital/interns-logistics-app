@@ -1,46 +1,42 @@
-import VuexPersistence from 'vuex-persist'
+import VuexPersistence from "vuex-persist";
 
-function getPlugins () {
-  const plugins = []
+function getPlugins() {
+  const plugins = [];
 
   if (process.browser) {
     const vuexLocal = new VuexPersistence({
-      storage: window.localStorage
-    })
+      storage: window.localStorage,
+    });
 
-    plugins.push(vuexLocal.plugin)
+    plugins.push(vuexLocal.plugin);
   }
-  return plugins
+  return plugins;
 }
 
-export const plugins = getPlugins()
+export const plugins = getPlugins();
 
 export const state = () => ({
   userDetails: [],
   loading: false,
-  token: '',
-  pickUpRef: {},
-  dropOffRef: {}
-})
+  token: "",
+  orderDetails: [],
+});
 
 export const mutations = {
-  addUserDetails (state, userDetails) {
-    state.userDetails = userDetails
+  addUserDetails(state, userDetails) {
+    state.userDetails = userDetails;
   },
-  updateLoadState (state, loadBool) {
-    state.loading = loadBool
+  updateLoadState(state, loadBool) {
+    state.loading = loadBool;
   },
-  setToken (state, token) {
-    state.token = token
+  setToken(state, token) {
+    state.token = token;
   },
-  setPickUpRef (state, pickUpRef) {
-    state.pickUpRef = pickUpRef
+  setOrderDetails(state, orderDetails) {
+    state.orderDetails = orderDetails;
   },
-  setDropOffRef (state, dropOffRef) {
-    state.dropOffRef = dropOffRef
-  }
-}
+};
 
-export const actions = {}
+export const actions = {};
 
-export const getters = {}
+export const getters = {};

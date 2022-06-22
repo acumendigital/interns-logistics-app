@@ -3,32 +3,38 @@
     <div class="dash"></div>
     <div class="info">
       <h1>From</h1>
-      <p>Iyana ipaja, ponle, Lagos.</p>
+      <p>{{ modalDetails.pickup_address }}</p>
     </div>
     <div class="line"></div>
     <div class="info">
       <h1>To</h1>
-      <p>Iyana ipaja, ponle, Lagos.</p>
+      <p>{{ modalDetails.delivery_address }}</p>
     </div>
     <div class="line"></div>
     <div class="info">
       <h1>Reciever’s name</h1>
-      <p>Samuel peters</p>
+      <p>{{ modalDetails.receiver }}</p>
     </div>
     <div class="line"></div>
     <div class="info">
       <h1>Number</h1>
-      <p>+234 708 987 678</p>
+      <p>+{{ modalDetails.receiver_phone }}</p>
     </div>
     <div class="line"></div>
     <div class="info">
       <h1>Package Type</h1>
-      <p>Medium pack</p>
+      <p>{{ modalDetails.package_type }}</p>
     </div>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  computed:{
+    modalDetails(){
+      return this.$store.state.orderDetails
+    }
+  }
+};
 </script>
 <style lang="scss" scoped>
 .modal-container {

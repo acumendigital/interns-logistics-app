@@ -1,9 +1,9 @@
 <template lang="">
   <div class="track-active-container">
     <div class="back">
-      <nuxt-link to="/orders">
+      <div @click="goToPrev">
         <font-awesome-icon icon="arrow-left" />
-      </nuxt-link>
+      </div>
     </div>
     <nuxt-link to="/orders/rider-chat" class="rider">
       <img src="~assets/images/track-rider.png" alt="" />
@@ -54,7 +54,7 @@
         </div>
         <div class="info">
           <p class="title">Order Number</p>
-          <p class="num">Nywj-879</p>
+          <p class="num">{{ orderDetailsHandler.package_id }}</p>
           <p class="det" @click="toggleModal">
             More Details <font-awesome-icon icon="angle-down" />
           </p>
@@ -88,7 +88,15 @@ export default {
     toggleModal() {
       this.modalOpen = !this.modalOpen;
     },
+    goToPrev(){
+      this.$router.go(-1)
+    }
   },
+  computed:{
+    orderDetailsHandler(){
+      return this.$store.state.orderDetails
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
