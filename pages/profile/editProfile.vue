@@ -29,45 +29,12 @@
           <p>Account Settings</p>
         </nuxt-link>
       </div>
-      <!-- <div class="img-change">
-          <div class="img-div">
-            <img :src="imgSrc || '/profile.jpg'" alt="avatar" class="imgSrc">
-            <div v-if="imgLoading" class="load">
-              <Loader />
-            </div>
-          </div>
-          <div class="img-text-div">
-            Change profile picture
-            <input
-              id="file-upload"
-              type="file"
-              name="file"
-              required
-              accept=".jpeg, .png, .jpg"
-              @click="resetFile($event)"
-              @change="uploadImg"
-            >
-          </div>
-        </div> -->
       <div class="profileUpload">
         <!-- <img src="~/assets/images/profile.svg"> -->
         <img :src="imgSrc || '/profile.svg'" alt="avatar" class="imgSrc">
-        <p>Update your profile photo</p>
-        <div class="img-text-div">
-          <!-- <p> -->
-          Update your profile photo
-          <input
-            id="file-upload"
-            type="file"
-            name="file"
-            required
-            accept=".jpeg, .png, .jpg"
-            @click="resetFile($event)"
-            @change="uploadImg"
-          >
-          <!-- </p> -->
-        </div>
-        uploadImg
+        <p>
+          Update your profile photo</p>
+        <input id="file-input" type="file" accept=".jpeg, .png, .jpg" @change="uploadImage($event)">
       </div>
       <div>
         <div class="profileDetails">
@@ -124,29 +91,28 @@ export default {
     resetFile (event) {
       event.target.value = ''
     },
-    async uploadImg (event) {
-      const fileId = event.target.files[0]
+    async  uploadImage (event) {
+      const URL = 'https://xyz-logistics-api.herokuapp.com/api/v1/user/me'
 
-      const fd = new FormData()
-      fd.append('files', fileId)
-      const request = await this.$axios
-        .post('/files/upload', fd, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        })
-        .catch((err) => {
-          this.$toasted.error('Image upload failed').goAway(3000)
-          return err
-        })
-      if (request) {
-        // console.log(fileId)
-        // this.document.push(fileId)
-        this.imgSrc = request.data.data.url[0]
-        console.log(this.imgSrc)
+      const data = new FormData()
+      data.append('image', event.target.files[0])
+
+      const config = {
+        header: {
+          'Content-Type': 'application/json; charset=utf-8'
+        }
       }
-      this.imgLoading = false
-      //   this.loading1 = false
+
+      const request = await this.$axios.put(
+        URL,
+        data,
+        config
+      )
+      if (request) {
+        console.log(request)
+        console.log(request.data.data.photo)
+        this.imgSrc = request.data.data.photo
+      }
     },
     async getUserdetails () {
       const response = await this.$axios.get(`https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/${this.$store.state.userDetails._id}`
@@ -157,6 +123,7 @@ export default {
       this.email = response.data.data.email
       this.number = response.data.data.phone_number
       this.address = response.data.data.address.primary
+      this.imgSrc = response.data.data.photo
     },
     async save () {
       const formData = new FormData()
@@ -272,11 +239,15 @@ main {
         cursor: pointer;
       }
       p{
-         margin: 16px 0 24px 0;
+         margin: 16px 0 0 0;
         font-weight: 400;
 font-size: 14px;
 line-height: 21px;
 color: #D9B608;
+      }
+      input{
+        width: 50%;
+         margin: 16px auto 24px auto;
       }
     }
     .profileDetails {

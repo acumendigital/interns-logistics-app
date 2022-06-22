@@ -28,14 +28,12 @@
         </nuxt-link>
       </div>
       <div class="profileUpload">
-        <img src="~/assets/images/profile.svg">
-        <!-- <img
+        <!-- <img src="~/assets/images/profile.svg"> -->
+        <img
           :src="imgSrc || '/profile.svg'"
           alt="avatar"
           class="imgSrc"
-        > -->
-
-        <!-- <p>Update your profile photo</p> -->
+        >
       </div>
       <div>
         <div class="profileDetails">
