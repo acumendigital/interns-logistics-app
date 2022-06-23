@@ -30,8 +30,11 @@
         </nuxt-link>
       </div>
       <div class="profileUpload">
-        <img src="~/assets/images/profile.svg">
-        <p>Update your profile photo</p>
+        <!-- <img src="~/assets/images/profile.svg"> -->
+        <img :src="imgSrc || '/profile.svg'" alt="avatar" class="imgSrc">
+        <p>
+          Update your profile photo</p>
+        <input id="file-input" type="file" accept=".jpeg, .png, .jpg" @change="uploadImage($event)">
       </div>
       <div>
         <div class="profileDetails">
@@ -77,18 +80,40 @@ export default {
       email: '',
       number: '',
       address: '',
+      imgSrc: '',
       kemiData: {}
     }
   },
-  // computed: {
-  //   userDetails () {
-  //     return this.$store.state.userDetails
-  //   }
-  // },
   created () {
     this.getUserdetails()
   },
   methods: {
+    resetFile (event) {
+      event.target.value = ''
+    },
+    async  uploadImage (event) {
+      const URL = 'https://xyz-logistics-api.herokuapp.com/api/v1/user/me'
+
+      const data = new FormData()
+      data.append('image', event.target.files[0])
+
+      const config = {
+        header: {
+          'Content-Type': 'application/json; charset=utf-8'
+        }
+      }
+
+      const request = await this.$axios.put(
+        URL,
+        data,
+        config
+      )
+      if (request) {
+        console.log(request)
+        console.log(request.data.data.photo)
+        this.imgSrc = request.data.data.photo
+      }
+    },
     async getUserdetails () {
       const response = await this.$axios.get(`https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/${this.$store.state.userDetails._id}`
       )
@@ -98,6 +123,7 @@ export default {
       this.email = response.data.data.email
       this.number = response.data.data.phone_number
       this.address = response.data.data.address.primary
+      this.imgSrc = response.data.data.photo
     },
     async save () {
       const formData = new FormData()
@@ -106,7 +132,8 @@ export default {
         lastname: this.last_name,
         phone_number: this.number,
         email: this.email,
-        address2: this.address
+        address2: this.address,
+        photo: this.imgSrc
       }
       formData.set('data', JSON.stringify(data))
       const request = await this.$axios
@@ -176,6 +203,30 @@ main {
         margin-right: 16px;
       }
     }
+    .imgSrc {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.img-text-div {
+  /* border: 2px solid red; */
+  position: relative;
+  cursor: pointer;
+}
+/* .img-text-div input{
+    border: 2px solid yellow;
+    width:10px;
+    height:10px;
+} */
+.img-change {
+  display: flex;
+  align-items: center;
+  color: #3cda7d;
+}
+.img-change p {
+  cursor: pointer;
+}
     .profileUpload{
       width: 100%;
       display: flex;
@@ -188,11 +239,15 @@ main {
         cursor: pointer;
       }
       p{
-         margin: 16px 0 24px 0;
+         margin: 16px 0 0 0;
         font-weight: 400;
 font-size: 14px;
 line-height: 21px;
 color: #D9B608;
+      }
+      input{
+        width: 50%;
+         margin: 16px auto 24px auto;
       }
     }
     .profileDetails {
@@ -265,6 +320,7 @@ outline:none;
 @media screen and (max-width: 500px) {
   main {
     .container {
+       width: 100%;
       .profileDetails{
         input{
           width: 100%;
