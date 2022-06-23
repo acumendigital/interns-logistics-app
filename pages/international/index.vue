@@ -145,7 +145,7 @@
           <div class="input-form">
             <font-awesome-icon icon="calendar" class="red" />
             <input
-              type="date"
+              type="datetime-local"
               value="2022-06-01"
               min="2022-06-20"
               max="2025-12-31"

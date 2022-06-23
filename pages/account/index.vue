@@ -2,9 +2,9 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/account" class="" exact-active-class="">
+        <div @click="goToPrev" class="" exact-active-class="">
           <img src="~/assets/images/leftArrow.svg">
-        </nuxt-link>
+        </div>
       </div>
       <div class="title">
         <nuxt-link
@@ -106,7 +106,10 @@ export default {
           })
         }
       }
-    }
+    },
+    goToPrev(){
+        this.$router.go(-1)
+      }
   }
 }
 </script>

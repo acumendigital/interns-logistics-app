@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <main>
     <div class="container">
       <div class="back">
@@ -30,12 +30,12 @@
       <div class="profileUpload">
         <!-- <img src="~/assets/images/profile.svg"> -->
         <img
-          :src="imgSrc || '/profile.svg'"
+          :src="imgSrc"
           alt="avatar"
           class="imgSrc"
-        >
+        />
       </div>
-      <div>
+      <div v-show="!loading">
         <div class="profileDetails">
           <div class="pencil">
             <label>First Name</label>
@@ -43,8 +43,7 @@
               src="~/assets/images/pencil.svg"
               @click="
                 clicked = true;
-                $router.push('/profile/editProfile');
-              "
+                $router.push('/profile/editProfile');"
             >
           </div>
           <input v-model="first_name" type="text" disabled>
@@ -65,6 +64,9 @@
           <label>Home Address</label>
           <input v-model="address" type="text" disabled>
         </div>
+      </div>
+      <div class="loading" v-show="loading">
+        <img src="~/assets/images/loader_black.svg" alt="black loader">
       </div>
       <section class="footer">
         <TheBottomNav />
@@ -88,7 +90,7 @@ export default {
       email: '',
       number: '',
       address: '',
-      imgSrc: ''
+      imgSrc: "~/assets/images/profile.svg"
     }
   },
   created () {
@@ -105,9 +107,16 @@ export default {
       this.email = response.data.data.email
       this.number = response.data.data.phone_number
       this.address = response.data.data.address.primary
-      this.imgSrc = response.data.data.photo
+      if(response.data.data.photo !== "/avatar.png"){
+        this.imgSrc = response.data.data.photo
+      }
     }
-  }
+  },
+  computed: {
+    loading () {
+      return this.$store.state.loading
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -229,6 +238,14 @@ main {
     .footer {
       width: 100%;
       margin: 0 0 32px 0;
+    }
+    .loading{
+      @include flex-center;
+      height: 55vh;
+      img{
+       width: 80px;
+       height: 80px; 
+      }
     }
   }
   // .footer {
