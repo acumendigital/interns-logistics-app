@@ -41,6 +41,7 @@
               type="search"
               name="track"
               placeholder="Enter Tracking Number"
+              v-model="trackingNumber"
             >
             <button>
               <font-awesome-icon icon="magnifying-glass" />
@@ -49,10 +50,11 @@
         </div>
         <div class="active-shipments">
           <p>Active Shipments</p>
-          <TheActiveShipment v-for="shipments in activeShipments" :key="shipments._id" :shipmentData="shipments" v-show="!loading" />
+          <TheActiveShipment v-for="shipments in filteredShipments" :key="shipments._id" :shipmentData="shipments" v-show="!loading" />
           <div class="img-container" v-show="loading">
             <img src="~/assets/images/loader_black.svg" alt="Loading...">
           </div>
+          <the-empty-content v-show="showEmpty" :styles="{ height: '30vh', 'justify-content': 'flex-start'}" />
         </div>
       </div>
     </section>
@@ -62,11 +64,14 @@
   </main>
 </template>
 <script>
+import TheEmptyContent from '~/components/TheEmptyContent.vue'
 export default {
+  components: { TheEmptyContent },
   layout: 'auth-layout',
   data(){
     return{
-      activeShipments: []
+      activeShipments: [],
+      trackingNumber: "",
     }
   },
   async mounted(){
@@ -88,6 +93,22 @@ export default {
   computed:{
     loading(){
       return this.$store.state.loading
+    },
+    filteredShipments(){
+      if(this.trackingNumber !== ""){
+        return this.activeShipments.filter(shipments => {
+          return shipments?.package_id.match(this.trackingNumber.toUpperCase())
+        });
+      } else {
+        return this.activeShipments
+      }
+    },
+    showEmpty(){
+      if(this.filteredShipments.length == 0){
+        return true
+      } else {
+        return false
+      }
     }
   }
 }

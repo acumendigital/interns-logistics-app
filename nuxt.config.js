@@ -1,30 +1,4 @@
-import axios from "axios";
-
 export default {
-  // generating links for dynamic pages
-  // generate: {
-  //   async routes() {
-  //     let config = {
-  //       headers: {
-  //         Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmE2MmUyYWUzMDkxYzg4NmUxOGUwNTYiLCJpYXQiOjE2NTU3NTMxMDcsImV4cCI6MTY1NTgzOTUwN30.o4mRBAIpPvhe6FODVyY_pLEnWMZma_2Gn4LYC_fanJo`,
-  //       },
-  //     };
-  //     const orderDetailsReq = await axios.get(
-  //       `https://xyz-logistics-api.herokuapp.com/api/v1/requests/user?status=pending`,
-  //       config
-  //     );
-  //     const orderDetailsArray = orderDetailsReq.data.data.map((data) => {
-  //       return {
-  //         route: "/orders/track-order/" + data._id,
-  //       };
-  //     });
-
-  //     const routes = orderDetailsArray;
-  //     return routes;
-  //   },
-  //   fallback: true,
-  // },
-
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
   ssr: false,
@@ -42,7 +16,7 @@ export default {
     script: [
       {
         defer: true,
-        src: `https://maps.googleapis.com/maps/api/js?key=AIzaSyBBlFJRASRFySUX9F06Q4Z0sLc0eXaeKuI&libraries=places`,
+        src: `https://maps.googleapis.com/maps/api/js?key=AIzaSyBBlFJRASRFySUX9F06Q4Z0sLc0eXaeKuI&libraries=places&callback=initMap`,
       },
     ],
   },

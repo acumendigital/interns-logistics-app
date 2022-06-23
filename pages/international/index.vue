@@ -176,7 +176,7 @@ export default {
   async mounted(){
     const options = {
         // componentRestrictions: { 'country': "ng" },
-        fields: ["address_components",],
+        fields: ["address_components", "geometry"],
         strictBounds: false,
         types: ["address"],
     };
@@ -191,18 +191,21 @@ export default {
     google.maps.event.addListener(pickUpRefSendService, "place_changed", ()=> {
       console.log(pickUpRefSendService.getPlace());
       let place = pickUpRefSendService.getPlace()
+      this.originLngLat = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()}
       let addressLiteral = `${place.address_components[0].long_name}, ${place.address_components[1].long_name}, ${place.address_components[4]?.long_name}`
       this.requestDetails.pickup_address = addressLiteral
     })
     google.maps.event.addListener(dropOffRefSendService, "place_changed", ()=> {
       console.log(dropOffRefSendService.getPlace());
       let place = dropOffRefSendService.getPlace()
+      this.destinationLngLat = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()}
       let addressLiteral = `${place.address_components[0].long_name}, ${place.address_components[1].long_name}, ${place.address_components[4]?.long_name}`
       this.requestDetails.delivery_address = addressLiteral
     })
     google.maps.event.addListener(pickUpRefService, "place_changed", ()=> {
       console.log(pickUpRefService.getPlace());
       let place = pickUpRefService.getPlace()
+      this.originLngLat = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()}
       let addressLiteral = `${place.address_components[0].long_name}, ${place.address_components[1].long_name}, ${place.address_components[4]?.long_name}`
       this.requestDetails.pickup_address = addressLiteral
     })
@@ -210,6 +213,7 @@ export default {
     google.maps.event.addListener(dropOffRefService, "place_changed", ()=> {
       console.log(dropOffRefService.getPlace());
       let place = dropOffRefService.getPlace()
+      this.destinationLngLat = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()}
       let addressLiteral = `${place.address_components[0].long_name}, ${place.address_components[1].long_name}, ${place.address_components[4]?.long_name}`
       this.requestDetails.delivery_address = addressLiteral
     })
@@ -231,7 +235,12 @@ export default {
         deliveryType: 'pickup',
         package_type: "",
         regionType: this.$route.name
-      }
+      },
+      originLngLat: {lat: 4.8472226, lng: 6.974604},
+      destinationLngLat: {},
+      distance: '',
+      requestPrice: 0,
+      basePrice: 5000
     };
   },
   methods: {
@@ -246,6 +255,55 @@ export default {
       this.requestDetails.deliveryType = "dropoff"
     },
     async requestDeliveryHandler(){
+
+      // let directionsService = await new google.maps.DirectionsService(); // Instantiating the directions service API
+      // let directionsRenderer = await new google.maps.DirectionsRenderer(); // Instantiating the directions Renderer API
+      
+      // // Create route from existing points used for markers
+      // const route = {
+      //     origin: this.originLngLat,
+      //     destination: this.destinationLngLat,
+      //     travelMode: 'TRANSIT'
+      // }
+            
+      // if(route.origin && route.destination && this.destinationLngLat){
+      //   this.destinationLngLat && await directionsService.route(route,
+      //     async function(response, status) { // anonymous function to capture directions
+      //     if (status !== 'OK') {
+      //         this.$toasted.show(
+      //             'Directions request failed due to ' + status,
+      //             {
+      //                 position: 'top-center',
+      //                 type: 'danger',
+      //                 duration: 3500,
+      //             }
+      //             )
+      //         return;
+      //     } else {
+      //         // await directionsRenderer.setDirections(response); // Add route to the map
+      //         var directionsData = response.routes[0].legs[0]; // Get data about the mapped route
+      //         if (!directionsData) {
+      //         this.$toasted.show(
+      //             'Directions request failed due to ' + status,
+      //             {
+      //                 position: 'top-center',
+      //                 type: 'danger',
+      //                 duration: 3500,
+      //             }
+      //             )
+      //         return;
+      //         }
+      //         else {
+      //             let distanceText = directionsData.distance.text
+      //             distanceText = distanceText.split(" ")
+      //             this.distance = Number(distanceText[0])
+      //             this.requestPrice = this.localBasePrice + (this.distance * 10) + (this.weight * 50) // Setting price of the request for local transactions
+      //             console.log(directionsData);
+      //         }
+      //     }
+      //     }.bind(this))}
+      
+
       try {
         const requestDeliveryReq = await this.$axios.post('/api/v1/request', this.requestDetails)
         this.$toasted.show(requestDeliveryReq.data.message, {
@@ -253,6 +311,8 @@ export default {
           duration: 2500,
           type: 'success',
         })
+        this.requestPrice = this.basePrice + (Number(this.requestDetails.weight) * 50) // Setting price of the request for local transactions
+        this.$store.commit('setRequestPrice', this.requestPrice)
       } catch (error) {
         this.$toasted.show(
           error.response.data.message,

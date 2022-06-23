@@ -17,22 +17,15 @@
       </section>
       <section v-show="active" class="active-cards">
         <TheActiveOrder v-for="shipment in activeShipments" :key="shipment._id" :shipmentProp="shipment" />
+        <div class="loading">
+          <span v-show="loading"><img src="~/assets/images/loader_black.svg" alt="loader"></span>
+        </div>
       </section>
       <section v-show="delivered" class="active-cards">
-        <TheDeliveredOrder />
-        <TheDeliveredOrder />
-        <TheDeliveredOrder />
-        <TheDeliveredOrder />
-        <TheDeliveredOrder />
-        <TheDeliveredOrder />
+        <the-empty-content emptyCaption="You currently have no delivered orders" />
       </section>
       <section v-show="cancelled" class="active-cards">
-        <TheCancelledOrder />
-        <TheCancelledOrder />
-        <TheCancelledOrder />
-        <TheCancelledOrder />
-        <TheCancelledOrder />
-        <TheCancelledOrder />
+        <the-empty-content emptyCaption="You currently have no cancelled orders" />
       </section>
     </div>
 
@@ -42,7 +35,9 @@
   </main>
 </template>
 <script>
+import TheEmptyContent from '~/components/TheEmptyContent.vue';
 export default {
+  components: { TheEmptyContent },
   data() {
     return {
       active: true,
@@ -83,6 +78,11 @@ export default {
       this.delivered = false;
     },
   },
+  computed:{
+    loading(){
+      return this.$store.state.loading
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -94,6 +94,7 @@ main {
   font-family: "Rubik Regular";
   padding: 2rem 1rem;
   background: #fafafa;
+  // height: 100vh;
   .main {
     width: 100%;
   }
@@ -131,6 +132,15 @@ main {
   }
   .active-cards{
     margin-bottom: 100px;
+    min-height: 130vh;
+    .loading{
+      @include flex-center;
+      color: black;
+      img{
+        width: 80px;
+        height: 80px;
+      }
+    }
   }
   @media screen and(min-width: 800px) {
     .main {
