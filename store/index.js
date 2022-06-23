@@ -20,6 +20,7 @@ export const state = () => ({
   loading: false,
   token: "",
   orderDetails: [],
+  requestPrice: 0,
 });
 
 export const mutations = {
@@ -34,6 +35,9 @@ export const mutations = {
   },
   setOrderDetails(state, orderDetails) {
     state.orderDetails = orderDetails;
+  },
+  setRequestPrice(state, requestPrice) {
+    state.requestPrice = requestPrice;
   },
 };
 
