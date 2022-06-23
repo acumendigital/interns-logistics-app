@@ -28,8 +28,12 @@
         </nuxt-link>
       </div>
       <div class="profileUpload">
-        <img src="~/assets/images/profile.svg">
-        <p>Update your profile photo</p>
+        <!-- <img src="~/assets/images/profile.svg"> -->
+        <img
+          :src="imgSrc || '/profile.svg'"
+          alt="avatar"
+          class="imgSrc"
+        >
       </div>
       <div>
         <div class="profileDetails">
@@ -59,11 +63,7 @@
         </div>
         <div class="profileDetails">
           <label>Home Address</label>
-          <input
-            v-model="address"
-            type="text"
-            disabled
-          >
+          <input v-model="address" type="text" disabled>
         </div>
       </div>
       <section class="footer">
@@ -87,7 +87,8 @@ export default {
       last_name: '',
       email: '',
       number: '',
-      address: ''
+      address: '',
+      imgSrc: ''
     }
   },
   created () {
@@ -95,7 +96,8 @@ export default {
   },
   methods: {
     async getUserdetails () {
-      const response = await this.$axios.get(`https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/${this.$store.state.userDetails._id}`
+      const response = await this.$axios.get(
+        `https://xyz-logistics-api.herokuapp.com/api/v1/user/profile/${this.$store.state.userDetails._id}`
       )
       console.log(response.data.data)
       this.first_name = response.data.data.firstname
@@ -103,11 +105,10 @@ export default {
       this.email = response.data.data.email
       this.number = response.data.data.phone_number
       this.address = response.data.data.address.primary
+      this.imgSrc = response.data.data.photo
     }
-
   }
 }
-
 </script>
 <style lang="scss" scoped>
 main {
@@ -171,6 +172,12 @@ main {
       margin-top: 58px;
       img {
         cursor: pointer;
+      }
+      .imgSrc {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
       }
       p {
         margin: 16px 0 24px 0;
@@ -240,6 +247,7 @@ main {
 @media screen and (max-width: 500px) {
   main {
     .container {
+      width: 100%;
       .profileDetails {
         input {
           width: 100%;

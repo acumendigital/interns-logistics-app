@@ -9,8 +9,13 @@
           </p>
         </div>
 
-        <p class="amount">
-          -N2,000
+        <p
+          v-for="(value, index) in transactions"
+          :key="index"
+          class="amount"
+          :value="value"
+        >
+          {{ value }}
         </p>
       </div>
     </div>
@@ -18,18 +23,36 @@
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'Trnasactions',
+  data () {
+    return {
+      title: 'Save',
+      transactions: []
+    }
+  },
+  created () {
+    this.getTransactions()
+  },
+  methods: {
+    async getTransactions () {
+      const response = await this.$axios.get('https://xyz-logistics-api.herokuapp.com/api/v1/wallet/paystak/transactions'
+      )
+      if (response) {
+        this.transactions = []
+        // response.data.reverse().forEach(v => this.vendorList.push(v.name))
+        response.data.data.transactionHistory[0].forEach(v => this.transactions.push(v.amount))
+      }
+      // console.log(response.data.data.transactionHistory[0].amount)
+      console.log(response.data.data.transactionHistory)
+    }
+  }
+}
 </script>
 <style lang="scss" scoped>
 main {
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
-  //   align-items: center;
   font-family: "Rubik Regular";
   font-style: normal;
-  //   width: 100%;
-  //   color: #000;
 
   .container {
     width: 100%;

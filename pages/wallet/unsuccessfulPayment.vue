@@ -64,7 +64,6 @@ main {
       justify-content: center;
       align-items: center;
       margin: 269px auto 0 auto;
-      margin-top: 269px;
       p {
         font-weight: 400;
         font-size: 18px;
@@ -91,6 +90,7 @@ main {
 @media screen and (max-width: 500px) {
   main {
     .container {
+       width: 100%;
       .btn {
         width: 70%;
        margin-right: auto;

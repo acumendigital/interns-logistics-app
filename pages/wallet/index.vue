@@ -47,7 +47,12 @@
 
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  data () {
+    return {
+      title: 'Save'
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
