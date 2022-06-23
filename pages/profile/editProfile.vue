@@ -1,4 +1,4 @@
-<template lang="">
+<template >
   <main>
     <div class="container">
       <div class="back">
@@ -29,6 +29,7 @@
           <p>Account Settings</p>
         </nuxt-link>
       </div>
+      <div v-show="!loading">
       <div class="profileUpload">
         <!-- <img src="~/assets/images/profile.svg"> -->
         <img :src="imgSrc || '/profile.svg'" alt="avatar" class="imgSrc">
@@ -36,7 +37,6 @@
           Update your profile photo</p>
         <input id="file-input" type="file" accept=".jpeg, .png, .jpg" @change="uploadImage($event)">
       </div>
-      <div>
         <div class="profileDetails">
           <label>First Name</label>
           <input v-model="first_name" type="text">
@@ -61,10 +61,12 @@
           >
         </div>
       </div>
-      <div class="btn" @click="save()">
-        <Button :name="title" />
+      <div class="loading" v-show="loading">
+        <img src="~/assets/images/loader_black.svg" alt="black loader">
       </div>
-    </div>
+        <div class="btn" @click="save()">
+          <Button :name="title" />
+        </div>
     </div>
   </main>
 </template>
@@ -149,7 +151,12 @@ export default {
         console.log(formData.get('data'))
       }
     }
-  }
+  },
+  computed: {
+    loading () {
+      return this.$store.state.loading
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -204,10 +211,10 @@ main {
       }
     }
     .imgSrc {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 .img-text-div {
   /* border: 2px solid red; */
@@ -239,11 +246,11 @@ main {
         cursor: pointer;
       }
       p{
-         margin: 16px 0 0 0;
+        margin: 16px 0 0 0;
         font-weight: 400;
-font-size: 14px;
-line-height: 21px;
-color: #D9B608;
+        font-size: 14px;
+        line-height: 21px;
+        color: #D9B608;
       }
       input{
         width: 50%;
@@ -260,8 +267,8 @@ color: #D9B608;
       }
       input {
         background: #F4F4F4;
-border-radius: 8px;
-outline:none;
+        border-radius: 8px;
+        outline:none;
         width: 364px;
         border-style: none;
         padding: 20px;
@@ -316,6 +323,14 @@ outline:none;
       justify-content: center;
     }
   }
+  .loading{
+      @include flex-center;
+      height: 55vh;
+      img{
+       width: 80px;
+       height: 80px; 
+      }
+    }
 }
 @media screen and (max-width: 500px) {
   main {
