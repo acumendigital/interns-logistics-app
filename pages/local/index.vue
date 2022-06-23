@@ -2,10 +2,14 @@
   <main>
     <div class="main">
       <section class="close">
-        <nuxt-link to="/home"> <font-awesome-icon icon="x" /></nuxt-link>
+        <nuxt-link to="/home">
+          <font-awesome-icon icon="x" />
+        </nuxt-link>
       </section>
       <section class="toggle">
-        <p :class="send ? 'active' : 'inactive'" @click="toggleSend">Send</p>
+        <p :class="send ? 'active' : 'inactive'" @click="toggleSend">
+          Send
+        </p>
         <p :class="receive ? 'active' : 'inactive'" @click="toggleReceive">
           Receive
         </p>
@@ -18,12 +22,12 @@
             <div class="input-form">
               <font-awesome-icon icon="location-crosshairs" class="yel" />
               <input
+                ref="pickUpRefSend"
+                v-model="requestDelivery.pickup_address"
                 type="text"
                 name="pickup"
                 placeholder="Choose pick-up location"
-                ref="pickUpRefSend"
-                v-model="requestDelivery.pickup_address"
-              />
+              >
               <!-- <the-select-place :inputRef="pickUpRef" /> -->
             </div>
           </div>
@@ -36,12 +40,12 @@
               <div>
                 <font-awesome-icon icon="location-dot" class="red" />
                 <input
+                  ref="dropOffRefSend"
+                  v-model="requestDelivery.delivery_address"
                   type="text"
                   name="pickup"
                   placeholder="Choose drop-off location"
-                  ref="dropOffRefSend"
-                  v-model="requestDelivery.delivery_address"
-                />
+                >
               <!-- <the-select-place :inputRef="dropOffRef" /> -->
               </div>
             </div>
@@ -60,12 +64,12 @@
               <div>
                 <font-awesome-icon icon="location-dot" class="red" />
                 <input
+                  ref="dropOffRef"
+                  v-model="requestDelivery.delivery_address"
                   type="text"
                   name="pickup"
                   placeholder="Choose drop-off location"
-                  ref="dropOffRef"
-                  v-model="requestDelivery.delivery_address"
-                />
+                >
               </div>
             </div>
           </div>
@@ -74,12 +78,12 @@
             <div class="input-form">
               <font-awesome-icon icon="location-crosshairs" class="yel" />
               <input
+                ref="pickUpRef"
+                v-model="requestDelivery.pickup_address"
                 type="text"
                 name="pickup"
                 placeholder="Choose drop-off location"
-                ref="pickUpRef"
-                v-model="requestDelivery.pickup_address"
-              />
+              >
             </div>
           </div>
         </div>
@@ -88,32 +92,31 @@
         <div class="input">
           <p>Contact Information (Sender)</p>
 
-          <input type="text" name="first name" placeholder="First Name" />
+          <input type="text" name="first name" placeholder="First Name">
           <input
             type="number"
             name="number"
             placeholder="+xxx (xxx)-xxx-xxxx"
             value="Phone Number"
             min="0"
-          />
+          >
         </div>
         <div class="receiver">
           <div class="input">
             <p>Contact Information (Receiver)</p>
 
-            <input type="text" name="pickup" placeholder="First Name" v-model="requestDelivery.receiver" />
+            <input v-model="requestDelivery.receiver" type="text" name="pickup" placeholder="First Name">
             <input
+              v-model="requestDelivery.receiver_phone"
               type="number"
               name="pickup"
               placeholder="+xxx (xxx)-xxx-xxxx"
               min="0"
-              v-model="requestDelivery.receiver_phone"
-            /><input
+            ><input
               type="email"
               name="pickup"
-              placeholder="Choose pick-up location"
-              value="Email Address"
-            />
+              placeholder="Email Address"
+            >
           </div>
         </div>
       </section>
@@ -127,133 +130,184 @@
               value="2022-06-01"
               min="2022-06-20"
               max="2025-12-31"
-            />
+            >
           </div>
         </div>
       </section>
       <div class="desc">
         <p>Package Description</p>
         <div class="package-description">
-          <select name="package" id="package" v-model="requestDelivery.package_type">
-            <option value="package1" selected disabled>Select Package</option>
-            <option value="Small"> Small (30 x 25 cm)</option>
-            <option value="Medium"> Medium (30 x 25 cm)</option>
-            <option value="Big"> Big (30 x 25 cm)</option>
-            <option value="Large"> Large (30 x 25 cm)</option>
+          <select id="package" v-model="requestDelivery.package_type" name="package">
+            <option value="package1" selected disabled>
+              Select Package
+            </option>
+            <option value="Small">
+              Small (30 x 25 cm)
+            </option>
+            <option value="Medium">
+              Medium (30 x 25 cm)
+            </option>
+            <option value="Big">
+              Big (30 x 25 cm)
+            </option>
+            <option value="Large">
+              Large (30 x 25 cm)
+            </option>
           </select>
         </div>
-        <input type="text" placeholder="name of package?" v-model="requestDelivery.name">
-        <input type="text" placeholder="Weight (Kg)" v-model.number="requestDelivery.weight">
+        <input v-model="requestDelivery.name" type="text" placeholder="name of package?">
+        <input v-model.number="requestDelivery.weight" type="text" placeholder="Weight (Kg)">
       </div>
-      <button class="payment-btn" @click="requestDeliveryHandler" :class="{ loading : loading }"> Continue to Payment <span v-show="loading"><img src="~/assets/images/loader.svg" alt="loader"></span></button>
+      <button class="payment-btn" :class="{ loading : loading }" @click="pay()">
+        Continue to Payment <span v-show="loading"><img src="~/assets/images/loader.svg" alt="loader"></span>
+      </button>
     </div>
     <!-- <the-direction-container :originLngLat="originLngLat" :destinationLngLat="destinationLngLat" /> -->
   </main>
 </template>
 <script>
-import TheSelectPlace from '~/components/TheSelectPlace.vue';
-import TheDirectionContainer from '~/components/TheDirectionContainer.vue'
+// import TheSelectPlace from '~/components/TheSelectPlace.vue'
+// import TheDirectionContainer from '~/components/TheDirectionContainer.vue'
 
 export default {
-  components: { 
-    TheSelectPlace,
-    TheDirectionContainer
-   },
-  data() {
+  // components: {
+  //   TheSelectPlace,
+  //   TheDirectionContainer
+  // },
+  data () {
     return {
       previewImage: [],
       isActive: true,
       send: true,
       receive: false,
+      email: this.$store.state.userDetails.email,
+      amount: this.$store.state.requestPrice,
       requestDelivery: {
-        name: "",
-        receiver: "",
-        receiver_phone: "",
+        name: '',
+        receiver: '',
+        receiver_phone: '',
         weight: 0,
-        pickup_address: "",
-        delivery_address: "",
-        package_type: "",
-        deliveryType: "pickup",
+        pickup_address: '',
+        delivery_address: '',
+        package_type: '',
+        deliveryType: 'pickup',
         regionType: this.$route.name
       },
-      originLngLat: {lat: 4.8472226, lng: 6.974604},
+      originLngLat: { lat: 4.8472226, lng: 6.974604 },
       destinationLngLat: {},
       distance: '',
       requestPrice: 0,
       basePrice: 1000
-    };
+    }
   },
-  async mounted(){
+  computed: {
+    loading () {
+      return this.$store.state.loading
+    }
+  },
+  async mounted () {
+    const options = {
+      componentRestrictions: { country: 'ng' },
+      fields: ['address_components', 'geometry'],
+      strictBounds: false,
+      types: ['address']
+    }
 
-        const options = {
-            componentRestrictions: { 'country': "ng" },
-            fields: ["address_components", "geometry"],
-            strictBounds: false,
-            types: ["address"],
-        };
+    // Instantiating Google Place API for all four Input fields
+    const pickUpRefService = await new google.maps.places.Autocomplete(this.$refs.pickUpRef, options)
+    const pickUpRefSendService = await new google.maps.places.Autocomplete(this.$refs.pickUpRefSend, options)
+    const dropOffRefService = await new google.maps.places.Autocomplete(this.$refs.dropOffRef, options)
+    const dropOffRefSendService = await new google.maps.places.Autocomplete(this.$refs.dropOffRefSend, options)
 
-        // Instantiating Google Place API for all four Input fields
-        const pickUpRefService = await new google.maps.places.Autocomplete(this.$refs.pickUpRef, options)
-        const pickUpRefSendService = await new google.maps.places.Autocomplete(this.$refs.pickUpRefSend, options)
-        const dropOffRefService = await new google.maps.places.Autocomplete(this.$refs.dropOffRef, options)
-        const dropOffRefSendService = await new google.maps.places.Autocomplete(this.$refs.dropOffRefSend, options)
+    // Adding Event Listeners for when user clicks a new place
+    google.maps.event.addListener(pickUpRefSendService, 'place_changed', () => {
+      console.log(pickUpRefSendService.getPlace())
+      const place = pickUpRefSendService.getPlace()
+      // console.log(place.geometry.location.lat(), place.geometry.location.lng());
+      this.originLngLat = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }
+      const addressLiteral = `${place.address_components[0].long_name}, ${place.address_components[1].long_name}`
+      this.requestDelivery.pickup_address = addressLiteral
+    })
+    google.maps.event.addListener(dropOffRefSendService, 'place_changed', () => {
+      console.log(dropOffRefSendService.getPlace())
+      const place = dropOffRefSendService.getPlace()
+      this.destinationLngLat = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }
+      const addressLiteral = `${place.address_components[0].long_name}, ${place.address_components[1].long_name}`
+      this.requestDelivery.delivery_address = addressLiteral
+    })
+    google.maps.event.addListener(pickUpRefService, 'place_changed', () => {
+      console.log(pickUpRefService.getPlace())
+      const place = pickUpRefService.getPlace()
+      this.originLngLat = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }
+      const addressLiteral = `${place.address_components[0].long_name}, ${place.address_components[1].long_name}`
+      this.requestDelivery.pickup_address = addressLiteral
+    })
 
-
-          // Adding Event Listeners for when user clicks a new place 
-          google.maps.event.addListener(pickUpRefSendService, "place_changed", ()=> {
-            console.log(pickUpRefSendService.getPlace());
-            let place = pickUpRefSendService.getPlace()
-            // console.log(place.geometry.location.lat(), place.geometry.location.lng());
-            this.originLngLat = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()}
-            let addressLiteral = `${place.address_components[0].long_name}, ${place.address_components[1].long_name}`
-            this.requestDelivery.pickup_address = addressLiteral
-          })
-          google.maps.event.addListener(dropOffRefSendService, "place_changed", ()=> {
-            console.log(dropOffRefSendService.getPlace());
-            let place = dropOffRefSendService.getPlace()
-            this.destinationLngLat = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()}
-            let addressLiteral = `${place.address_components[0].long_name}, ${place.address_components[1].long_name}`
-            this.requestDelivery.delivery_address = addressLiteral
-          })
-          google.maps.event.addListener(pickUpRefService, "place_changed", ()=> {
-            console.log(pickUpRefService.getPlace());
-            let place = pickUpRefService.getPlace()
-            this.originLngLat = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()}
-            let addressLiteral = `${place.address_components[0].long_name}, ${place.address_components[1].long_name}`
-            this.requestDelivery.pickup_address = addressLiteral
-          })
-          
-          google.maps.event.addListener(dropOffRefService, "place_changed", ()=> {
-            console.log(dropOffRefService.getPlace());
-            let place = dropOffRefService.getPlace()
-            this.destinationLngLat = {lat: place.geometry.location.lat(), lng: place.geometry.location.lng()}
-            let addressLiteral = `${place.address_components[0].long_name}, ${place.address_components[1].long_name}`
-            this.requestDelivery.delivery_address = addressLiteral
-          })
+    google.maps.event.addListener(dropOffRefService, 'place_changed', () => {
+      console.log(dropOffRefService.getPlace())
+      const place = dropOffRefService.getPlace()
+      this.destinationLngLat = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }
+      const addressLiteral = `${place.address_components[0].long_name}, ${place.address_components[1].long_name}`
+      this.requestDelivery.delivery_address = addressLiteral
+    })
   },
   methods: {
-    toggleSend() {
-      this.send = true;
-      this.receive = false;
-      this.requestDelivery.deliveryType = "pickup"
-    },
-    toggleReceive() {
-      this.receive = true;
-      this.send = false;
-      this.requestDelivery.deliveryType = "dropoff"
-    },
-    async requestDeliveryHandler(){
+    async pay () {
+      try {
+        const deliveryReq = await this.$axios.post('/api/v1/request', this.requestDelivery)
+        this.$toasted.show(deliveryReq.data.message, {
+          position: 'top-center',
+          duration: 2500,
+          type: 'success'
+        })
+        this.requestPrice = this.basePrice + (Number(this.requestDelivery.weight) * 50) // Setting price of the request for local transactions
+        this.$store.commit('setRequestPrice', this.requestPrice)
+        console.log(deliveryReq)
+      } catch (error) {
+        this.$toasted.show(
+          error.response.data.message,
+          {
+            position: 'top-center',
+            type: 'danger',
+            duration: 3500
+          }
+        )
+        console.log(error.message)
+      }
+      const data = {
 
+        email: this.email,
+        amount: this.amount
+      }
+
+      const request = await this.$axios
+        .post('https://xyz-logistics-api.herokuapp.com/api/v1/wallet/paystack/initialize', data)
+      window.location.href = request.data.data.authorization_url
+      if (request) {
+        console.log(request.data.data.authorization_url)
+      }
+    },
+    toggleSend () {
+      this.send = true
+      this.receive = false
+      this.requestDelivery.deliveryType = 'pickup'
+    },
+    toggleReceive () {
+      this.receive = true
+      this.send = false
+      this.requestDelivery.deliveryType = 'dropoff'
+    },
+    async requestDeliveryHandler () {
       // let directionsService = await new google.maps.DirectionsService(); // Instantiating the directions service API
       // let directionsRenderer = await new google.maps.DirectionsRenderer(); // Instantiating the directions Renderer API
-      
+
       // // Create route from existing points used for markers
       // const route = {
       //     origin: this.originLngLat,
       //     destination: this.destinationLngLat,
       //     travelMode: 'DRIVING'
       // }
-            
+
       // this.destinationLngLat && await directionsService.route(route,
       //     async function(response, status) { // anonymous function to capture directions
       //     if (status !== 'OK') {
@@ -291,34 +345,29 @@ export default {
       //     }.bind(this))
 
       try {
-        const deliveryReq = await this.$axios.post(`/api/v1/request`, this.requestDelivery);
+        const deliveryReq = await this.$axios.post('/api/v1/request', this.requestDelivery)
         this.$toasted.show(deliveryReq.data.message, {
           position: 'top-center',
           duration: 2500,
-          type: 'success',
+          type: 'success'
         })
         this.requestPrice = this.basePrice + (Number(this.requestDelivery.weight) * 50) // Setting price of the request for local transactions
         this.$store.commit('setRequestPrice', this.requestPrice)
-        console.log(deliveryReq); 
+        console.log(deliveryReq)
       } catch (error) {
         this.$toasted.show(
           error.response.data.message,
           {
             position: 'top-center',
             type: 'danger',
-            duration: 3500,
+            duration: 3500
           }
         )
-        console.log(error.message);
+        console.log(error.message)
       }
     }
-  },
-  computed:{
-    loading(){
-      return this.$store.state.loading
-    }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 main {
