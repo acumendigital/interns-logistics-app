@@ -122,11 +122,8 @@
   flex-direction: column;
   row-gap: 1.7rem;
 }
-.top-container{
-  
-}
 .pickup-header{
-  padding-left: 1.9rem;
+  padding-left: 2.9rem;
   display: flex;
   align-items: center;
   column-gap: 1rem;
