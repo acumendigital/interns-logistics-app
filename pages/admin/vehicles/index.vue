@@ -1,70 +1,132 @@
 <template>
   <div class="main-container">
-    <div class="sub-container">
-      <div class="details">
-        <div class="modal-header">
-          <h2>Pick-up</h2>
-          <p>(Local)</p>
-        </div>
-        <div class="pickup-location">
-          <img src="~assets/images/local-terminal.svg" alt="">
-            <div class="location-terminal">
-              <div class="sender-location">
-                <h6 class="from">From</h6>
-                <img src="~assets/images/location-icon.svg" alt="">
-                <h2 class="text">12 Odutola street, Adaba B/stp, Egbeda, Lagos.</h2>
-              </div>
-              <div class="receiver-location">
-                <h6 class="to">To</h6>
-                <img src="~assets/images/location-icon.svg" alt="">
-                <h2 class="text">12 Odutola street, Adaba B/stp, Egbeda, Lagos.</h2>
-              </div>
-            </div>
-        </div>
-        <div class="pickup-agent">
-          <img src="~assets/images/agents-icon.svg" alt="">
-          <div class="agent-container">
-            <div class="sender-agent">
-              <h2>From</h2>
-              <img src="~assets/images/user-icon.png" alt="">
-              <div>
-                <p>Ajibike Lola</p>
-                <p>07064783993</p>
-                <p>lola231@gmail.com</p>
-              </div>
-            </div>
-            <div class="receiver-agent">
-              <h2>To</h2>
-              <img src="~assets/images/user-icon.png" alt="">
-              <div>
-                <p>Ajibike Lola</p>
-                <p>07064783993</p>
-                <p>lola231@gmail.com</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="pickup-time">
-          <img class="time-icon" src="~assets/images/pickup-time.svg" alt="">
-          <div class="time-details">
-            <div>
-              <h2 class="details-header">Date</h2>
-              <p class="details-text">12/03/22</p>
-            </div>
-            <div>
-              <h2 class="details-header">Time</h2>
-              <p class="details-text">10am</p>
-            </div>
-            <div>
-              <h2 class="details-header">Package size</h2>
-              <p class="details-text">Medium</p>
-            </div>
-          </div>
-          <button class="pickup-submission">Assign</button>
-        </div>
+    <h2 class="header">Vehicles</h2>
+    <p class="text">Manage all your dispatchers, assign orders, and track orders here.</p>
+    <div class="settings-links">
+      <NuxtLink to="/admin/vehicles">Vans</NuxtLink>
+      <NuxtLink to="/admin/vehicles/trucks">Trucks</NuxtLink>
+      <NuxtLink to="/admin/vehicles/bikes">Bikes</NuxtLink>
+    </div>
+    <div class="search-section">
+      <input class="input-search" type="text" placeholder="Search">
+      <svg class="search-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9.55716 8.17016C10.2626 7.12015 10.5519 5.84513 10.3686 4.59348C10.1854 3.34196 9.54278 2.20331 8.56591 1.39965C7.58914 0.595991 6.34815 0.184654 5.08477 0.24598C3.8213 0.30723 2.62603 0.8367 1.7314 1.73117C0.83693 2.62555 0.307559 3.821 0.24621 5.08454C0.18496 6.34792 0.59629 7.589 1.39997 8.56568C2.20372 9.54246 3.34221 10.1851 4.5938 10.3684C5.84541 10.5516 7.12043 10.2623 8.17048 9.55684L10.0954 11.4818C10.3432 11.7295 10.7042 11.8262 11.0426 11.7356C11.381 11.6449 11.6453 11.3806 11.736 11.0422C11.8266 10.7038 11.7299 10.3427 11.4822 10.095L9.55716 8.17016ZM5.3359 9.24543C4.29894 9.24543 3.30447 8.83348 2.57133 8.10024C1.83819 7.36701 1.42614 6.37256 1.42614 5.33567C1.42614 4.29871 1.8381 3.30424 2.57133 2.5711C3.30456 1.83796 4.29901 1.42591 5.3359 1.42591C6.37286 1.42591 7.36733 1.83787 8.10047 2.5711C8.83377 3.30431 9.24566 4.29878 9.24566 5.33567C9.2445 6.37229 8.83218 7.36603 8.09924 8.0991C7.36621 8.83204 6.37245 9.24436 5.33581 9.24552L5.3359 9.24543Z" fill="black"/>
+      </svg>
+    </div>
+    <div class="major-container">
+      <div class="van-container">
+      <div class="image-background">
+        <img class="van-icon" src="~assets/images/van.png" alt="">
       </div>
-      <div class="requests-map">
-        <img src="~assets/images/requests-map.svg" alt="">
+      <div class="second-section">
+      <h2 class="van-header">White van</h2>
+      <div class="assign">
+        <p class="assign-id">rs-567288</p>
+        <p class="assign-status">Assigned</p>
+      </div>
+      <div class="condition">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.400391 9.23941V10.76C0.400391 10.9252 0.51557 11.0634 0.676819 11.0941L1.82889 11.3014C2.03621 12.6147 2.55465 13.8205 3.30345 14.8534L2.63138 15.8173C2.53924 15.9517 2.55464 16.1321 2.66982 16.2473L3.74498 17.3225C3.86016 17.4377 4.0407 17.4531 4.17503 17.3609L5.14267 16.6888C6.17179 17.4376 7.38143 17.9561 8.69467 18.1634L8.902 19.3155C8.93267 19.4767 9.07101 19.5919 9.23601 19.5919H10.7567C10.9218 19.5919 11.06 19.4767 11.0907 19.3155L11.298 18.1634C12.6113 17.9561 13.8171 17.4376 14.85 16.6888L15.8139 17.3609C15.9483 17.4531 16.1287 17.4377 16.2439 17.3225L17.3191 16.2473C17.4343 16.1321 17.4497 15.9516 17.3575 15.8173L16.6854 14.8534C17.4342 13.8243 17.9527 12.6146 18.16 11.3014L19.3121 11.0941C19.4733 11.0634 19.5885 10.925 19.5885 10.76V9.23941C19.5885 9.07428 19.4733 8.93606 19.3121 8.90539L18.16 8.69807C17.9527 7.38476 17.4342 6.179 16.6854 5.14607L17.3575 4.17842C17.4497 4.04396 17.4343 3.86356 17.3191 3.74838L16.2439 2.67321C16.1287 2.55803 15.9482 2.54263 15.8139 2.63478L14.8462 3.30684C13.8171 2.55804 12.6075 2.03961 11.2942 1.83228L11.0869 0.680215C11.0639 0.515082 10.9257 0.399902 10.7605 0.399902H9.23988C9.07474 0.399902 8.93653 0.515082 8.90586 0.676331L8.69854 1.8284C7.38522 2.03572 6.17946 2.55416 5.14654 3.30296L4.18266 2.6348C4.0482 2.54266 3.8678 2.55806 3.75262 2.67324L2.67745 3.7484C2.56227 3.86358 2.54687 4.04412 2.63901 4.17845L3.31108 5.14609C2.56228 6.17521 2.04385 7.38485 1.83652 8.69809L0.684455 8.90542C0.51557 8.93609 0.400391 9.0743 0.400391 9.23943V9.23941ZM3.21892 9.99973C3.21892 6.2595 6.26016 3.21836 10.0003 3.21836C13.7404 3.21836 16.7817 6.2596 16.7817 9.99973C16.7817 13.7399 13.7404 16.7811 10.0003 16.7811C6.26016 16.7811 3.21892 13.7399 3.21892 9.99973Z" fill="#C4C4C4"/>
+      </svg>
+      <div>
+        <h6 class="assign-header">Condition</h6>
+        <p class="assign-id">Good</p>
+      </div>
+      </div>
+      <div class="rider">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.00028 7.88564V5.75845C6.00028 3.7561 7.86912 2.00005 10.0004 2.00005C12.1317 2.00005 14.0005 3.75599 14.0005 5.75845V7.88564C14.0005 10.1642 12.0189 12.4 10.0004 12.4C7.98189 12.4 6.00028 10.1641 6.00028 7.88564ZM18.434 14.3752C16.398 13.3033 14.8707 12.7456 13.4698 12.568C14.7442 11.4161 15.6002 9.69764 15.6002 7.88561V5.75842C15.6002 2.85363 13.0354 0.399902 10.0003 0.399902C6.96515 0.399902 4.4004 2.85346 4.4004 5.75842V7.88561C4.4004 9.69685 5.25634 11.4153 6.52999 12.5673C5.14598 12.7394 3.61317 13.297 1.56679 14.3753C0.847579 14.7553 0.400391 15.497 0.400391 16.3106V18.8002C0.400391 19.2418 0.758779 19.6001 1.20034 19.6001H18.8006C19.2421 19.6001 19.6005 19.2418 19.6005 18.8002V16.3106C19.6005 15.497 19.1533 14.7553 18.4341 14.3753" fill="#C4C4C4"/>
+      </svg>
+      <div>
+        <h6 class="assign-header">Rider</h6>
+        <p class="assign-id">Fatia Jamiu</p>
+      </div>
+      </div>
+    </div>
+      </div>
+      <div class="van-container">
+      <div class="image-background">
+        <img class="van-icon" src="~assets/images/van.png" alt="">
+      </div>
+      <div class="second-section">
+      <h2 class="van-header">White van</h2>
+      <div class="assign">
+        <p class="assign-id">rs-567288</p>
+        <p class="assign-unstatus">Unassigned</p>
+      </div>
+      <div class="condition">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.400391 9.23941V10.76C0.400391 10.9252 0.51557 11.0634 0.676819 11.0941L1.82889 11.3014C2.03621 12.6147 2.55465 13.8205 3.30345 14.8534L2.63138 15.8173C2.53924 15.9517 2.55464 16.1321 2.66982 16.2473L3.74498 17.3225C3.86016 17.4377 4.0407 17.4531 4.17503 17.3609L5.14267 16.6888C6.17179 17.4376 7.38143 17.9561 8.69467 18.1634L8.902 19.3155C8.93267 19.4767 9.07101 19.5919 9.23601 19.5919H10.7567C10.9218 19.5919 11.06 19.4767 11.0907 19.3155L11.298 18.1634C12.6113 17.9561 13.8171 17.4376 14.85 16.6888L15.8139 17.3609C15.9483 17.4531 16.1287 17.4377 16.2439 17.3225L17.3191 16.2473C17.4343 16.1321 17.4497 15.9516 17.3575 15.8173L16.6854 14.8534C17.4342 13.8243 17.9527 12.6146 18.16 11.3014L19.3121 11.0941C19.4733 11.0634 19.5885 10.925 19.5885 10.76V9.23941C19.5885 9.07428 19.4733 8.93606 19.3121 8.90539L18.16 8.69807C17.9527 7.38476 17.4342 6.179 16.6854 5.14607L17.3575 4.17842C17.4497 4.04396 17.4343 3.86356 17.3191 3.74838L16.2439 2.67321C16.1287 2.55803 15.9482 2.54263 15.8139 2.63478L14.8462 3.30684C13.8171 2.55804 12.6075 2.03961 11.2942 1.83228L11.0869 0.680215C11.0639 0.515082 10.9257 0.399902 10.7605 0.399902H9.23988C9.07474 0.399902 8.93653 0.515082 8.90586 0.676331L8.69854 1.8284C7.38522 2.03572 6.17946 2.55416 5.14654 3.30296L4.18266 2.6348C4.0482 2.54266 3.8678 2.55806 3.75262 2.67324L2.67745 3.7484C2.56227 3.86358 2.54687 4.04412 2.63901 4.17845L3.31108 5.14609C2.56228 6.17521 2.04385 7.38485 1.83652 8.69809L0.684455 8.90542C0.51557 8.93609 0.400391 9.0743 0.400391 9.23943V9.23941ZM3.21892 9.99973C3.21892 6.2595 6.26016 3.21836 10.0003 3.21836C13.7404 3.21836 16.7817 6.2596 16.7817 9.99973C16.7817 13.7399 13.7404 16.7811 10.0003 16.7811C6.26016 16.7811 3.21892 13.7399 3.21892 9.99973Z" fill="#C4C4C4"/>
+      </svg>
+      <div>
+        <h6 class="assign-header">Condition</h6>
+        <p class="assign-id">Good</p>
+      </div>
+      </div>
+      <button class="assign-button">Assign</button>
+    </div>
+      </div>
+    </div>
+    <div class="major-container">
+      <div class="van-container">
+      <div class="image-background">
+        <img class="van-icon" src="~assets/images/van.png" alt="">
+      </div>
+      <div class="second-section">
+      <h2 class="van-header">White van</h2>
+      <div class="assign">
+        <p class="assign-id">rs-567288</p>
+        <p class="assign-status">Assigned</p>
+      </div>
+      <div class="condition">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.400391 9.23941V10.76C0.400391 10.9252 0.51557 11.0634 0.676819 11.0941L1.82889 11.3014C2.03621 12.6147 2.55465 13.8205 3.30345 14.8534L2.63138 15.8173C2.53924 15.9517 2.55464 16.1321 2.66982 16.2473L3.74498 17.3225C3.86016 17.4377 4.0407 17.4531 4.17503 17.3609L5.14267 16.6888C6.17179 17.4376 7.38143 17.9561 8.69467 18.1634L8.902 19.3155C8.93267 19.4767 9.07101 19.5919 9.23601 19.5919H10.7567C10.9218 19.5919 11.06 19.4767 11.0907 19.3155L11.298 18.1634C12.6113 17.9561 13.8171 17.4376 14.85 16.6888L15.8139 17.3609C15.9483 17.4531 16.1287 17.4377 16.2439 17.3225L17.3191 16.2473C17.4343 16.1321 17.4497 15.9516 17.3575 15.8173L16.6854 14.8534C17.4342 13.8243 17.9527 12.6146 18.16 11.3014L19.3121 11.0941C19.4733 11.0634 19.5885 10.925 19.5885 10.76V9.23941C19.5885 9.07428 19.4733 8.93606 19.3121 8.90539L18.16 8.69807C17.9527 7.38476 17.4342 6.179 16.6854 5.14607L17.3575 4.17842C17.4497 4.04396 17.4343 3.86356 17.3191 3.74838L16.2439 2.67321C16.1287 2.55803 15.9482 2.54263 15.8139 2.63478L14.8462 3.30684C13.8171 2.55804 12.6075 2.03961 11.2942 1.83228L11.0869 0.680215C11.0639 0.515082 10.9257 0.399902 10.7605 0.399902H9.23988C9.07474 0.399902 8.93653 0.515082 8.90586 0.676331L8.69854 1.8284C7.38522 2.03572 6.17946 2.55416 5.14654 3.30296L4.18266 2.6348C4.0482 2.54266 3.8678 2.55806 3.75262 2.67324L2.67745 3.7484C2.56227 3.86358 2.54687 4.04412 2.63901 4.17845L3.31108 5.14609C2.56228 6.17521 2.04385 7.38485 1.83652 8.69809L0.684455 8.90542C0.51557 8.93609 0.400391 9.0743 0.400391 9.23943V9.23941ZM3.21892 9.99973C3.21892 6.2595 6.26016 3.21836 10.0003 3.21836C13.7404 3.21836 16.7817 6.2596 16.7817 9.99973C16.7817 13.7399 13.7404 16.7811 10.0003 16.7811C6.26016 16.7811 3.21892 13.7399 3.21892 9.99973Z" fill="#C4C4C4"/>
+      </svg>
+      <div>
+        <h6 class="assign-header">Condition</h6>
+        <p class="assign-id">Good</p>
+      </div>
+      </div>
+      <div class="rider">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.00028 7.88564V5.75845C6.00028 3.7561 7.86912 2.00005 10.0004 2.00005C12.1317 2.00005 14.0005 3.75599 14.0005 5.75845V7.88564C14.0005 10.1642 12.0189 12.4 10.0004 12.4C7.98189 12.4 6.00028 10.1641 6.00028 7.88564ZM18.434 14.3752C16.398 13.3033 14.8707 12.7456 13.4698 12.568C14.7442 11.4161 15.6002 9.69764 15.6002 7.88561V5.75842C15.6002 2.85363 13.0354 0.399902 10.0003 0.399902C6.96515 0.399902 4.4004 2.85346 4.4004 5.75842V7.88561C4.4004 9.69685 5.25634 11.4153 6.52999 12.5673C5.14598 12.7394 3.61317 13.297 1.56679 14.3753C0.847579 14.7553 0.400391 15.497 0.400391 16.3106V18.8002C0.400391 19.2418 0.758779 19.6001 1.20034 19.6001H18.8006C19.2421 19.6001 19.6005 19.2418 19.6005 18.8002V16.3106C19.6005 15.497 19.1533 14.7553 18.4341 14.3753" fill="#C4C4C4"/>
+      </svg>
+      <div>
+        <h6 class="assign-header">Rider</h6>
+        <p class="assign-id">Fatia Jamiu</p>
+      </div>
+      </div>
+    </div>
+      </div>
+      <div class="van-container">
+      <div class="image-background">
+        <img class="van-icon" src="~assets/images/van.png" alt="">
+      </div>
+      <div class="second-section">
+      <h2 class="van-header">White van</h2>
+      <div class="assign">
+        <p class="assign-id">rs-567288</p>
+        <p class="assign-status">Assigned</p>
+      </div>
+      <div class="condition">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.400391 9.23941V10.76C0.400391 10.9252 0.51557 11.0634 0.676819 11.0941L1.82889 11.3014C2.03621 12.6147 2.55465 13.8205 3.30345 14.8534L2.63138 15.8173C2.53924 15.9517 2.55464 16.1321 2.66982 16.2473L3.74498 17.3225C3.86016 17.4377 4.0407 17.4531 4.17503 17.3609L5.14267 16.6888C6.17179 17.4376 7.38143 17.9561 8.69467 18.1634L8.902 19.3155C8.93267 19.4767 9.07101 19.5919 9.23601 19.5919H10.7567C10.9218 19.5919 11.06 19.4767 11.0907 19.3155L11.298 18.1634C12.6113 17.9561 13.8171 17.4376 14.85 16.6888L15.8139 17.3609C15.9483 17.4531 16.1287 17.4377 16.2439 17.3225L17.3191 16.2473C17.4343 16.1321 17.4497 15.9516 17.3575 15.8173L16.6854 14.8534C17.4342 13.8243 17.9527 12.6146 18.16 11.3014L19.3121 11.0941C19.4733 11.0634 19.5885 10.925 19.5885 10.76V9.23941C19.5885 9.07428 19.4733 8.93606 19.3121 8.90539L18.16 8.69807C17.9527 7.38476 17.4342 6.179 16.6854 5.14607L17.3575 4.17842C17.4497 4.04396 17.4343 3.86356 17.3191 3.74838L16.2439 2.67321C16.1287 2.55803 15.9482 2.54263 15.8139 2.63478L14.8462 3.30684C13.8171 2.55804 12.6075 2.03961 11.2942 1.83228L11.0869 0.680215C11.0639 0.515082 10.9257 0.399902 10.7605 0.399902H9.23988C9.07474 0.399902 8.93653 0.515082 8.90586 0.676331L8.69854 1.8284C7.38522 2.03572 6.17946 2.55416 5.14654 3.30296L4.18266 2.6348C4.0482 2.54266 3.8678 2.55806 3.75262 2.67324L2.67745 3.7484C2.56227 3.86358 2.54687 4.04412 2.63901 4.17845L3.31108 5.14609C2.56228 6.17521 2.04385 7.38485 1.83652 8.69809L0.684455 8.90542C0.51557 8.93609 0.400391 9.0743 0.400391 9.23943V9.23941ZM3.21892 9.99973C3.21892 6.2595 6.26016 3.21836 10.0003 3.21836C13.7404 3.21836 16.7817 6.2596 16.7817 9.99973C16.7817 13.7399 13.7404 16.7811 10.0003 16.7811C6.26016 16.7811 3.21892 13.7399 3.21892 9.99973Z" fill="#C4C4C4"/>
+      </svg>
+      <div>
+        <h6 class="assign-header">Condition</h6>
+        <p class="assign-id">Good</p>
+      </div>
+      </div>
+      <div class="rider">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.00028 7.88564V5.75845C6.00028 3.7561 7.86912 2.00005 10.0004 2.00005C12.1317 2.00005 14.0005 3.75599 14.0005 5.75845V7.88564C14.0005 10.1642 12.0189 12.4 10.0004 12.4C7.98189 12.4 6.00028 10.1641 6.00028 7.88564ZM18.434 14.3752C16.398 13.3033 14.8707 12.7456 13.4698 12.568C14.7442 11.4161 15.6002 9.69764 15.6002 7.88561V5.75842C15.6002 2.85363 13.0354 0.399902 10.0003 0.399902C6.96515 0.399902 4.4004 2.85346 4.4004 5.75842V7.88561C4.4004 9.69685 5.25634 11.4153 6.52999 12.5673C5.14598 12.7394 3.61317 13.297 1.56679 14.3753C0.847579 14.7553 0.400391 15.497 0.400391 16.3106V18.8002C0.400391 19.2418 0.758779 19.6001 1.20034 19.6001H18.8006C19.2421 19.6001 19.6005 19.2418 19.6005 18.8002V16.3106C19.6005 15.497 19.1533 14.7553 18.4341 14.3753" fill="#C4C4C4"/>
+      </svg>
+      <div>
+        <h6 class="assign-header">Rider</h6>
+        <p class="assign-id">Fatia Jamiu</p>
+      </div>
+      </div>
+    </div>
       </div>
     </div>
   </div>
@@ -76,66 +138,137 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .main-container{
-  padding-top: 8rem;
+  padding: 6rem 0 0 3rem;
+  background-color: #fffceb91;
 }
-.sub-container{
-  border: 1px solid #E4E4E4;
-  box-shadow: 0px 17px 42px rgba(0, 0, 0, 0.12);
-  padding: 1.5rem 1.5rem 2rem 2rem;
+.settings-links{
   display: flex;
-  column-gap: 6.2rem;
+  column-gap: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #F3F3F3;
 }
-.modal-header{
-  display: flex;
-  column-gap: .5rem;
-  align-items: center;
-  padding-left: 3rem;
-  padding-bottom: 2.1rem;
-}
-.pickup-location,.pickup-agent{
-  display: flex;
-  column-gap: 1.9rem;
-  align-items: flex-start;
-}
-.location-terminal{
-  display: flex;
-  flex-direction: column;
-  row-gap: 1rem;
-}
-.sender-location,.receiver-location{
-  display: flex;
-  align-items: center;
-}
-.text{
+a{
+  text-decoration: none;
   color: #777777;
-  line-height: 1rem;
-  font-size: .75rem;
-  margin-left: .6rem;
-  font-family: 'DM Sans Regular';
   font-weight: 400;
-}
-.from{
-  margin-right: .8rem;
-}
-.to{
-  margin-right: 1.6rem;
-}
-.from,.to{
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-family: 'DM Sans Regular';
-  font-size: .6rem;
-  line-height: .75rem;
+}
+.nuxt-link-exact-active{
+  color: #000;
+  border-bottom:  2px solid#D9B608;
   font-weight: 700;
 }
-.agent-container{
+.search-section{
+  border: 1px solid #F3F3F3;
+  border-radius: .4rem;
+  width: 500px;
+  height: 30px;
   display: flex;
-  flex-direction: column;
-  row-gap: 1rem;
-}
-.sender-agent,.receiver-agent{
-  display: flex;
-  column-gap: .3rem;
+  column-gap: 17rem;
   align-items: center;
+  padding: 1rem;
+  margin: 1.5rem 0 1.5rem 0;
+}
+.input-search{
+  border: none;
+  outline: none;
+}
+.header{
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  font-family: 'DM Sans Regular';
+  padding-bottom: .5rem;
+}
+.text{
+  font-weight: 400;
+  color: #575757;
+  line-height: 1.5rem;
+  font-size: 1rem;
+  font-family: 'DM Sans Regular';
+  padding-bottom: 2rem;
+}
+.major-container{
+  display: flex;
+  column-gap: 2rem;
+}
+.van-container{
+  border-radius: 0px 0px 8px 8px;
+  width: 330px;
+}
+.image-background{
+  background-color: #F7F7F7;
+}
+.van-icon{
+  padding: 2rem 2.6rem;
+}
+.van-header{
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  font-family: 'DM Sans Regular';
+}
+.second-section{
+  padding: 1.5rem 0 1.5rem 1.5rem;
+}
+.assign{
+  display: flex;
+  align-items: center;
+  column-gap: 8.7rem;
+  padding-bottom: 1.5rem;
+}
+.assign-id{
+  color: #777777;
+  line-height: 1.5rem;
+  font-size: .8rem;
+  font-weight: 400;
+  font-family: 'DM Sans Regular';
+}
+.assign-status{
+  padding: .5rem;
+  // text-align: center;
+  background-color: #BBFFDA;
+  border-radius: 4rem;
+  line-height: 1rem;
+  font-size: .7rem;
+  font-family: 'DM Sans Regular';
+}
+.assign-unstatus{
+  padding: .5rem;
+  // text-align: center;
+  background-color: #FFC6C6;
+  border-radius: 4rem;
+  line-height: 1rem;
+  font-size: .7rem;
+  font-family: 'DM Sans Regular';
+}
+.condition{
+  display: flex;
+  align-items: flex-start;
+  column-gap: .6rem;
+  padding-bottom: 1.5rem;
+}
+.rider{
+  display: flex;
+  align-items: flex-start;
+  column-gap: .6rem;
+}
+.assign-header{
+  font-size: .8rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  font-family: 'DM Sans Regular';
+}
+.assign-button{
+  width: 282px;
+  border-radius: .5rem;
+  background-color: #FFD60A;
+  text-align: center;
+  border: none;
+  height: 40px;
 }
 </style>

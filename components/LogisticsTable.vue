@@ -45,7 +45,7 @@
             <th v-for="(header) in dataMutable.headers" :key="header.key" :class="{'no-filter': !header.isFilterable}" @click="sortColumn(header)">
               <span> {{ header.label }} </span>
               <span>
-                <svg
+                <!-- <svg
                   style="transform: rotate(180deg)"
                   class="filter-icon"
                   width="7"
@@ -56,11 +56,11 @@
                 >
                   <path opacity="0.4" d="M3.5 0L6.53109 5.25H0.468911L3.5 0Z" fill="#7C86A1" />
                   <path d="M3.5 13L6.53109 7.75H0.468911L3.5 13Z" fill="#7C86A1" />
-                </svg>
+                </svg> -->
               </span>
             </th>
             <th>
-              Action
+              <!-- Action -->
             </th>
           </tr>
           <tr v-for="(label, index) in (searchMode ? searchedLabels : currentLabels)" :key="index" class="table-row">
@@ -512,9 +512,6 @@ button .count {
   justify-content: center;
 }
 .saturn-table-ctn {
-  border: 1px solid #E2E2EA;
-  border-radius: 20px;
-  /* padding: 24px 0; */
 }
 .table {
   /* margin: 24px 0; */
@@ -532,27 +529,28 @@ button .count {
 }
 .header-row {
   text-align: left;
-  background: #F0F2F4;
+  background: #fffceb91;
   font-size: 16px;
   line-height: 18px;
 }
 .table-row:nth-of-type(odd) {
   text-align: left;
-  background: #f1f1f1;
+  background: #FFF;
   font-size: 16px;
   line-height: 18px;
 }
 th {
-  color: #75759E;
+  color: #cc5500dc;
 }
 th {
   padding: 24px 14px;
   white-space: nowrap;
   cursor: pointer;
 }
-th:first-of-type, td:first-of-type {
+/* th:first-of-type, td:first-of-type {
   padding-left: 50px;
-}
+} */
+
 th:last-of-type, td:last-of-type {
   padding-right: 50px;
 }
@@ -566,6 +564,16 @@ th.no-filter .filter-icon {
 td {
   padding: 20px 14px;
   white-space: nowrap;
+  font-weight: 400;
+  font-family: 'DM Sans Regular';
+  font-size: 1rem;
+}
+tr{
+  background-color: #FFFF;
+  font-weight: 400;
+  font-family: 'DM Sans Regular';
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 .action {
   position: relative;

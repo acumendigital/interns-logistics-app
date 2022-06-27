@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container">
+  <div class="order-container">
     <div class="order-links">
       <NuxtLink to="/admin/orders">Active Orders</NuxtLink>
       <NuxtLink to="/admin/orders/delivered">Delivered</NuxtLink>
@@ -16,7 +16,7 @@
 </script>
 
 <style scoped>
-.main-container{
+.order-container{
   padding: 2rem 3rem 0 0 !important;
 }
 .order-links{
