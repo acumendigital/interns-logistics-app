@@ -31,6 +31,7 @@
   border: 1px solid #ffff;
   width: 100%;
   background-color: #FFF;
+  z-index: 3;
 }
 .navbar-content{
   display: flex;
@@ -47,5 +48,7 @@
 .text{
   color: #575757;
   font-size: 1rem;
+  font-family: 'DM Sans Regular';
+  line-height: 1.5rem;
 }
 </style>
