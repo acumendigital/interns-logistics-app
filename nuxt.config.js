@@ -1,6 +1,7 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
+  ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -12,6 +13,12 @@ export default {
       { name: "format-detection", content: "telephone=no" },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    script: [
+      {
+        defer: true,
+        src: `https://maps.googleapis.com/maps/api/js?key=AIzaSyBBlFJRASRFySUX9F06Q4Z0sLc0eXaeKuI&libraries=places&callback=initMap`,
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -33,6 +40,7 @@ export default {
     // '@nuxtjs/eslint-module',
     // style resources
     "@nuxtjs/style-resources",
+    "@nuxtjs/moment",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

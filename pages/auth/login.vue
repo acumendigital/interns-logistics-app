@@ -65,7 +65,7 @@ export default {
           console.log(loginReq, loginReq.data.data.user, loginReq.data.data.token);
         } catch (error) {
           this.$toasted.show(
-              error,
+              error.response.data.message,
               {
                 position: 'top-center',
                 type: 'danger',

@@ -183,6 +183,7 @@ main {
 @media screen and (max-width: 500px) {
   main {
     .container {
+       width: 100%;
       .cardNumber{
         input{
           width: 100%;

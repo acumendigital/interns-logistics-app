@@ -1,18 +1,33 @@
-<template lang="">
+<template >
+<nuxt-link :to='`/orders/track-order/${shipmentData._id}`'>
   <main>
     <div class="shipment-card">
       <div class="package">
         <div class="loader center">
           <span></span>
         </div>
-        <p>Nywj-079</p>
+        <p>{{ shipmentData.package_id }}</p>
       </div>
-      <p class="time">30mins</p>
+      <p class="time">{{this.$moment(`${shipmentData.updatedAt}`).fromNow()}}</p>
     </div>
   </main>
+</nuxt-link>
 </template>
 <script>
-export default {};
+export default {
+  name: "activeShipment",
+  props:{
+    shipmentData:{
+      required: true,
+      type: Object
+    }
+  },
+  computed:{
+    date(){
+      return this.$moment(`${shipmentData.updatedAt}`).fromNow()
+    }
+  }
+};
 </script>
 <style lang="scss" scoped>
 main {
@@ -21,9 +36,9 @@ main {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    min-width: 364px;
+    min-width: 310px;
     height: 56px;
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     margin-bottom: 2rem;
     border: 1px solid #dedede;
     border-radius: 8px;
@@ -32,6 +47,9 @@ main {
       flex-direction: row;
       align-items: center;
       gap: 1rem;
+      p{
+        color: black;
+      }
       .loader {
         display: block;
         height: 32px;
