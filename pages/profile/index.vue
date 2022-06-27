@@ -1,11 +1,11 @@
 <template>
   <main>
     <div class="container">
-      <div class="back">
+      <!-- <div class="back">
         <nuxt-link to="/orders" class="" exact-active-class="">
           <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
-      </div>
+      </div> -->
       <div class="title">
         <nuxt-link
           to="#"
@@ -33,7 +33,7 @@
           :src="imgSrc"
           alt="avatar"
           class="imgSrc"
-        />
+        >
       </div>
       <div v-show="!loading">
         <div class="profileDetails">
@@ -65,7 +65,7 @@
           <input v-model="address" type="text" disabled>
         </div>
       </div>
-      <div class="loading" v-show="loading">
+      <div v-show="loading" class="loading">
         <img src="~/assets/images/loader_black.svg" alt="black loader">
       </div>
       <section class="footer">
@@ -90,7 +90,12 @@ export default {
       email: '',
       number: '',
       address: '',
-      imgSrc: "~/assets/images/profile.svg"
+      imgSrc: '~/assets/images/profile.svg'
+    }
+  },
+  computed: {
+    loading () {
+      return this.$store.state.loading
     }
   },
   created () {
@@ -107,16 +112,11 @@ export default {
       this.email = response.data.data.email
       this.number = response.data.data.phone_number
       this.address = response.data.data.address.primary
-      if(response.data.data.photo !== "/avatar.png"){
+      if (response.data.data.photo !== '/avatar.png') {
         this.imgSrc = response.data.data.photo
       }
     }
-  },
-  computed: {
-    loading () {
-      return this.$store.state.loading
-    }
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -244,7 +244,7 @@ main {
       height: 55vh;
       img{
        width: 80px;
-       height: 80px; 
+       height: 80px;
       }
     }
   }
