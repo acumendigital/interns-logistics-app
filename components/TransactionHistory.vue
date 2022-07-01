@@ -17,7 +17,7 @@
         <p
           class="amount"
         >
-          {{transaction.amount }}
+         - {{transaction.amount }}
         </p>
       </div>
     </div>
