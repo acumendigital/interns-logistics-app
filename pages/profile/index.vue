@@ -34,6 +34,7 @@
           alt="avatar"
           class="imgSrc"
         >
+         <!-- <img :src="imgSrc || '/profile.jpg'" alt="avatar" class="imgSrc"> -->
       </div>
       <div v-show="!loading">
         <div class="profileDetails">
@@ -90,7 +91,7 @@ export default {
       email: '',
       number: '',
       address: '',
-      imgSrc: '~/assets/images/profile.svg'
+      imgSrc: 'images/profile.svg'
     }
   },
   computed: {
@@ -112,9 +113,9 @@ export default {
       this.email = response.data.data.email
       this.number = response.data.data.phone_number
       this.address = response.data.data.address.primary
-      if (response.data.data.photo !== '/avatar.png') {
-        this.imgSrc = response.data.data.photo
-      }
+      // if (response.data.data.photo !== '/avatar.png') {
+      //   this.imgSrc = response.data.data.photo
+      // }
     }
   }
 }

@@ -2,7 +2,7 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/wallet/withdrawalPage" class="" exact-active-class="">
+        <nuxt-link to="/history/withdrawalPage" class="" exact-active-class="">
           <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
@@ -32,7 +32,7 @@
         class="btn"
         @click="
           clicked = true;
-          $router.push('/wallet/successfulWithdrawal');
+          $router.push('/history/successfulWithdrawal');
         "
       >
         <Button :name="title" />
