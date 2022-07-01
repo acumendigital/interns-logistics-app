@@ -1,22 +1,28 @@
 <template>
   <div class="track-order-container">
-    <TheTrackDelivered />
+    <div class="delivered" v-show="!trackCancelled">
+      <the-track-delivered />
+    </div>
+    <div class="cancelled" v-show="trackCancelled">
+      <the-track-cancelled @track-cancelled="cancelTrack" />
+    </div>
   </div>
 </template>
 <script>
 import TheTrackActive from "~/components/track-order/TheTrackActive";
-import TheTrackDelivered from "~/components/track-order/TheTrackDelivered";
-import TheTrackCancelled from "~/components/track-order/TheTrackCancelled";
+import TheTrackCancelled from '~/components/track-order/TheTrackCancelled.vue';
+import TheTrackDelivered from '~/components/track-order/TheTrackDelivered.vue';
 export default {
   components: {
     TheTrackActive,
-    TheTrackDelivered,
     TheTrackCancelled,
+    TheTrackDelivered
   },
   data(){
     return{
       orderId: this.$route.params.index,
-      orderDetailsReq: []
+      orderDetailsReq: [],
+      trackCancelled: false
     }
   },
   async mounted(){
@@ -35,6 +41,12 @@ export default {
       )
     }
     
+  },
+  methods: {
+    cancelTrack(){
+      this.trackCancelled = true;
+      console.log("track cancelled");
+    }
   }
 };
 </script>

@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <div class="track-active-container">
     <div class="back">
       <div @click="goToPrev">
@@ -20,7 +20,7 @@
         </div>
       </div>
     </nuxt-link>
-    <div class="journey">
+    <div class="journey" v-show="!orderCancelled">
       <div class="stop">
         <div class="line"></div>
         <font-awesome-icon icon="circle" />
@@ -46,6 +46,9 @@
         <p>Rider is at your door</p>
       </div>
     </div>
+    <div class="cancelled-order">
+      <the-empty-content v-show="orderCancelled" emptyCaption="This order was cancelled" :styles="{ height: '22vh', 'justify-content': 'flex-start'}" />
+    </div>
     <div class="more-info">
       <div class="text">
         <div class="arrival">
@@ -60,7 +63,12 @@
           </p>
         </div>
       </div>
-      <div class="button"><font-awesome-icon icon="phone" /> Call</div>
+      <div class="help-btns">
+        <div class="button">
+          <font-awesome-icon icon="phone" /> Call
+        </div>
+        <button class="cancel-btn" @click="cancelOrder" :class="{ loading : loading }" v-show="!orderCancelled" >Cancel</button>
+      </div>
     </div>
 
     <div class="track-modal-container" v-show="modalOpen" @click="toggleModal">
@@ -75,9 +83,11 @@
 </template>
 <script>
 import TheTrackModal from "~/components/track-order/TheTrackModal.vue";
+import TheEmptyContent from "~/components/TheEmptyContent.vue"
 export default {
   components: {
     TheTrackModal,
+    TheEmptyContent
   },
   data() {
     return {
@@ -90,11 +100,46 @@ export default {
     },
     goToPrev(){
       this.$router.go(-1)
+    },
+    async cancelOrder(){
+      try {
+        const cancelReq = await this.$axios.patch(`/api/v1/request/${this.orderDetailsHandler._id}/cancel`)
+        this.$emit('track-cancelled')
+        this.$router.go(-1);
+        this.$toasted.show(
+          cancelReq.data.message,
+          {
+            position: 'top-center',
+            duration: 2500,
+            type: 'success',
+          }
+        )
+      } catch (error) {
+        console.log(error);
+        this.$toasted.show(
+          error,
+          {
+            position: 'top-center',
+            duration: 3500,
+            type: 'danger',
+          }
+        )
+      }
     }
   },
   computed:{
     orderDetailsHandler(){
       return this.$store.state.orderDetails
+    },
+    loading(){
+      return this.$store.state.loading
+    },
+    orderCancelled(){
+      if(this.orderDetailsHandler.status === "cancelled"){
+        return true
+      } else {
+        return false
+      }
     }
   }
 };
@@ -202,6 +247,20 @@ export default {
         }
       }
     }
+    .help-btns{
+      @include flex-center;
+      gap: 16px;
+      button{
+        border: 1px solid #CC5500;
+        border-radius: 8px;
+        padding: 16px 35px;
+        color: red;
+        background: transparent
+      }
+      .loading{
+        border: 1px solid grey;
+        color: grey
+      }
     .button {
       @include flex-center();
       gap: 10px;
@@ -224,6 +283,7 @@ export default {
         transform: scale(1.03);
       }
     }
+  }
   }
   .track-modal-container {
     position: fixed;

@@ -6,16 +6,8 @@
     <section class="body">
       <div class="top">
         <div class="top-text">
-          <h1>N 12, 000</h1>
-          <p>Wallet Balance</p>
-        </div>
-        <div class="top-btns">
-          <div class="add btn">
-            + Add Money
-          </div>
-          <div class="add btn">
-            - Withdraw
-          </div>
+          <h1>Welcome {{ userDetails.firstname }}, send or recieve an item.</h1>
+          <!-- <p>Wallet Balance</p> -->
         </div>
       </div>
       <div class="break" />
@@ -109,6 +101,9 @@ export default {
       } else {
         return false
       }
+    },
+    userDetails(){
+      return this.$store.state.userDetails
     }
   }
 }
@@ -129,6 +124,7 @@ main {
         h1 {
           font-family: "Rubik Regular";
           font-size: 40px;
+          font-weight: 400;
         }
         p {
           font-size: 14px;
