@@ -9,7 +9,10 @@
           <p>Transaction History</p>
         </div>
         <div>
-          <TransactionHistory />
+          <TransactionHistory v-show="!loading" />
+          <div class="loading">
+            <span v-show="loading"><img src="~/assets/images/loader_black.svg" alt="loader"></span>
+          </div>
         </div>
       </div>
     </div>
@@ -26,6 +29,11 @@ export default {
     return {
       title: 'Save',
       name: this.$store.state.userDetails.firstname
+    }
+  },
+  computed:{
+    loading(){
+      return this.$store.state.loading
     }
   }
 }
@@ -117,6 +125,7 @@ main {
           cursor: pointer;
         }
       }
+      
     }
     // .footer {
     //   position: fixed;
@@ -124,6 +133,14 @@ main {
     //   margin: 38px 27px 32px 28px;
     // }
   }
+  .loading{
+        @include flex-center;
+        color: black;
+        img{
+          width: 80px;
+          height: 80px;
+        }
+      }
   .footer {
     position: fixed;
     bottom: 0;

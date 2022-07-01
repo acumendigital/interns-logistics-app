@@ -1,7 +1,7 @@
 <template>
   <main>
     <section class="nav">
-      <TheBellButton />
+      <TheBellButton :styles="{'justify-content': 'flex-start'}" />
     </section>
     <section class="body">
       <div class="top">
@@ -15,11 +15,11 @@
         <p>Send or Receive Item</p>
         <div class="cards">
           <nuxt-link to="/local" class="card">
-            <img src="~assets/images/local.png" alt="">
+            <img src="~assets/images/local.svg" alt="">
             <p>Local</p>
           </nuxt-link>
           <nuxt-link to="/international" class="card">
-            <img src="~assets/images/international.png" alt="">
+            <img src="~assets/images/international.svg" alt="">
             <p>International</p>
           </nuxt-link>
         </div>
@@ -46,7 +46,7 @@
           <div class="img-container" v-show="loading">
             <img src="~/assets/images/loader_black.svg" alt="Loading...">
           </div>
-          <the-empty-content v-show="showEmpty" :styles="{ height: '30vh', 'justify-content': 'flex-start'}" />
+          <the-empty-content v-show="showEmpty" :emptyCaption="'You currently have no active shipments'" :styles="{ height: '30vh', 'justify-content': 'flex-start'}" />
         </div>
       </div>
     </section>
@@ -123,8 +123,9 @@ main {
         margin: 0.5rem;
         h1 {
           font-family: "Rubik Regular";
-          font-size: 40px;
+          font-size: 25px;
           font-weight: 400;
+          line-height: 40px;
         }
         p {
           font-size: 14px;
@@ -168,13 +169,16 @@ main {
           align-items: center;
           text-decoration: none;
           color: #000;
-          width: 169;
-          height: 230;
+          width: 169px;
+          height: 110px;
           margin: 1rem 0rem;
-          padding: 1rem 2.3rem;
+          // padding: 1.5rem 2.5rem;
           border-radius: 8px;
           background-color: #fff;
           border: 1px solid #efefef;
+          &:hover{
+            background: #FFD60A;
+          }
           img {
             max-width: 90%;
             // height: 130px;
