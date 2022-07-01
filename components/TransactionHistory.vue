@@ -40,14 +40,18 @@ export default {
   },
   methods: {
     async getTransactions () {
-      const response = await this.$axios.get(
-        'https://xyz-logistics-api.herokuapp.com/api/v1/wallet/paystak/transactions'
-      )
-      if (response) {
-        this.transactions = []
-        this.transactions = response.data.data.transactionHistory
-      }
-      console.log(this.transactions)
+      try {
+        const response = await this.$axios.get(
+          'https://xyz-logistics-api.herokuapp.com/api/v1/wallet/paystak/transactions'
+        )
+        if (response) {
+          this.transactions = []
+          this.transactions = response.data.data.transactionHistory
+        }
+        console.log(this.transactions)
+      } catch (error) {
+        console.log(error);
+      } 
     }
   }
 }

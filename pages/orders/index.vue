@@ -2,7 +2,7 @@
   <main>
     <div class="main">
       <section class="close">
-        <nuxt-link to="/home"> <font-awesome-icon icon="x" /></nuxt-link>
+        <!-- <nuxt-link to="/home"> <font-awesome-icon icon="x" /></nuxt-link> -->
       </section>
       <section class="toggle">
         <p :class="active ? 'active' : 'inactive'" @click="toggleActive">
@@ -25,7 +25,8 @@
         <the-empty-content emptyCaption="You currently have no delivered orders" />
       </section>
       <section v-show="cancelled" class="active-cards">
-        <the-empty-content emptyCaption="You currently have no cancelled orders" />
+        <TheCancelledOrder v-for="shipment in cancelledShipments" :key="shipment._id" :cancelledShipmentProp="shipment" />
+        <the-empty-content emptyCaption="You currently have no cancelled orders" v-if="!cancelledShipments" />
       </section>
     </div>
 
@@ -36,20 +37,25 @@
 </template>
 <script>
 import TheEmptyContent from '~/components/TheEmptyContent.vue';
+import TheCancelledOrder from '~/components/TheCancelledOrder.vue'
 export default {
-  components: { TheEmptyContent },
+  components: { TheEmptyContent, TheCancelledOrder },
   data() {
     return {
       active: true,
       delivered: false,
       cancelled: false,
-      activeShipments: []
+      activeShipments: [],
+      cancelledShipments: [],
     };
   },
   async mounted(){
     try {
       const activeShipmentsReq = await this.$axios.get(`/api/v1/requests/user?status=pending`)
+      const cancelledShipmentsReq = await this.$axios.get(`/api/v1/requests/user?status=cancelled`)
+      console.log(cancelledShipmentsReq);
       this.activeShipments = activeShipmentsReq.data.data
+      this.cancelledShipments = cancelledShipmentsReq.data.data
     } catch (error) {
       this.$toasted.show(
         `Can't load active shipments: ${error.response.data.message.message}`,
