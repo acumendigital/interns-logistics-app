@@ -32,7 +32,7 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    min-width: 364px;
+    min-width: 310px;
     height: 110px;
     padding: 1rem 2rem;
     margin: 2rem 0rem;

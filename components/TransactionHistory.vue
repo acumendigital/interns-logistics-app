@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  name: 'Trnasactions',
+  name: 'Transactions',
   data () {
     return {
       title: 'Save',

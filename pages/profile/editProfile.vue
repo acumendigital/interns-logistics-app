@@ -73,6 +73,7 @@
 </template>
 
 <script>
+import imgProfile from '~/assets/images/profile.svg'
 export default {
   name: 'Profile',
   data () {
@@ -83,7 +84,7 @@ export default {
       email: '',
       number: '',
       address: '',
-      imgSrc: '',
+      imgSrc: imgProfile,
       kemiData: {}
     }
   },

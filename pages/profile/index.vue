@@ -80,6 +80,7 @@
 </template>
 
 <script>
+import imgProfile from '~/assets/images/profile.svg'
 export default {
   name: 'Profile',
   data () {
@@ -91,7 +92,7 @@ export default {
       email: '',
       number: '',
       address: '',
-      imgSrc: 'images/profile.svg'
+      imgSrc: imgProfile
     }
   },
   computed: {
@@ -113,9 +114,9 @@ export default {
       this.email = response.data.data.email
       this.number = response.data.data.phone_number
       this.address = response.data.data.address.primary
-      // if (response.data.data.photo !== '/avatar.png') {
-      //   this.imgSrc = response.data.data.photo
-      // }
+      if (response.data.data.photo !== '/avatar.png') {
+        this.imgSrc = response.data.data.photo
+      }
     }
   }
 }

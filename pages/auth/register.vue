@@ -61,7 +61,7 @@ export default {
             this.registerData.email !== "" ||
             this.registerData.password !== ""
           ){
-            this.$toasted.show(res, {
+            this.$toasted.show("You have registered successfully, Kindly check your email to verify", {
             position: 'top-center',
             duration: 2500,
             type: 'success',
