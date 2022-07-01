@@ -1,21 +1,23 @@
 <template>
   <main>
     <div class="container">
-      <div class="history">
+      <div
+        v-for="(transaction, index) in transactions"
+        :key="index"
+        class="history"
+      >
         <div class="details">
           <img src="~assets/images/up.svg" alt="">
+
           <p class="name">
             Send Local
           </p>
         </div>
 
         <p
-          v-for="(value, index) in transactions"
-          :key="index"
           class="amount"
-          :value="value"
         >
-          {{ value }}
+         - {{transaction.amount }}
         </p>
       </div>
     </div>
@@ -28,7 +30,9 @@ export default {
   data () {
     return {
       title: 'Save',
-      transactions: []
+      transactions: [],
+      name: '',
+      index: []
     }
   },
   created () {
@@ -36,15 +40,14 @@ export default {
   },
   methods: {
     async getTransactions () {
-      const response = await this.$axios.get('https://xyz-logistics-api.herokuapp.com/api/v1/wallet/paystak/transactions'
+      const response = await this.$axios.get(
+        'https://xyz-logistics-api.herokuapp.com/api/v1/wallet/paystak/transactions'
       )
       if (response) {
         this.transactions = []
-        // response.data.reverse().forEach(v => this.vendorList.push(v.name))
-        response.data.data.transactionHistory[0].forEach(v => this.transactions.push(v.amount))
+        this.transactions = response.data.data.transactionHistory
       }
-      // console.log(response.data.data.transactionHistory[0].amount)
-      console.log(response.data.data.transactionHistory)
+      console.log(this.transactions)
     }
   }
 }

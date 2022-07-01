@@ -2,7 +2,7 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/wallet/addMoney" class="" exact-active-class="">
+        <nuxt-link to="/history/addMoney" class="" exact-active-class="">
           <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
@@ -29,7 +29,7 @@
         class="btn"
         @click="
           clicked = true;
-          $router.push('/wallet/successfulPayment');
+          $router.push('/history/successfulPayment');
         "
       >
         <Button :name="title" />

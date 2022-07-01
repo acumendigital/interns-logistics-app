@@ -1,10 +1,10 @@
-<template >
+<template>
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/profile" class="" exact-active-class="">
+        <div class="" exact-active-class="" @click="goToPrev">
           <img src="~/assets/images/leftArrow.svg">
-        </nuxt-link>
+        </div>
       </div>
       <div class="title">
         <nuxt-link
@@ -30,13 +30,14 @@
         </nuxt-link>
       </div>
       <div v-show="!loading">
-      <div class="profileUpload">
-        <!-- <img src="~/assets/images/profile.svg"> -->
-        <img :src="imgSrc || '/profile.svg'" alt="avatar" class="imgSrc">
-        <p>
-          Update your profile photo</p>
-        <input id="file-input" type="file" accept=".jpeg, .png, .jpg" @change="uploadImage($event)">
-      </div>
+        <div class="profileUpload">
+          <!-- <img src="~/assets/images/profile.svg"> -->
+          <img :src="imgSrc || '/profile.svg'" alt="avatar" class="imgSrc">
+          <p>
+            Update your profile photo
+          </p>
+          <input id="file-input" type="file" accept=".jpeg, .png, .jpg" @change="uploadImage($event)">
+        </div>
         <div class="profileDetails">
           <label>First Name</label>
           <input v-model="first_name" type="text">
@@ -61,12 +62,12 @@
           >
         </div>
       </div>
-      <div class="loading" v-show="loading">
+      <div v-show="loading" class="loading">
         <img src="~/assets/images/loader_black.svg" alt="black loader">
       </div>
-        <div class="btn" @click="save()">
-          <Button :name="title" />
-        </div>
+      <div class="btn" @click="save()">
+        <Button :name="title" />
+      </div>
     </div>
   </main>
 </template>
@@ -86,13 +87,15 @@ export default {
       kemiData: {}
     }
   },
+  computed: {
+    loading () {
+      return this.$store.state.loading
+    }
+  },
   created () {
     this.getUserdetails()
   },
   methods: {
-    resetFile (event) {
-      event.target.value = ''
-    },
     async  uploadImage (event) {
       const URL = 'https://xyz-logistics-api.herokuapp.com/api/v1/user/me'
 
@@ -150,13 +153,11 @@ export default {
         console.log(request)
         console.log(formData.get('data'))
       }
+    },
+    goToPrev () {
+      this.$router.go(-1)
     }
-  },
-  computed: {
-    loading () {
-      return this.$store.state.loading
-    }
-  },
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -328,7 +329,7 @@ main {
       height: 55vh;
       img{
        width: 80px;
-       height: 80px; 
+       height: 80px;
       }
     }
 }

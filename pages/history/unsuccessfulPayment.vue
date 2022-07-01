@@ -2,21 +2,18 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/wallet/paymentCard" class="" exact-active-class="">
+        <nuxt-link to="/history/paymentCard" class="" exact-active-class="">
           <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
       </div>
       <div class="detail">
-        <img src="~/assets/images/success.svg">
-        <p>Payment successful!</p>
+        <img src="~/assets/images/decline.svg">
+        <p>Payment Unsuccessful</p>
+        <p class="decline">
+          Kindly check your card details again and ensure the card is funded
+        </p>
       </div>
-      <div
-        class="btn"
-        @click="
-          clicked = true;
-          $router.push('/');
-        "
-      >
+      <div class="btn">
         <Button :name="title" />
       </div>
     </div>
@@ -29,7 +26,7 @@ export default {
   data () {
     return {
       current: '',
-      title: 'Go to Homepage'
+      title: 'Try again'
     }
   }
 }
@@ -49,6 +46,7 @@ main {
     margin: 0 auto;
     max-width: 428px;
     height: 926px;
+    // padding: 37px 32px 0 32px;
     padding-top: 37px;
     .back {
       margin: 0 0 37px 32px;
@@ -58,33 +56,33 @@ main {
       img {
         cursor: pointer;
       }
-      p {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
-        text-align: center;
-        margin-left: 101px;
-      }
     }
     .detail {
-        width: 85%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 269px auto 0 auto;
-      margin-top: 269px;
+      width: 85%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 269px auto 0 auto;
       p {
-       font-weight: 400;
-font-size: 18px;
-line-height: 28px;
- margin: 16px 0;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 28px;
+        margin: 24px 0 8px 0;
+      }
+      .decline{
+          font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+        text-align: center;
+        margin: 0 32px 32px;
+        color: #666;
       }
     }
     .btn {
       width: 100%;
       display: flex;
-        padding: 0 0 32px 0;
+       padding: 0 0 32px 0;
       justify-content: center;
     }
   }
@@ -95,7 +93,7 @@ line-height: 28px;
        width: 100%;
       .btn {
         width: 70%;
-        margin-right: auto;
+       margin-right: auto;
         margin-left: auto;
       }
     }

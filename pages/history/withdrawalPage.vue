@@ -2,7 +2,7 @@
   <main>
     <div class="container">
       <div class="back">
-        <nuxt-link to="/wallet" class="" exact-active-class="">
+        <nuxt-link to="/history" class="" exact-active-class="">
           <img src="~/assets/images/leftArrow.svg">
         </nuxt-link>
         <p>Select withdrawal amount</p>
@@ -52,7 +52,7 @@
         class="btn"
         @click="
           clicked = true;
-          $router.push('/wallet/selectAccount');
+          $router.push('/history/selectAccount');
         "
       >
         <Button

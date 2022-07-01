@@ -4,37 +4,11 @@
       <div class="back">
         <img src="~/assets/images/notifications.svg">
       </div>
-      <div class="title">
-        <div>
-          <h3>N12,000</h3>
-          <p>Wallet balance</p>
-        </div>
-
-        <div class="btns">
-          <nuxt-link to="/wallet/addMoney" class="" exact-active-class="">
-            <button>+ Add money</button>
-          </nuxt-link>
-          <nuxt-link to="/wallet/withdrawalPage" class="" exact-active-class="">
-            <button>- Withdraw</button>
-          </nuxt-link>
-        </div>
-      </div>
-      <div class="overview">
-        <p>Overview</p>
-        <div class="charts">
-          CHART HERE!!!
-        </div>
-      </div>
       <div class="transactions">
         <div class="header">
           <p>Transaction History</p>
-          <p class="more">
-            See all
-          </p>
         </div>
         <div>
-          <TransactionHistory />
-          <TransactionHistory />
           <TransactionHistory />
         </div>
       </div>
@@ -50,7 +24,8 @@ export default {
   name: 'IndexPage',
   data () {
     return {
-      title: 'Save'
+      title: 'Save',
+      name: this.$store.state.userDetails.firstname
     }
   }
 }
@@ -79,7 +54,7 @@ main {
       }
     }
     .title {
-      border-bottom: 1px solid #dbdbdb;
+      // border-bottom: 1px solid #dbdbdb;
       h3 {
         font-weight: 500;
         font-size: 40px;

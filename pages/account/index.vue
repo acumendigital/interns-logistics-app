@@ -2,7 +2,7 @@
   <main>
     <div class="container">
       <div class="back">
-        <div @click="goToPrev" class="" exact-active-class="">
+        <div class="" exact-active-class="" @click="goToPrev">
           <img src="~/assets/images/leftArrow.svg">
         </div>
       </div>
@@ -99,6 +99,7 @@ export default {
           })
           this.$router.push('/auth/login')
         } else if (request.status !== 200) {
+          console.log(request.status)
           this.$toasted.show('Your current password is incorrect', {
             position: 'top-center',
             duration: 3000,
@@ -107,9 +108,9 @@ export default {
         }
       }
     },
-    goToPrev(){
-        this.$router.go(-1)
-      }
+    goToPrev () {
+      this.$router.go(-1)
+    }
   }
 }
 </script>

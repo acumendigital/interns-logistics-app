@@ -5,10 +5,10 @@
       <img v-show="!home" src="~assets/images/home-light.png" alt="" />
       <p v-show="home">Home</p>
     </nuxt-link>
-    <nuxt-link to="/wallet" :class="wallet ? 'button' : 'dead'">
-      <img v-show="wallet" src="~assets/images/wallet-dark.svg" alt="" />
-      <img v-show="!wallet" src="~assets/images/wallet-light.png" alt="" />
-      <p v-show="wallet">Wallet</p>
+    <nuxt-link to="/history" :class="history ? 'button' : 'dead'">
+      <img v-show="history" src="~assets/images/wallet-dark.svg" alt="" />
+      <img v-show="!history" src="~assets/images/wallet-light.png" alt="" />
+      <p v-show="history">History</p>
     </nuxt-link>
     <nuxt-link to="/orders" :class="orders ? 'button' : 'dead'">
       <font-awesome-icon icon="list" />
@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       home: null,
-      wallet: null,
+      history: null,
       orders: null,
       profile: null,
       route: this.$route,
@@ -37,8 +37,8 @@ export default {
         this.home = true;
         break;
 
-      case "wallet":
-        this.wallet = true;
+      case "history":
+        this.history = true;
         break;
 
       case "orders":
