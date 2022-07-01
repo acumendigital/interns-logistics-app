@@ -4,24 +4,9 @@
       <div class="back">
         <img src="~/assets/images/notifications.svg">
       </div>
-      <div class="title">
-        <!-- <div>
-          <h3>Welcome {{name}}</h3>
-        </div> -->
-
-      </div>
-      <div class="overview">
-        <!-- <p>Overview</p>
-        <div class="charts">
-          CHART HERE!!!
-        </div> -->
-      </div>
       <div class="transactions">
         <div class="header">
           <p>Transaction History</p>
-          <!-- <p class="more">
-            See all
-          </p> -->
         </div>
         <div>
           <TransactionHistory />

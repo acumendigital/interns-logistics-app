@@ -46,19 +46,8 @@ export default {
       if (response) {
         this.transactions = []
         this.transactions = response.data.data.transactionHistory
-        // this.transactions = response.data.data.transactionHistory.map((transaction) => {
-        //   return (
-        //     (transaction.amount).forEach(v => this.transactions.push(v.amount))
-        //     //  (transaction.amount).forEach(v => this.transactions.push(v.amount))
-        //   )
-        // })
-
-        // response.data.reverse().forEach(v => this.vendorList.push(v.name))
-        // response.data.data.transactionHistory[0].forEach(v => this.transactions.push(v.amount))
       }
       console.log(this.transactions)
-      // console.log(response.data.data.transactionHistory[0].amount)
-      console.log(response.data.data.transactionHistory)
     }
   }
 }
