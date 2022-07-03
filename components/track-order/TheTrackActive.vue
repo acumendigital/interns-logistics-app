@@ -104,6 +104,9 @@ export default {
     margin-top: 35px;
     padding: 2rem;
     text-decoration: none;
+    img{
+      width: 100%;
+    }
     .rider-chat {
       @include flex-center();
       justify-content: space-between;
