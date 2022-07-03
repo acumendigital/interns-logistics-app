@@ -6,7 +6,7 @@
       </div>
     </div>
     <nuxt-link to="/orders/rider-chat" class="rider">
-      <img src="~assets/images/track-rider.png" alt="" />
+      <img src="~assets/images/track-rider.png" class="track-order-img" alt="" />
       <div class="rider-chat">
         <div class="left">
           <img src="~assets/images/rider-img.png" alt="" class="rider-img" />
@@ -155,6 +155,9 @@ export default {
     margin-top: 35px;
     padding: 2rem;
     text-decoration: none;
+    .track-order-img{
+      width: 100%;
+    }
     .rider-chat {
       @include flex-center();
       justify-content: space-between;
